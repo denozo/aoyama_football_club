@@ -2,43 +2,73 @@
 
 <%= form_with model: @member, url: new_admins_member_path, local:true do |f| %>
 
-  <label>姓</label>
-  <%= f.text_field :last_name %>
-  
-  <label>名</label>
-  <%= f.text_field :first_name %>
-  
-  <label>セイ</label>
-  <%= f.text_field :last_name_kana %>
-  
-  <label>メイ</label>
-  <%= f.text_field :first_name_kana %>
-  
-  <label>学年</label>
-  <%= f.text_field :grade %>
-  
-  <label>ポジション</label>
-  <%= f.text_field :position %>
-  
-  <label>身長</label>
-  <%= f.text_field :height %>
-  
-  <label>体重</label>
-  <%= f.text_field :weight %>
-  
-  <label>出身チーム</label>
-  <%= f.text_field :original_team %>
-  
-  <label>趣味</label>
-  <%= f.text_field :hobby %>
-  
-  <label>目標</label>
-  <%= f.text_field :goal %>
+　<div class="form-group">
+　  <%= f.label :category_id, "カテゴリー" %>
+　  <%= f.collection_select :category_id, Category.all, :id, :category_name, include_blank: "-- 選択してください --" %>
+　</div>
 
-  <label>選手画像</label>
-  <%= f.attachment_field :image %>  
-  
-  
-  <%= f.submit "新規登録" %>
+  <div class="form-group">
+    <%= f.label :last_name, "姓" %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :first_name, "名" %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name_kana, "セイ" %>
+    <%= f.text_field :last_name_kana %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :first_name_kana, "メイ" %>
+    <%= f.text_field :first_name_kana %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :grad, "学年" %>
+    <%= f.text_field :grade %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :position, "ポジション" %>
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :height, "身長" %>
+    <%= f.text_field :height %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :weight, "体重" %>
+    <%= f.text_field :weight %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :original_team, "出身チーム" %>
+    <%= f.text_field :original_team %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :hobby, "趣味" %>
+    <%= f.text_field :hobby %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :goal, "目標" %>
+    <%= f.text_field :goal %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image, "メンバー画像" %>
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "新規登録" %>
+  </div>
 
 <% end %>
