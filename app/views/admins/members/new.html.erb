@@ -30,6 +30,9 @@
   <div class="form-group">
     <%= f.label :grad, "学年" %>
     <%= f.text_field :grade %>
+    
+    <%= f.radio_button :grade, Member.grades.key(0) %>
+    
   </div>
 
   <div class="form-group">
