@@ -1,0 +1,24 @@
+<h1>カテゴリー一覧</h1>
+
+<%= form_with model: @category, url: admins_categories_path, local:true do |f| %>
+  <label>カテゴリー名</label>
+  <%= f.text_field :category_name %>
+  <%= f.submit "新規追加" %>
+<% end %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>ジャンル名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.category_name %></td>
+      <td><%= link_to "編集する", edit_admins_category_path(category.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
