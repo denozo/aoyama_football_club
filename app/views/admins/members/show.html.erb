@@ -1,2 +1,51 @@
-<h1>Admins::Members#show</h1>
-<p>Find me in app/views/admins/members/show.html.erb</p>
+<h1><%= @category.category_name %>詳細</h1>
+
+<div>
+  <%= attachment_image_tag @member, :image, :fill, 200, 200 %>
+</div>
+
+<div>
+<label>氏名</label>
+<%= @member.last_name + " " + @member.first_name %>
+</div>
+
+<div>
+<label>フリガナ</label>
+<%= @member.last_name_kana + " " + @member.first_name_kana %>
+</div>
+
+
+<div>
+<label>学年</label>
+<%= @member.grade %>
+</div>
+
+<div>
+<label>ポジション</label>
+<%= @member.position %>
+</div>
+
+<div>
+<label>身長</label>
+<%= @member.height %>
+</div>
+
+<div>
+<label>体重</label>
+<%= @member.weight %>
+</div>
+
+<div>
+<label>出身チーム</label>
+<%= @member.original_team %>
+</div>
+
+<div>
+<label>趣味</label>
+<%= @member.hobby %>
+</div>
+
+<div>
+<label>目標</label>
+<%= @member.goal %>
+</div>

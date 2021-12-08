@@ -1,9 +1,9 @@
 ja:
   enums:
-    members:
-      garde:
-        garde_1st: '1年生'
-          garde_2nd: '2年生'
-            garde_3rd: '3年生'
-              staff: 'スタッフ'
+    member:
+      grade:
+        grade_1st: '1年生'
+        grade_2nd: '2年生'
+        grade_3rd: '3年生'
+        staff: 'スタッフ'
 

@@ -1,6 +1,6 @@
 <h1>メンバー登録</h1>
 
-<%= form_with model: @member, url: new_admins_member_path, local:true do |f| %>
+<%= form_with model: @member, url: '/admins/members', local:true do |f| %>
 
 　<div class="form-group">
 　  <%= f.label :category_id, "カテゴリー" %>
@@ -28,11 +28,17 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :grad, "学年" %>
-    <%= f.text_field :grade %>
-    
     <%= f.radio_button :grade, Member.grades.key(0) %>
-    <%= f.label :grade, "" 
+    <%= f.label :grade, Member.grades_i18n[:grade_1st] %>
+
+    <%= f.radio_button :grade, Member.grades.key(1) %>
+    <%= f.label :grade, Member.grades_i18n[:grade_2nd] %>
+
+    <%= f.radio_button :grade, Member.grades.key(2) %>
+    <%= f.label :grade, Member.grades_i18n[:grade_3rd] %>
+
+    <%= f.radio_button :grade, Member.grades.key(3) %>
+    <%= f.label :grade, Member.grades_i18n[:staff] %>
   </div>
 
   <div class="form-group">
