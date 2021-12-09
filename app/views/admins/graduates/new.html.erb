@@ -1,2 +1,30 @@
-<h1>Admins::Graduates#new</h1>
-<p>Find me in app/views/admins/graduates/new.html.erb</p>
+<h1>OB紹介登録</h1>
+
+<%= form_with model: @graduate, url: '/admins/graduates', local:true do |f| %>
+
+  <div class="form_group">
+    <%= f.label :image, "集合写真" %>
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div class="form_group">
+    <%= f.label :year, "卒業年度" %>
+    <%= f.text_field :year %>
+  </div>
+  
+  <div class="form_group">
+    <%= f.label :member_list, "メンバー一覧" %>
+    <%= f.text_area :member_list %>
+  </div>
+  
+  <div class="form_group">
+    <%= f.label :career_after_graduation, "主な進路" %>
+    <%= f.text_area :career_after_graduation %>
+  </div>
+  
+  <div class="form_group">
+    <%= f.submit "新規登録" %>
+  </div>
+  
+  
+<% end %>
