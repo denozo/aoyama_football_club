@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :admins do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update]
-    resources :members, only:[:index, :new, :create, :show, :edit, :update]
+    resources :members, only:[:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
   devise_for :admins

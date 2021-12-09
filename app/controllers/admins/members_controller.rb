@@ -9,9 +9,9 @@ class Admins::MembersController < ApplicationController
   end
 
   def create
-    @member =  Member.new(member_params)
-    @member.save
-    redirect_to admins_member_path(@member)
+    member =  Member.new(member_params)
+    member.save
+    redirect_to admins_member_path(member)
   end
 
   def show
@@ -24,7 +24,17 @@ class Admins::MembersController < ApplicationController
   end
 
   def update
+    member = Member.find(params[:id])
+    member.update(member_params)
+    redirect_to admins_member_path(member)
   end
+  
+  def destroy
+    member = Member.find(params[:id])
+    member.destroy
+    redirect_to admins_members_path
+  end
+  
   
   private
   
