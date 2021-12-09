@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update]
     resources :members, only:[:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :graduates, only:[:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
   devise_for :admins
