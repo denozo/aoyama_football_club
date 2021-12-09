@@ -1,2 +1,83 @@
-<h1>Admins::Members#edit</h1>
-<p>Find me in app/views/admins/members/edit.html.erb</p>
+<h1>メンバー編集</h1>
+
+<%= form_with model: @member, url: "/admins/members/#{@member.id}", local:true do |f| %>
+
+　<div class="form-group">
+　  <%= f.label :category_id, "カテゴリー" %>
+　  <%= f.collection_select :category_id, Category.all, :id, :category_name, include_blank: "-- 選択してください --" %>
+　</div>
+
+  <div class="form-group">
+    <%= f.label :last_name, "姓" %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :first_name, "名" %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name_kana, "セイ" %>
+    <%= f.text_field :last_name_kana %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :first_name_kana, "メイ" %>
+    <%= f.text_field :first_name_kana %>
+  </div>
+
+  <div class="form-group">
+    <%= f.radio_button :grade, Member.grades.key(0) %>
+    <%= f.label :grade, Member.grades_i18n[:grade_1st] %>
+
+    <%= f.radio_button :grade, Member.grades.key(1) %>
+    <%= f.label :grade, Member.grades_i18n[:grade_2nd] %>
+
+    <%= f.radio_button :grade, Member.grades.key(2) %>
+    <%= f.label :grade, Member.grades_i18n[:grade_3rd] %>
+
+    <%= f.radio_button :grade, Member.grades.key(3) %>
+    <%= f.label :grade, Member.grades_i18n[:staff] %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :position, "ポジション" %>
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :height, "身長" %>
+    <%= f.text_field :height %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :weight, "体重" %>
+    <%= f.text_field :weight %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :original_team, "出身チーム" %>
+    <%= f.text_area :original_team %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :hobby, "趣味" %>
+    <%= f.text_area :hobby %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :goal, "目標" %>
+    <%= f.text_area :goal %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image, "メンバー画像" %>
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "変更を保存" %>
+  </div>
+
+<% end %>
