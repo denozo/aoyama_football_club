@@ -1,5 +1,7 @@
 class Admins::GraduatesController < ApplicationController
+
   def index
+    @graduates = Graduate.all
   end
 
   def new
@@ -17,12 +19,19 @@ class Admins::GraduatesController < ApplicationController
   end
 
   def edit
+    @graduate = Graduate.find(params[:id])
   end
 
   def update
+    graduate = Graduate.find(params[:id])
+    graduate.update(graduate_params)
+    redirect_to admins_graduate_path(graduate)
   end
 
   def destroy
+    graduate = Graduate.find(params[:id])
+    graduate.destroy
+    redirect_to admins_graduates_path
   end
 
   private

@@ -1,2 +1,18 @@
-<h1>Admins::Graduates#index</h1>
-<p>Find me in app/views/admins/graduates/index.html.erb</p>
+<h1>OB紹介一覧</h1>
+
+<table>
+  <head>
+    <tr>
+      <ht>卒業年度</ht>
+    </tr>
+  </head>
+  <tbody>
+    <% @graduates.each do |graduate| %>
+    <tr>
+      <td><%= graduate.year %></td>
+      <td><%= attachment_image_tag graduate, :image, :fill, 200, 200 %></td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>

@@ -1,2 +1,14 @@
 <h1><%= @graduate.year %>年度の卒業生</h1>
 
+<div>
+  <%= attachment_image_tag @graduate, :image, :fill, 200, 200 %>
+</div>
+<div>
+  <%= @graduate.member_list %>
+</div>
+<div>
+  <%= @graduate.career_after_graduation %>
+</div>
+
+<%= link_to "編集", edit_admins_graduate_path(@graduate.id) %>
+<%= link_to "削除", admins_graduate_path(@graduate.id), method: :delete, "date-confirm" => "削除しますか？" %>
