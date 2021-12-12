@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
   namespace :admins do
+    get 'events/index'
+    get 'events/new'
+    get 'events/create'
+    get 'events/show'
+    get 'events/edit'
+    get 'events/destroy'
+  end
+  namespace :admins do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update]
     resources :members, only:[:index, :new, :create, :show, :edit, :update, :destroy]
