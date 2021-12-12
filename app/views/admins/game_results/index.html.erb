@@ -1,0 +1,24 @@
+<h1>試合結果一覧</h1>
+
+<div>
+  <%= link_to "試合結果登録", new_admins_game_result_path %>
+</div>
+
+<table>
+  <head>
+    <tr>
+      <th>開催日</th>
+      <th>大会名</th>
+      <th>試合タイトル</th>
+    </tr>
+  </head>
+  <tbody>
+    <% @game_results.each do |game_result| %>
+    <tr>
+      <td><%= game_result.event_date %></td>
+      <td><%= game_result.tournament_name %></td>
+      <td><%= game_result.game_title %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

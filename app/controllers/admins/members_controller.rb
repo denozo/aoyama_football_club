@@ -1,5 +1,7 @@
 class Admins::MembersController < ApplicationController
   
+  before_action :authenticate_admin!
+  
   def index
     @members = Member.all
   end
@@ -10,8 +12,13 @@ class Admins::MembersController < ApplicationController
 
   def create
     member =  Member.new(member_params)
-    member.save
-    redirect_to admins_member_path(member)
+    
+    if member.save
+      redirect_to admins_member_path(member), notice: "メンバーを追加しました"
+    else
+      render :new
+    end
+    
   end
 
   def show
@@ -25,8 +32,12 @@ class Admins::MembersController < ApplicationController
 
   def update
     member = Member.find(params[:id])
-    member.update(member_params)
-    redirect_to admins_member_path(member)
+    
+    if member.update(member_params)
+     redirect_to admins_member_path(member), notice: "変更を保存しました"
+    else
+      render :edit
+    end
   end
   
   def destroy

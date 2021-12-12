@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :categories, only:[:index, :create, :edit, :update]
     resources :members, only:[:index, :new, :create, :show, :edit, :update, :destroy]
     resources :graduates, only:[:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :game_results, only:[:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :informations, only:[:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
   devise_for :admins

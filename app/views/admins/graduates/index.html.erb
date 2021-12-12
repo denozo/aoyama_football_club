@@ -1,16 +1,25 @@
 <h1>OB紹介一覧</h1>
 
+<div>
+  <%= link_to "OB紹介登録", new_admins_graduate_path %>
+</div>
+
 <table>
   <head>
     <tr>
-      <ht>卒業年度</ht>
+      <th>卒業年度</th>
     </tr>
   </head>
   <tbody>
     <% @graduates.each do |graduate| %>
     <tr>
-      <td><%= graduate.year %></td>
-      <td><%= attachment_image_tag graduate, :image, :fill, 200, 200 %></td>
+      <td>
+        <%= link_to admins_graduate_path(graduate.id) do %>
+        <%= attachment_image_tag graduate, :image, :fill, 100, 100 %>
+        <% end %>
+      </td>
+      <td><%= graduate.year.to_s + "年度卒業" %></td>
+      <td><%= link_to "編集", edit_admins_graduate_path(graduate.id) %></td>
     </tr>
     <% end %>
   </tbody>

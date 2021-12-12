@@ -1,4 +1,6 @@
 class Admins::GraduatesController < ApplicationController
+  
+  before_action :authenticate_admin!
 
   def index
     @graduates = Graduate.all
@@ -10,8 +12,12 @@ class Admins::GraduatesController < ApplicationController
 
   def create
     graduate = Graduate.new(graduate_params)
-    graduate.save
-    redirect_to admins_graduate_path(graduate)
+    
+    if graduate.save
+      redirect_to admins_graduate_path(graduate), notice: "OB紹介を登録しました"
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,8 +30,12 @@ class Admins::GraduatesController < ApplicationController
 
   def update
     graduate = Graduate.find(params[:id])
-    graduate.update(graduate_params)
-    redirect_to admins_graduate_path(graduate)
+    
+    if graduate.update(graduate_params)
+      redirect_to admins_graduate_path(graduate), notice: "変更を保存しました"
+    else
+    　render :edit
+    end
   end
 
   def destroy

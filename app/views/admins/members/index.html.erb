@@ -1,5 +1,9 @@
 <h1>メンバー一覧</h1>
 
+<div>
+  <%= link_to "スタッフ・選手登録", new_admins_member_path %>
+</div>
+
 <table>
   <thead>
     <tr>
@@ -11,9 +15,10 @@
   <tbody>
     <% @members.each do |member| %>
     <tr>
-      <td><%= member.category.category_name %></td>
+      <td><%= link_to member.category.category_name, admins_member_path(member.id) %></td>
       <td><%= member.grade_i18n %></td>
       <td><%= member.last_name + " " + member.first_name %></td>
+      <td><%= link_to "編集", edit_admins_member_path(member.id) %></td>
     </tr>
     <% end %>
   </tbody>

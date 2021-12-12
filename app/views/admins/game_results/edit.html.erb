@@ -1,0 +1,34 @@
+<h1>試合結果の編集</h1>
+
+<%= form_with model: @game_result, url: "/admins/game_results/#{@game_result.id}", local:true do |f| %>
+
+  <div class="form_group">
+    <%= f.label :image, "試合写真" %>
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div class="form_group">
+    <%= f.label :tournament_name, "大会名" %>
+    <%= f.text_field :tournament_name %>
+  </div>
+  <div class="form_group">
+    <%= f.label :game_title, "試合のタイトル" %>
+    <%= f.text_field :game_title %>
+  </div>
+
+  <div class="form_group">
+    <%= f.label :event_date, "開催日" %>
+    <%= f.datetime_field :event_date %>
+  </div>
+
+  <div class="form_group">
+    <%= f.label :results_details, "結果内容" %>
+    <%= f.text_area :results_details %>
+  </div>
+
+  <div class="form_group">
+    <%= f.submit "編集を保存" %>
+  </div>
+
+
+<% end %>

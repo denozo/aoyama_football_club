@@ -1,0 +1,20 @@
+<h1>試合結果</h1>
+
+<div>
+  <%= attachment_image_tag @game_result, :image, :fill, 200, 200 %>
+</div>
+<div>
+  <%= @game_result.tournament_name %>
+</div>
+<div>
+  <%= @game_result.game_title %>
+</div>
+<div>
+  <%= @game_result.event_date %>
+</div>
+<div>
+  <%= @game_result.results_details %>
+</div>
+
+<%= link_to "編集", edit_admins_game_result_path(@game_result.id) %>
+<%= link_to "削除", admins_game_result_path(@game_result.id), method: :delete, "date-confirm" => "削除しますか？" %>

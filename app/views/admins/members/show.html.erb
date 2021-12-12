@@ -50,5 +50,5 @@
 <%= @member.goal %>
 </div>
 
-<%= link_to "編集" edit_admins_member_path(@member.id) %>
+<%= link_to "編集", edit_admins_member_path(@member.id) %>
 <%= link_to "削除", admins_member_path(@member.id), method: :delete, "data-confirm" => "表示されているメンバーを削除しますか?" %>

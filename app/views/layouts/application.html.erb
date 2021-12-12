@@ -11,7 +11,41 @@
   
   <header>
   <div>
-    ヘッダー箇所
+    <ul>
+      <% if admin_signed_in? %>
+        <li>
+          <%= link_to "カテゴリー登録", admins_categories_path %>
+        </li>
+        <li>
+          <%= link_to "選手・スタッフ管理", admins_members_path %>
+        </li>
+        <li>
+          <%= link_to "OB紹介管理", admins_graduates_path %>
+        </li>
+        <li>
+          <%= link_to "スケジュール管理", admins_members_path %>
+        </li>
+        <li>
+          <%= link_to "試合結果管理", admins_game_results_path %>
+        </li>
+        <li>
+          <%= link_to "お知らせ管理", admins_informations_path %>
+        </li>
+        <li>
+          <%= link_to "保護者専用お知らせ管理", admins_game_results_path %>
+        </li>
+        <li>
+          <%= link_to "応援グッズ登録", admins_game_results_path %>
+        </li>
+        <li>
+          <%= link_to "注文管理", admins_game_results_path %>
+        </li>
+        <li>
+          <%= link_to "お問い合わせ管理", admins_game_results_path %>
+        </li>
+      <% else%>
+      <% end %>
+    </ul>
   </div>
   </header>
 
