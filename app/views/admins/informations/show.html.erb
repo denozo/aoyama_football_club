@@ -1,0 +1,20 @@
+<h1>お知らせ詳細</h1>
+
+<div>
+  <%= @information.category_i18n %>
+</div>
+
+<div>
+  <%= @information.title %>
+</div>
+
+<div>
+  <%= safe_join(@information.content.split("\n"),tag(:br)) %>
+</div>
+
+<div>
+  <%= attachment_image_tag @information, :image, :fill, 200, 200 %>
+</div>
+
+<%= link_to "編集", edit_admins_information_path(@information.id) %>
+<%= link_to "削除", admins_information_path(@information.id), method: :delete, "data-confirm" => "削除しますか?" %>

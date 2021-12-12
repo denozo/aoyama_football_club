@@ -9,8 +9,12 @@ class Admins::CategoriesController < ApplicationController
 
   def create
     category = Category.new(category_params)
-    category.save
-    redirect_to admins_categories_path
+    
+    if category.save
+      redirect_to admins_categories_path, notice: "カテゴリーを登録しました"
+    else
+      render :index
+    end
   end
 
   def edit
@@ -19,8 +23,12 @@ class Admins::CategoriesController < ApplicationController
 
   def update
     category = Category.find(params[:id])
-    category.update(category_params)
-    redirect_to admins_categories_path
+    
+    if category.update(category_params)
+      redirect_to admins_categories_path, notice: "変更を保存しました"
+    else
+      render :edit
+    end
   end
 
   private

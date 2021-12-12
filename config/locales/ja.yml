@@ -6,4 +6,9 @@ ja:
         grade_2nd: '2年生'
         grade_3rd: '3年生'
         staff: 'スタッフ'
+    information:
+      category:
+        general: '一般'
+        announcement: '告知'
+        other: 'その他'
 

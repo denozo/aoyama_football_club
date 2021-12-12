@@ -37,17 +37,17 @@
 
 <div>
 <label>出身チーム</label>
-<%= @member.original_team %>
+<%= safe_join(@member.original_team.split("\n"),tag(:br)) %>
 </div>
 
 <div>
 <label>趣味</label>
-<%= @member.hobby %>
+<%= safe_join(@member.hobby.split("\n"),tag(:br)) %>
 </div>
 
 <div>
 <label>目標</label>
-<%= @member.goal %>
+<%= safe_join(@member.goal.split("\n"),tag(:br)) %>
 </div>
 
 <%= link_to "編集", edit_admins_member_path(@member.id) %>
