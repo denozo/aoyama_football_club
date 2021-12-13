@@ -1,2 +1,29 @@
-<h1>Admins::Events#new</h1>
-<p>Find me in app/views/admins/events/new.html.erb</p>
+<h1>予定を登録</h1>
+
+<%= form_with model: @event, url: "/admins/events", local: true do |f| %>
+
+ <div class="form_group">
+   <%= f.label :title %>
+   <%= f.text_field :title %>
+ </div>
+ 
+ <div class="form_group">
+   <%= f.label :start_time %>
+   <%= f.datetime_field :start_time %>
+ </div>
+ 
+ <div class="form_group">
+   <%= f.label :end_time %>
+   <%= f.datetime_field :end_time %>
+ </div>
+ 
+ <div class="form_group">
+   <%= f.label :content %>
+   <%= f.text_area :content %>
+ </div>
+ 
+ <div class="form_group">
+   <%= f.submit %>
+ </div>
+
+<% end %>

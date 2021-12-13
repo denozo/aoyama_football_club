@@ -1,2 +1,17 @@
-<h1>Admins::Events#show</h1>
-<p>Find me in app/views/admins/events/show.html.erb</p>
+<h1>予定詳細</h1>
+
+<div>
+  <%= @event.title %>
+</div>
+<div>
+  <%= @event.start_time %>
+</div>
+<div>
+  <%= @event.end_time %>
+</div>
+<div>
+  <%= @event.content %>
+</div>
+
+<%= link_to "編集", edit_admins_event_path(@event.id) %>
+<%= link_to "削除", admins_event_path(@event.id), method: :delete, "date-confirm" => "削除しますか？" %>
