@@ -1,2 +1,29 @@
-<h1>Admins::Items#show</h1>
-<p>Find me in app/views/admins/items/show.html.erb</p>
+<h1>アイテム詳細</h1>
+
+<div>
+  <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
+</div>
+
+<div>
+<label>アイテム名</label>
+<%= @item.name %>
+</div>
+
+<div>
+<label>価格(税抜)</label>
+<%= @item.price %>
+</div>
+
+
+<div>
+<label>詳細</label>
+<%= @item.introduction %>
+</div>
+
+<div>
+<label>詳細</label>
+<%= @item.is_active_i18n %>
+</div>
+
+<%= link_to "編集", edit_admins_item_path(@item.id) %>
+<%= link_to "削除", admins_item_path(@item.id), method: :delete, "data-confirm" => "表示されているアイテムを削除しますか?" %>

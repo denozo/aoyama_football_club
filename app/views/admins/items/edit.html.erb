@@ -1,2 +1,36 @@
-<h1>Admins::Items#edit</h1>
-<p>Find me in app/views/admins/items/edit.html.erb</p>
+<h1>アイテム編集</h1>
+
+<%= form_with model: @item, url: "/admins/items/#{@item.id}", local:true do |f| %>
+
+<div class="form-group">
+  <%= f.label :name, "アイテム名" %>
+  <%= f.text_field :name %>
+</div>
+<div class="form-group">
+  <%= f.label :price, "単価(税抜)" %>
+  <%= f.text_field :price %>
+</div>
+
+<div class="form-group">
+  <%= f.label :introduction, "内容" %>
+  <%= f.text_area :introduction %>
+</div>
+
+<div class="form-group">
+  <%= f.label :image, "画像" %>
+  <%= f.attachment_field :image %>
+</div>
+
+<div class="form-group">
+  <%= f.radio_button :is_active, Item.is_actives.key(true) %>
+  <%= f.label :is_active, Item.is_actives_i18n[:on_sale] %>
+  
+  <%= f.radio_button :is_active, Item.is_actives.key(false) %>
+  <%= f.label :is_active, Item.is_actives_i18n[:sales_stop] %>
+</div>
+
+<div class="form-group">
+  <%= f.submit "編集を保存" %>
+</div>
+
+<% end %>
