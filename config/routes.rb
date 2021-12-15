@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :events
     resources :items
   end
+  
+  namespace :guardians do
+  end
 
   devise_for :admins
   devise_for :guardians
