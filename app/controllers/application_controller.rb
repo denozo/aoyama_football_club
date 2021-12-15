@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
      when Admin
       admins_root_path
       when Guardian
-      admins_root_path
+      guardians_root_path
     end
   end
 

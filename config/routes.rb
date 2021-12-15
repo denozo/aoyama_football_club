@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     resources :events
     resources :items
   end
-  
+
   namespace :guardians do
+    root to: 'homes#show'
+    resources :homes, only:[:edit, :update]
   end
 
   devise_for :admins
