@@ -24,7 +24,7 @@
 <div class="form-group">
   <%= f.radio_button :is_active, Item.is_actives.key(true) %>
   <%= f.label :is_active, Item.is_actives_i18n[:on_sale] %>
-  
+
   <%= f.radio_button :is_active, Item.is_actives.key(false) %>
   <%= f.label :is_active, Item.is_actives_i18n[:sales_stop] %>
 </div>
