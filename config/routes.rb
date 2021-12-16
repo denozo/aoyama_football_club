@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :informations
     resources :events
     resources :items
+    resources :guardians
   end
 
   namespace :guardians do

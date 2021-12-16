@@ -1,0 +1,27 @@
+<h1>保護者一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>更新日</th>
+      <th>保護者氏名</th>
+      <th>続柄</th>
+      <th>生徒氏名</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @guardians.each do |guardian| %>
+    <tr>
+      <td><%= guardian.updated_at %></td>
+      <td><%= guardian.last_name + '　' + guardian.first_name %></td>
+      <td><%= guardian.relationship %></td>
+      <td><%= guardian.member_name %></td>
+      <td><%= guardian.tel %></td>
+      <td><%= guardian.email %></td>
+      <td><%= link_to "編集",  edit_admins_guardian_path(guardian.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

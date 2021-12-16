@@ -1,4 +1,7 @@
 class Guardians::HomesController < ApplicationController
+  
+    before_action :authenticate_guardian!
+  
 
   def show
    @guardian = current_guardian
