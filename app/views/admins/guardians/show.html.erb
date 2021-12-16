@@ -1,0 +1,41 @@
+<h1>保護者詳細</h1>
+
+<div class="field">
+    <%= @guardian.last_name + '　' + @guardian.first_name %>
+  </div>
+
+  <div class="field">
+    <%= @guardian.last_name_kana + '　' + @guardian.first_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= @guardian.relationship %>
+  </div>
+
+  <div class="field">
+    <%= @guardian.member_name %>
+  </div>
+
+  <div class="field">
+    <%= @guardian.year_of_enrollment %>
+  </div>
+
+  <div class="field">
+    <%= @guardian.postal_code %>
+  </div>
+
+  <div class="field">
+    <%= @guardian.address %>
+  </div>
+
+  <div class="field">
+    <%= @guardian.tel %>
+  </div>
+
+  <div class="field">
+    <%= @guardian.email %>
+  </div>
+
+
+<%= link_to "編集", edit_admins_guardian_path(@guardian.id) %>
+<%= link_to "削除", admins_guardian_path(@guardian.id), method: :delete, "data-confirm" => "削除しますか?" %>
