@@ -1,0 +1,18 @@
+<h1>保護者お知らせ一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>更新日</th>
+      <th>タイトル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @informationforguardians.each do |informationforguardian| %>
+    <tr>
+      <td><%= informationforguardian.updated_at %></td>
+      <td><%= link_to informationforguardian.title, guardians_information_for_guardian_path(informationforguardian.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

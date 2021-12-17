@@ -1,4 +1,6 @@
 class Admins::InformationForGuardiansController < ApplicationController
+  
+  before_action :authenticate_admin!
 
   def index
     @informationforguardians = InformationForGuardian.all

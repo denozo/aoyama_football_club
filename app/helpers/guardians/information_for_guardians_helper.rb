@@ -1,0 +1,2 @@
+module Guardians::InformationForGuardiansHelper
+end
