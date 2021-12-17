@@ -1,0 +1,20 @@
+<h1>保護者用お知らせ詳細</h1>
+
+<div>
+  <%= @informationforguardian.category_i18n %>
+</div>
+
+<div>
+  <%= @informationforguardian.title %>
+</div>
+
+<div>
+  <%= safe_join(@informationforguardian.content.split("\n"),tag(:br)) %>
+</div>
+
+<div>
+  <%= attachment_image_tag @informationforguardian, :image, :fill, 200, 200 %>
+</div>
+
+<%= link_to "編集", edit_admins_information_for_guardian_path(@informationforguardian.id) %>
+<%= link_to "削除", admins_information_for_guardian_path(@informationforguardian.id), method: :delete, "data-confirm" => "削除しますか?" %>

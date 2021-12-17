@@ -1,0 +1,23 @@
+<h1>お知らせ一覧</h1>
+
+<div>
+  <%= link_to "お知らせ登録", new_admins_information_for_guardian_path %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>更新日</th>
+      <th>タイトル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @informationforguardians.each do |informationforguardian| %>
+    <tr>
+      <td><%= informationforguardian.updated_at %></td>
+      <td><%= link_to informationforguardian.title, admins_information_for_guardian_path(informationforguardian.id) %></td>
+      <td><%= link_to "編集", edit_admins_information_for_guardian_path(informationforguardian.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

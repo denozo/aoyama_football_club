@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :informations
     resources :events
     resources :items
+    resources :information_for_guardians
     resources :guardians, only:[:index, :show, :edit, :update, :destroy]
   end
 

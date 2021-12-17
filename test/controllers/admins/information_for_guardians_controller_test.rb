@@ -1,39 +1,7 @@
 require 'test_helper'
 
 class Admins::InformationForGuardiansControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get admins_information_for_guardians_index_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get admins_information_for_guardians_new_url
-    assert_response :success
-  end
-
-  test "should get create" do
-    get admins_information_for_guardians_create_url
-    assert_response :success
-  end
-
-  test "should get show" do
-    get admins_information_for_guardians_show_url
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get admins_information_for_guardians_edit_url
-    assert_response :success
-  end
-
-  test "should get update" do
-    get admins_information_for_guardians_update_url
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get admins_information_for_guardians_destroy_url
-    assert_response :success
-  end
-
+  # test "the truth" do
+  #   assert true
+  # end
 end

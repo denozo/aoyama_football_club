@@ -1,2 +1,0 @@
-class InformationForGuardian < ApplicationRecord
-end

@@ -15,3 +15,8 @@ ja:
       is_active:
         sales_stop: '販売停止'
         on_sale: '販売中'
+    information_for_guardian:
+      category:
+        general: '一般'
+        announcement: '告知'
+        other: 'その他'
