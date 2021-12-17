@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   namespace :guardians do
     root to: 'homes#show'
     resources :homes, only:[:edit, :update]
-    resources :information_for_guardians, only:[:index, :show]
+    resources :information_for_guardians, only:[:index, :show] do
+      resource :favorites, only: [:create, :destroy]
+    end
+    
   end
 
   devise_for :admins

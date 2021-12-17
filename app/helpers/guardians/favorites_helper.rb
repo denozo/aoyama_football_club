@@ -1,0 +1,2 @@
+module Guardians::FavoritesHelper
+end

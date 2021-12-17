@@ -15,3 +15,18 @@
 <div>
   <%= attachment_image_tag @informationforguardian, :image, :fill, 200, 200 %>
 </div>
+
+
+ <% if @informationforguardian.favorited_by?(current_guardian) %>
+    <p>
+      <%= link_to guardians_information_for_guardian_favorites_path(@informationforguardian), method: :delete do %>
+        ★<%= @informationforguardian.favorites.count %> 確認済！
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to guardians_information_for_guardian_favorites_path(@informationforguardian), method: :post do %>
+        ☆<%=@informationforguardian.favorites.count %> 未確認
+      <% end %>
+    </p>
+<% end %>
