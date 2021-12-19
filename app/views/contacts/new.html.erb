@@ -1,14 +1,14 @@
 <h1>お問い合わせフォーム</h1>
 
-<%= form_with model: @contact, local: true, url: {adction: :confirm} do |f| %>
+<%= form_with model: @contact, local: true, url: {action: :confirm} do |f| %>
 
   <%= f.label :name, 'お名前' %>
   <%= f.text_field :name, autofocus: true, placeholder:'田中 太郎' %>
   
-  <%= f.label :email, 'お名前' %>
+  <%= f.label :email, 'メールアドレス' %>
   <%= f.text_field :email, placeholder:'test@hoge.com' %>
   
-  <%= f.label :content, 'お名前' %>
+  <%= f.label :content, 'お問い合わせ内容' %>
   <%= f.text_area :content, placeholder:'お問い合わせ内容は10文字以上でお願いします' %>
   
   <%= f.submit '確認画面へ進む' %>
