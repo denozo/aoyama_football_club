@@ -1,0 +1,22 @@
+<h1>お問い合わせ内容確認</h1>
+
+<%= form_with model: @contact, local: true, url: {adction: :'create'}, method: :post do |f| %>
+
+  <%= f.label :name, 'お名前' %>
+  <%= @contact.name %>
+  <!--データ受渡用-->
+  <%= f.hidden_field :name, :value => @contact.name %>
+  
+  <%= f.label :email, 'お名前' %>
+  <%= @contact.email %>
+  <!--データ受渡用-->
+  <%= f.hidden_field :email, :value => @contact.email %>
+  
+  <%= f.label :content, 'お名前' %>
+  <%= @contact.content %>
+  <!--データ受渡用-->
+  <%= f.hidden_field :content, :value => @contact.content %>
+  
+  <%= f.submit '送信する' %>
+
+<% end %>

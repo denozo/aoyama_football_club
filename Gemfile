@@ -71,3 +71,5 @@ gem "enum_help"
 gem "pry-byebug"
 
 gem 'simple_calendar', '~> 2.0'
+
+gem 'dotenv-rails'

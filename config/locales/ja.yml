@@ -20,3 +20,7 @@ ja:
         general: '一般'
         announcement: '告知'
         other: 'その他'
+    contact:
+      answer_status:
+        unanswered: '未回答'
+        answer_complete: '回答完了'
