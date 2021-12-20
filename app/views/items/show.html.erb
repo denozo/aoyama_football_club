@@ -1,0 +1,21 @@
+<h1>アイテム詳細</h1>
+
+<div>
+  <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
+</div>
+
+<div>
+<label>アイテム名</label>
+<%= @item.name %>
+</div>
+
+<div>
+<label>価格(税込)</label>
+<%= @item.with_tax_price.to_s + "円" %>
+</div>
+
+
+<div>
+<label>詳細</label>
+<%= @item.introduction %>
+</div>

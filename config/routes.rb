@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :items, only: [:index, :show]
+
   devise_for :admins
   devise_for :guardians
 
