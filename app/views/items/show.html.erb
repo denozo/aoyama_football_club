@@ -19,3 +19,13 @@
 <label>詳細</label>
 <%= @item.introduction %>
 </div>
+
+
+<%= form_with model: @cart_item, url:"/cart_items", loacl:true do |f| %>
+<!--非表示-->
+<%= f.hidden_field :item_id, value: @item.id %>
+<!--個数-->
+<%= f.select :amount, *[1..10],include_blank: " 個数選択 ", class: 'form-select m-3' %>
+<!--カートボタン-->
+<%= f.submit 'カートに入れる', class: 'btn btn-primary m-3' %>
+<% end %>

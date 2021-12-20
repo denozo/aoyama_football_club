@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show]
+  resources :cart_items, only: [:index, :show]
 
   devise_for :admins
   devise_for :guardians
