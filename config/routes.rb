@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  # namespace :guardians do
-  #   get 'information_for_guardians/index'
-  #   get 'information_for_guardians/show'
-  # end
-
   namespace :admins do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update]
@@ -16,6 +11,7 @@ Rails.application.routes.draw do
     resources :items
     resources :information_for_guardians
     resources :guardians, only:[:index, :show, :edit, :update, :destroy]
+    resources :contacts, only:[:index, :show, :edit, :update]
   end
 
   namespace :guardians do

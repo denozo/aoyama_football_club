@@ -1,0 +1,20 @@
+<h1>お問い合わせ一覧</h1>
+
+<table>
+  <head>
+    <tr>
+      <th>お問い合わせ日時</th>
+      <th>氏名</th>
+      <th>回答ステータス</th>
+    </tr>
+  </head>
+  <tbody>
+    <% @contacts.each do |contact| %>
+    <tr>
+      <td><%= link_to contact.created_at, admins_contact_path(contact.id) %></td>
+      <td><%= contact.name %></td>
+      <td><%= contact.answer_status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

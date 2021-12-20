@@ -1,0 +1,21 @@
+<h1>お問い合わせ詳細</h1>
+
+  <div>
+    <label>氏名</label>
+    <%= @contact.name %>
+  </div>
+  
+  <div>
+    <label>メールアドレス</label>
+    <%= @contact.email %>
+  </div>
+
+  <div>  
+    <label>お問い合わせ内容</label>
+    <%= @contact.content %>
+  </div>
+  
+  <%= form_with model: @contact, url: "/admins/contacts/#{@contact.id}", method: :patch, loacl:true do |f| %>
+    <%= f.select :answer_status, Contact.answer_statuses_i18n.invert %>
+    <%= f.submit '更新' %>
+  <% end %>
