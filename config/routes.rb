@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'cart_items/index'
+  get 'cart_items/update'
+  get 'cart_items/destroy'
+  get 'cart_items/destroyall'
+  get 'cart_items/create'
   namespace :admins do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update]
