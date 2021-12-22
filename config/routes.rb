@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'cart_items/index'
-  get 'cart_items/update'
-  get 'cart_items/destroy'
-  get 'cart_items/destroyall'
-  get 'cart_items/create'
   namespace :admins do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update]
@@ -35,7 +30,11 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :show]
+  resources :cart_items, only: [:index, :update, :destroy, :create] do
+    collection do
+      delete 'destroyall'
+    end
+  end
 
   devise_for :admins
   devise_for :guardians

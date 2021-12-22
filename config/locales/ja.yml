@@ -24,3 +24,14 @@ ja:
       answer_status:
         unanswered: '未回答'
         answer_complete: '回答完了'
+    oder:
+      product_passing:
+        delivery: '発送'
+        other: 'その他'
+      payment_method:
+        cash: '現金'
+        transfer: '銀行振込'
+      order_status:
+        stock_confirmation: '在庫確認'
+        contact_complete: '連絡完了'
+        passing_complete: 'お渡し完了'

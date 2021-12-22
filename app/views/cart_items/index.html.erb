@@ -1,2 +1,21 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<h1>カート内商品</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= attachment_image_tag cart_item.item, :image, :fill, 80, 40 %></td>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.amount.to_s + "個" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

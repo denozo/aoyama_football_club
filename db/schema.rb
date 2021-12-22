@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_111201) do
+ActiveRecord::Schema.define(version: 2021_12_22_114621) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 2021_12_20_111201) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "cart_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -145,6 +151,22 @@ ActiveRecord::Schema.define(version: 2021_12_20_111201) do
     t.text "original_team", null: false
     t.text "hobby", null: false
     t.text "goal", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "product_passing", default: 0, null: false
+    t.string "other"
+    t.string "postal_code"
+    t.string "address"
+    t.string "addressee"
+    t.integer "shipping_cost"
+    t.integer "total_payment", null: false
+    t.integer "payment_method", default: 0, null: false
+    t.integer "order_status", default: 0, null: false
+    t.datetime "delivery_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
