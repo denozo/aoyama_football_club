@@ -22,18 +22,18 @@ class CartItemsController < ApplicationController
   def create
     cart = current_cart
     item = Item.find(params[:item_id])
-    @cart_item = cart.add_item(item.id)
-    @cart_item.amount = params[:amount].to_i
-
-    if @cart_item.save
+    cart_item = cart.add_item(item.id)
+    cart_item.amount += params[:amount].to_i
+    
+    if cart_item.save
       redirect_to cart_items_path, notice: 'お問い合わせ内容を送信しました'
     else
       redirect_to item_path(item)
     end
-
   end
 
-  private
+
+private
 
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount, :cart_id)

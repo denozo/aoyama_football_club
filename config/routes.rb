@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'homes#top'
+
   namespace :admins do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update]
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
   end
+
   
   resources :contacts, only: [:new, :create] do
     collection do
