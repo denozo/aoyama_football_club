@@ -23,13 +23,17 @@ class CartItemsController < ApplicationController
     cart = current_cart
     item = Item.find(params[:item_id])
     cart_item = cart.add_item(item.id)
-    cart_item.amount += params[:amount].to_i
-    
-    if cart_item.save
+
+    if(cart_item.amount)
+      cart_item.amount += params[:amount].to_i
+      cart_item.save
       redirect_to cart_items_path, notice: 'お問い合わせ内容を送信しました'
     else
+      cart_item.amount = params[:amount].to_i
+      cart_item.save
       redirect_to item_path(item)
     end
+
   end
 
 
