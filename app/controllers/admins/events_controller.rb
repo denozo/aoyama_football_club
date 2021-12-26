@@ -1,5 +1,7 @@
 class Admins::EventsController < ApplicationController
   
+  before_action :authenticate_admin!
+  
   def index
     @events = Event.all
   end
