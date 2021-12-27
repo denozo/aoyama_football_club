@@ -1,10 +1,31 @@
 Rails.application.routes.draw do
 
+  #サイト閲覧者
   root to: 'homes#top'
   get 'about' => 'homes#about'
   resources :members, only:[:index, :show]
   resources :informations, only:[:index, :show]
+  resources :items, only: [:index, :show]
+  resources :cart_items, only: [:index, :update, :destroy, :create] do
+    collection do
+      delete 'destroyall'
+    end
+  end
+  resources :orders, only:[:new, :create] do
+    collection do
+      post :confirm
+      get :thanks
+    end
+  end
+  resources :contacts, only: [:new, :create] do
+    collection do
+      post :confirm
+      get :complete
+    end
+  end
 
+
+  #管理者
   namespace :admins do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update]
@@ -19,26 +40,12 @@ Rails.application.routes.draw do
     resources :contacts, only:[:index, :show, :edit, :update]
   end
 
+  #保護者
   namespace :guardians do
     root to: 'homes#show'
     resources :homes, only:[:edit, :update]
     resources :information_for_guardians, only:[:index, :show] do
       resource :favorites, only: [:create, :destroy]
-    end
-  end
-
-  
-  resources :contacts, only: [:new, :create] do
-    collection do
-      post :confirm
-      get :complete
-    end
-  end
-
-  resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :update, :destroy, :create] do
-    collection do
-      delete 'destroyall'
     end
   end
 

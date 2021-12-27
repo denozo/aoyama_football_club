@@ -3,14 +3,29 @@ class CartItemsController < ApplicationController
   def index
     @cart_items = current_cart.cart_items
 
-    #合計金額の計算
-    # @sum = 0
-    # @cart_items.each do |cart_item|
-    #   @sum += cart_item.subtotal
-    # end
+    # 個数
+    @amount_sum = 0
+    @cart_items.each do |cart_item|
+      @amount_sum += cart_item.amount
+    end
+    
+    # 合計金額の計算
+    @sum = 0
+    @cart_items.each do |cart_item|
+      @sum += cart_item.subtotal
+    end
+
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])
+
+    if @cart_item.update(amount: params[:amount])
+      redirect_to cart_items_path, notice: '更新しました'
+    else
+      render cart_item_path
+    end
+
   end
 
   def destroy

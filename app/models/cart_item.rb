@@ -3,9 +3,10 @@ class CartItem < ApplicationRecord
   belongs_to :item
   belongs_to :cart
   
-  #商品合計金額
-  def sum_of_price
-    item.price * amount
+  #商品合計金額(小計)
+  def subtotal
+    item.with_tax_price * amount
   end
+  
 
 end
