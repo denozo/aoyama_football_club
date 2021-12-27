@@ -1,0 +1,21 @@
+<h1>注文一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>カテゴリー</th>
+      <th>学年</th>
+      <th>氏名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= link_to order.created_at, admins_order_path(order.id) %></td>
+      <td><%= order.order_status_i18n %></td>
+      <td><%= order.name %></td>
+      <td><%= order.total_payment %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

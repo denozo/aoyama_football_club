@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :information_for_guardians
     resources :guardians, only:[:index, :show, :edit, :update, :destroy]
     resources :contacts, only:[:index, :show, :edit, :update]
+    resources :orders, only:[:index, :show, :edit, :update]
   end
 
   #保護者
