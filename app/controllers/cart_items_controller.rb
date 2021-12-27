@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
   def index
     @cart_items = current_cart.cart_items
 
-    # 個数
+    # 個数合計
     @amount_sum = 0
     @cart_items.each do |cart_item|
       @amount_sum += cart_item.amount

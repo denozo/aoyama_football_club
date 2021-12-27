@@ -24,7 +24,7 @@ ja:
       answer_status:
         unanswered: '未回答'
         answer_complete: '回答完了'
-    oder:
+    order:
       product_passing:
         delivery: '発送'
         other: 'その他'

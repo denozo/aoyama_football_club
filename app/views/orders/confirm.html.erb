@@ -1,2 +1,38 @@
-<h1>Orders#confirm</h1>
-<p>Find me in app/views/orders/confirm.html.erb</p>
+<h1>注文確認</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>イメージ</th>
+      <th>商品名</th>
+      <th>単価</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= attachment_image_tag cart_item.item, :image, :fill, 150, 100 %></td>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.item.with_tax_price.to_s(:delimited) + "円" %></td>
+      <td><%= cart_item.amount.to_s(:delimited) + "個" %></td>
+      <td><%= cart_item.subtotal.to_s(:delimited) + "円" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<p><%= "数量：" + @amount_sum.to_s(:delimited) + "個" %></p>
+<p><%= "合計：" + @sum.to_s(:delimited) + "円" %></p>
+<p><%= "送料：" + @order.shipping_cost.to_s(:delimited) + "円" %></p>
+<p><%= "支払合計：" + @order.total_payment.to_s(:delimited) + "円" %></p>
+
+
+<label>支払方法</label><%= @order.payment_method_i18n %>
+
+<label>支払方法</label><%= @order.postal_code %>
+<label>支払方法</label><%= @order.address %>
+<label>支払方法</label><%= @order.name %>
