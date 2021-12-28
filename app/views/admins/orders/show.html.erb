@@ -1,7 +1,70 @@
 <h1>注文詳細</h1>
 
-<label>注文内容</label>
-<table class="table table-bordered">
+<p id="notice" class="font-weight-bold">
+  <%= notice %> <!-- サクセスメッセージの表示 -->
+</p>
+
+<div>
+  <label>注文者氏名：</label>
+  <%= @order.name %>
+</div>
+
+<div>
+  <label>受付日：</label>
+  <%= @order.created_at.strftime("%Y-%m-%d %H:%M") %>
+</div>
+
+<div>
+  <label>更新日：</label>
+  <%= @order.updated_at.strftime("%Y-%m-%d %H:%M") %>
+</div>
+
+
+<div>
+  <label>配送先名：</label>
+  <%= "〒" + @order.postal_code + " " + @order.address %><br><%= "宛名：" + @order.addressee %>
+</div>
+
+<div>
+  <label>商品合計：</label>
+  <%= @sum.to_s(:delimited) + "円（税込）" %>
+</div>
+<div>
+
+  <label>送料：</label>
+  <%= @order.shipping_cost.to_s(:delimited) + "円" %>
+</div>
+
+<div>
+  <label>請求金額：</label>
+  <%= @order.total_payment.to_s(:delimited) + "円（税込）" %>
+</div>
+
+<div>
+  <label>支払方法：</label>
+  <%= @order.payment_method_i18n %>
+</div>
+
+<div>
+  <label>商品お渡し：</label>
+  <%= @order.product_passing_i18n %>
+</div>
+
+<div>
+  <label>注文情報の更新：</label>
+  <%= form_with model: @order, url: admins_order_path(@order.id), method: :patch, loacl: true do |f| %>
+  <%= f.label :order_status, "注文ステータス" %>
+  <%= f.select :order_status, Order.order_statuses_i18n.invert %>
+  <%= f.label :delivery_date, "お渡し予定日" %>
+  <%= f.date_field :delivery_date %>
+  <%= f.submit '更新', class: "btn btn-success" %>
+  <% end %>
+</div>
+
+
+<div>
+  <label>注文商品一覧</label>
+  <table class="table table-bordered">
   <thead>
     <tr class="table-active">
       <th>商品</th>
@@ -19,4 +82,5 @@
     </tr>
     <% end %>
   </tbody>
-</table>
+  </table>
+</div>

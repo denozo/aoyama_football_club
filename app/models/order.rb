@@ -6,4 +6,9 @@ class Order < ApplicationRecord
   
   has_many :orders
   
+    #商品合計金額(小計)
+  def subtotal
+    item.with_tax_price * amount
+  end
+  
 end
