@@ -20,6 +20,14 @@
  padding: 0;
 }
 
+body {
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+}
 
  header {
    background-color: #fd7e00;
@@ -35,6 +43,7 @@ main {
     position: relative;/*←相対位置*/
 }
 
+/*フッターのレイアウト*/
 .footer-main {
   psition: absolute; /*絶対位置*/
   bottom: 0;
@@ -42,4 +51,16 @@ main {
   width: 100%;
   height: auto;
   background-color: #fd7e00;
+}
+
+/*aboutページレイアウト*/
+
+/*container幅を固定*/
+.about-main {
+  width: 640px;
+}
+
+/*見出しのマージン指定*/
+.about-main h2 {
+  margin-top: 20px;
 }
