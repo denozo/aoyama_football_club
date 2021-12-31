@@ -1,24 +1,43 @@
-<h1>カテゴリー一覧</h1>
+<section class="container w-50 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">カテゴリー管理</h2>
 
-<%= form_with model: @category, url: admins_categories_path, local:true do |f| %>
-  <label>カテゴリー名</label>
-  <%= f.text_field :category_name %>
-  <%= f.submit "新規追加" %>
-<% end %>
+  <!--カテゴリー追加フォーム-->
+  <p>メンバー登録時に使用するカテゴリーを追加してください。</p>
 
+  <%= form_with model: @category, url: admins_categories_path, local:true do |f| %>
+    <div class="form_group row mb-3">
+      <%= f.label :category_name, 'カテゴリー名', class: "form-label m-3" %>
+      <%= f.text_field :category_name, class: "col-md-5 form-control m-3" %>
+      <%= f.submit "新規追加", class: "btn btn-success m-3" %>
+    </div>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>ジャンル名</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-    <tr>
-      <td><%= category.category_name %></td>
-      <td><%= link_to "編集する", edit_admins_category_path(category.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <!--カテゴリー一覧-->
+
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>カテゴリーの名称</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.category_name %></td>
+        <td><%= link_to "編集する", edit_admins_category_path(category.id), class: "text-dark link-secondary" %></td>
+        <td><%= link_to "削除する", admins_category_path(category.id), method: :delete, "data-confirm" => "表示されているメンバーを削除しますか?", class: "text-danger" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+<!--フッター-->
+<%= render '/layouts/footer' %>

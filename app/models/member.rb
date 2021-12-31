@@ -5,7 +5,6 @@ class Member < ApplicationRecord
     validates :first_name, presence: true, length: { maximum: 20 }
     validates :last_name_kana, presence: true, length: { maximum: 20 }
     validates :first_name_kana, presence: true, length: { maximum: 20 }
-    validates :grade, numericality: { only_integer: true }
     validates :position, presence: true, length: { maximum: 30 }
     validates :height, numericality: { only_integer: true, is: 3 }
     validates :weight, numericality: { only_integer: true, is: 3 }

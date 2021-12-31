@@ -1,54 +1,44 @@
-<h1><%= @category.category_name %>詳細</h1>
-
-<div>
-  <%= attachment_image_tag @member, :image, :fill, 200, 200 %>
+<div class="container">
+    <h4 class="m-5">スタッフ・選手詳細</h4>
 </div>
 
-<div>
-<label>氏名</label>
-<%= @member.last_name + " " + @member.first_name %>
+<div class="container">
+  <div class="row justify-content-center">
+    <!--メンバー画像-->
+    <div class="col">
+      <%= attachment_image_tag @member, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
+    </div>
+    <!--メンバー詳細説明-->
+    <div class="col font-weight-bold pt-5">
+      <label>氏名：</label>
+      <%= @member.last_name + " " + @member.first_name %>
+      <br>
+      <label>学年：</label>
+      <%= @member.grade_i18n %>
+      <br>
+      <label>ポジション：</label>
+      <%= @member.position %>
+      <br>
+      <label>身長：</label>
+      <%= @member.height %>
+      <br>
+      <label>体重：</label>
+      <%= @member.weight %>
+      <br>
+      <label>出身チーム：</label>
+      <%= @member.original_team %>
+      <br>
+      <label>趣味：</label>
+      <%= @member.hobby %>
+      <br>
+      <label>目標：</label>
+      <%= @member.goal %>
+    </div>
+  </div>
+
+  <%= link_to "編集", edit_admins_member_path(@member.id) %>
+  <%= link_to "削除", admins_member_path(@member.id), method: :delete, "data-confirm" => "表示されているメンバーを削除しますか?" %>
 </div>
 
-<div>
-<label>フリガナ</label>
-<%= @member.last_name_kana + " " + @member.first_name_kana %>
-</div>
-
-
-<div>
-<label>学年</label>
-<%= @member.grade %>
-</div>
-
-<div>
-<label>ポジション</label>
-<%= @member.position %>
-</div>
-
-<div>
-<label>身長</label>
-<%= @member.height %>
-</div>
-
-<div>
-<label>体重</label>
-<%= @member.weight %>
-</div>
-
-<div>
-<label>出身チーム</label>
-<%= safe_join(@member.original_team.split("\n"),tag(:br)) %>
-</div>
-
-<div>
-<label>趣味</label>
-<%= safe_join(@member.hobby.split("\n"),tag(:br)) %>
-</div>
-
-<div>
-<label>目標</label>
-<%= safe_join(@member.goal.split("\n"),tag(:br)) %>
-</div>
-
-<%= link_to "編集", edit_admins_member_path(@member.id) %>
-<%= link_to "削除", admins_member_path(@member.id), method: :delete, "data-confirm" => "表示されているメンバーを削除しますか?" %>
+<!--フッター-->
+<%= render '/layouts/footer' %>

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   #管理者
   namespace :admins do
     root to: 'homes#top'
-    resources :categories, only:[:index, :create, :edit, :update]
+    resources :categories, only:[:index, :create, :edit, :update, :destroy]
     resources :members
     resources :graduates
     resources :game_results
