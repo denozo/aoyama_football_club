@@ -1,6 +1,6 @@
 class Admins::InformationsController < ApplicationController
   
-    before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @informations = Information.all
