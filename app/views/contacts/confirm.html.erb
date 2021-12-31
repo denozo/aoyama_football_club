@@ -1,22 +1,29 @@
-<h1>お問い合わせ内容確認</h1>
-
-<%= form_with model: @contact, local: true, url: {action: :'create'}, method: :post do |f| %>
-
-  <%= f.label :name, 'お名前' %>
-  <%= @contact.name %>
-  <!--データ受渡用-->
-  <%= f.hidden_field :name, :value => @contact.name %>
+<section class="container w-50 mt-5">
+  <h2 class="section-ttl row mb-3">お問い合わせ内容確認</h2>
   
-  <%= f.label :email, 'メールアドレス' %>
-  <%= @contact.email %>
-  <!--データ受渡用-->
-  <%= f.hidden_field :email, :value => @contact.email %>
-  
-  <%= f.label :content, 'お問い合わせ内容' %>
-  <%= @contact.content %>
-  <!--データ受渡用-->
-  <%= f.hidden_field :content, :value => @contact.content %>
-  
-  <%= f.submit '送信する' %>
+  <div>
+    <%= form_with model: @contact, local: true, url: {action: :'create'}, method: :post do |f| %>
+    
+      <%= f.label :name, '<お名前>', class: "form-label" %><br />
+      <%= @contact.name %><br />
+      <!--データ受渡用-->
+      <%= f.hidden_field :name, :value => @contact.name %><br />
+      
+      <%= f.label :email, '<メールアドレス>', class: "form-label" %><br />
+      <%= @contact.email %><br />
+      <!--データ受渡用-->
+      <%= f.hidden_field :email, :value => @contact.email %><br />
+      
+      <%= f.label :content, '<お問い合わせ内容>', class: "form-label" %><br />
+      <%= simple_format(@contact.content) %><br />
+      <!--データ受渡用-->
+      <%= f.hidden_field :content, :value => @contact.content %><br />
+      
+      <%= f.submit '送信する', class: "btn btn-outline-secondary" %><br />
+    
+    <% end %>
+  </div>
+</section>
 
-<% end %>
+<!--フッター-->
+<%= render '/layouts/footer' %>

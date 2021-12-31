@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'events/index'
-  get 'events/show'
   #サイト閲覧者
   root to: 'homes#top'
   get 'about' => 'homes#about'
   resources :members, only:[:index, :show]
   resources :informations, only:[:index, :show]
   resources :game_results, only:[:index, :show]
+  resources :events, only:[:index, :show]
   resources :items, only: [:index, :show]
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     collection do
