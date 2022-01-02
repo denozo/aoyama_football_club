@@ -64,3 +64,20 @@ main {
 .about-main h2 {
   margin-top: 20px;
 }
+
+
+/*ボタン箇所のマージン統一*/
+.btn {
+  margin: 10px;
+}
+
+
+/*保護者詳細ページテーブル幅固定*/
+.admins_guardians_info {
+  width: 620px;
+}
+
+/*保護者編集入力フォーム幅固定*/
+.admins_guardians_edit {
+  width: 620px;
+}
