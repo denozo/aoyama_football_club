@@ -1,20 +1,44 @@
-<h1>お知らせ詳細</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">お知らせ詳細</h4>
+  </div>
+  <!--お知らせ詳細-->
+  <div class="container admins_information">
+    <div class="row">
+      <%= attachment_image_tag @information, :image, :fill, 200, 200 %>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-4">項目</th>
+            <th class="col-8">詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+      			<td>カテゴリー</td>
+      			<td><%= @information.category_i18n %></td>
+          </tr>
+          <tr>
+      			<td>タイトル</td>
+      			<td><%= @information.title %></td>
+          </tr>
+          <tr>
+      			<td>内容</td>
+      			<td><%= simple_format(@information.content) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <%= link_to "編集", edit_admins_information_path(@information.id), class: "btn btn-secondary" %>
+      <%= link_to "削除", admins_information_path(@information.id), method: :delete, "data-confirm" => "削除しますか?", class: "btn btn-danger" %>
+    </div>
+  </div>
 
-<div>
-  <%= @information.category_i18n %>
-</div>
+  </section>
 
-<div>
-  <%= @information.title %>
-</div>
-
-<div>
-  <%= safe_join(@information.content.split("\n"),tag(:br)) %>
-</div>
-
-<div>
-  <%= attachment_image_tag @information, :image, :fill, 200, 200 %>
-</div>
-
-<%= link_to "編集", edit_admins_information_path(@information.id) %>
-<%= link_to "削除", admins_information_path(@information.id), method: :delete, "data-confirm" => "削除しますか?" %>
+<!--フッター-->
+<%= render '/layouts/footer' %>

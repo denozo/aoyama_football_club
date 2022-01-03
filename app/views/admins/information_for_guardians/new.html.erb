@@ -1,36 +1,54 @@
-<h1>保護者用お知らせ登録</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">保護者お知らせの登録</h4>
+  </div>
+  <div class="container admins_information_for_guardian_new">
+    <%= form_with model: @informationforguardian, url: "/admins/information_for_guardians", local:true do |f| %>
+    <!--お知らせ登録フォーム-->
+      <!--写真-->
+      <div class="row">
+        <div class="col-10 col-md-6 form-group">
+          <%= f.radio_button :category, InformationForGuardian.categories.key(0) %>
+          <%= f.label :category, InformationForGuardian.categories_i18n[:general], class: "form-label" %>
+          
+          <%= f.radio_button :category, InformationForGuardian.categories.key(1) %>
+          <%= f.label :category, InformationForGuardian.categories_i18n[:announcement], class: "form-label" %>
+          
+          <%= f.radio_button :category, InformationForGuardian.categories.key(2) %>
+          <%= f.label :category, InformationForGuardian.categories_i18n[:other], class: "form-label" %>
+        </div>
+      </div>
+      <!--タイトル-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">    
+          <%= f.label :title, "タイトル", class: "form-label" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+      </div>
+      <!--内容-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :content, "内容", class: "form-label" %>
+          <%= f.text_area :content, class: "form-control", rows: "20" %>
+        </div>
+      </div>
+      <!--写真-->
+      <div class="row">
+        <div class="col-10 col-md-6 form-group">
+          <%= f.label :image, "画像" %>
+          <%= f.attachment_field :image %>
+        </div>
+      </div>
 
-<%= form_with model: @informationforguardian, url: "/admins/information_for_guardians", local:true do |f| %>
+      <div class="row actions">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </div>
+    
+    <% end %>
+  </div>
+    
+</section>
 
-<div class="form-group">
-  <%= f.radio_button :category, InformationForGuardian.categories.key(0) %>
-  <%= f.label :category, InformationForGuardian.categories_i18n[:general] %>
-  
-  <%= f.radio_button :category, InformationForGuardian.categories.key(1) %>
-  <%= f.label :category, InformationForGuardian.categories_i18n[:announcement] %>
-  
-  <%= f.radio_button :category, InformationForGuardian.categories.key(2) %>
-  <%= f.label :category, InformationForGuardian.categories_i18n[:other] %>
-</div>
-
-<div class="form-group">
-  <%= f.label :title, "タイトル" %>
-  <%= f.text_field :title %>
-</div>
-
-<div class="form-group">
-  <%= f.label :content, "内容" %>
-  <%= f.text_area :content %>
-</div>
-
-<div class="form-group">
-  <%= f.label :image, "画像" %>
-  <%= f.attachment_field :image %>
-</div>
-
-
-<div class="form-group">
-  <%= f.submit "新規登録" %>
-</div>
-
-<% end %>
+<!--フッター-->
+<%= render '/layouts/footer' %>

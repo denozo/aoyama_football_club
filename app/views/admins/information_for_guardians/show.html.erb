@@ -1,20 +1,44 @@
-<h1>保護者用お知らせ詳細</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">保護者お知らせ詳細</h4>
+  </div>
+  <!--お知らせ詳細-->
+  <div class="container admins_information_for_guardian">
+    <div class="row">
+      <%= attachment_image_tag @informationforguardian, :image, :fill, 200, 200 %>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-4">項目</th>
+            <th class="col-8">詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+      			<td>カテゴリー</td>
+      			<td><%= @informationforguardian.category_i18n %></td>
+          </tr>
+          <tr>
+      			<td>タイトル</td>
+      			<td><%= @informationforguardian.title %></td>
+          </tr>
+          <tr>
+      			<td>内容</td>
+      			<td><%= simple_format(@informationforguardian.content) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <%= link_to "編集", edit_admins_information_for_guardian_path(@informationforguardian.id), class: "btn btn-secondary" %>
+      <%= link_to "削除", admins_information_for_guardian_path(@informationforguardian.id), method: :delete, "data-confirm" => "削除しますか?", class: "btn btn-danger" %>
+    </div>
+  </div>
 
-<div>
-  <%= @informationforguardian.category_i18n %>
-</div>
+  </section>
 
-<div>
-  <%= @informationforguardian.title %>
-</div>
-
-<div>
-  <%= safe_join(@informationforguardian.content.split("\n"),tag(:br)) %>
-</div>
-
-<div>
-  <%= attachment_image_tag @informationforguardian, :image, :fill, 200, 200 %>
-</div>
-
-<%= link_to "編集", edit_admins_information_for_guardian_path(@informationforguardian.id) %>
-<%= link_to "削除", admins_information_for_guardian_path(@informationforguardian.id), method: :delete, "data-confirm" => "削除しますか?" %>
+<!--フッター-->
+<%= render '/layouts/footer' %>

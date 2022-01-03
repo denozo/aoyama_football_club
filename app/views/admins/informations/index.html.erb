@@ -1,23 +1,43 @@
-<h1>お知らせ一覧</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">お知らせ一覧</h4>
+  </div>
+  <!--お知らせ一覧-->
+  <div class="container admins_graduates_list">
+    <div class="row">
+      <%= link_to "お知らせ登録", new_admins_information_path, class: "btn btn-success" %>
+    </div>
 
-<div>
-  <%= link_to "お知らせ登録", new_admins_information_path %>
-</div>
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>更新日</th>
+              <th>タイトル</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @informations.each do |information| %>
+            <tr>
+              <td><%= information.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= information.title %></td>
+              <td><%= link_to "詳細", admins_information_path(information.id), class: "text-dark link-secondary" %></td>
+              <td><%= link_to "編集", edit_admins_information_path(information.id), class: "text-primary link-secondary" %></td>
+              <td><%= link_to "削除", admins_information_path(information.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>更新日</th>
-      <th>タイトル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @informations.each do |information| %>
-    <tr>
-      <td><%= information.updated_at %></td>
-      <td><%= link_to information.title, admins_information_path(information.id) %></td>
-      <td><%= link_to "編集", edit_admins_information_path(information.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+</section>
+
+<!--フッター-->
+<%= render '/layouts/footer' %>

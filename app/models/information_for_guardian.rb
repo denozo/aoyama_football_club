@@ -1,6 +1,6 @@
 class InformationForGuardian < ApplicationRecord
   
-  validates :category, numericality: { only_integer: true }
+  # validates :category, numericality: { only_integer: true }
   validates :title, presence: true, length: { maximum: 20 }
   validates :content, presence: true
 

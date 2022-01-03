@@ -1,36 +1,53 @@
-<h1>お知らせ編集</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">お知らせの編集</h4>
+  </div>
+  <div class="container admins_information_edit">
+    <%= form_with model: @information, url: "/admins/informations/#{@information.id}", local:true do |f| %>
+    <!--お知らせ編集フォーム-->
+      <!--写真-->
+      <div class="row">
+        <div class="col-10 col-md-6 form-group">
+          <%= f.radio_button :category, Information.categories.key(0) %>
+          <%= f.label :category, Information.categories_i18n[:general], class: "form-label" %>
 
-<%= form_with model: @information, url: "/admins/informations/#{@information.id}", local:true do |f| %>
+          <%= f.radio_button :category, Information.categories.key(1) %>
+          <%= f.label :category, Information.categories_i18n[:announcement], class: "form-label" %>
 
-<div class="form-group">
-  <%= f.radio_button :category, Information.categories.key(0) %>
-  <%= f.label :category, Information.categories_i18n[:general] %>
-  
-  <%= f.radio_button :category, Information.categories.key(1) %>
-  <%= f.label :category, Information.categories_i18n[:announcement] %>
-  
-  <%= f.radio_button :category, Information.categories.key(2) %>
-  <%= f.label :category, Information.categories_i18n[:other] %>
-</div>
+          <%= f.radio_button :category, Information.categories.key(2) %>
+          <%= f.label :category, Information.categories_i18n[:other], class: "form-label" %>
+        </div>
+      </div>
+      <!--タイトル-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :title, "タイトル", class: "form-label" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+      </div>
+      <!--内容-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :content, "内容", class: "form-label" %>
+          <%= f.text_area :content, class: "form-control", rows: "20" %>
+        </div>
+      </div>
+      <!--写真-->
+      <div class="row">
+        <div class="col-10 col-md-6 form-group">
+          <%= f.label :image, "画像", class: "form-label" %>
+          <%= f.attachment_field :image %>
+        </div>
+      </div>
 
-<div class="form-group">
-  <%= f.label :title, "タイトル" %>
-  <%= f.text_field :title %>
-</div>
+      <div class="row actions">
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+      </div>
 
-<div class="form-group">
-  <%= f.label :content, "内容" %>
-  <%= f.text_area :content %>
-</div>
+    <% end %>
+  </div>
+</section>
 
-<div class="form-group">
-  <%= f.label :image, "画像" %>
-  <%= f.attachment_field :image %>
-</div>
-
-
-<div class="form-group">
-  <%= f.submit "内容を更新" %>
-</div>
-
-<% end %>
+<!--フッター-->
+<%= render '/layouts/footer' %>
