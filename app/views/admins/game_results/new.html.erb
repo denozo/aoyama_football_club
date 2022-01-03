@@ -1,34 +1,58 @@
-<h1>試合結果の登録</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">試合結果の登録</h4>
+  </div>
 
-<%= form_with model: @game_result, url: "/admins/game_results", local:true do |f| %>
+  <div class="container admins_game_result_new">
+    <%= form_with model: @game_result, url: "/admins/game_results", local:true do |f| %>
+    <!--試合結果登録フォーム-->
+      <!--写真-->
+      <div class="row">
+        <div class="col-10 col-md-6 form-group">
+          <%= f.label :image, "写真", class: "form-label" %>
+          <%= f.attachment_field :image %>
+        </div>
+      </div>
+      <!--大会名-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :tournament_name, "大会名", class: "form-label" %>
+          <%= f.text_field :tournament_name, class: "form-control" %>
+        </div>
+      </div>
+      <!--試合のタイトル-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :game_title, "試合のタイトル", class: "form-label" %>
+          <%= f.text_field :game_title, class: "form-control" %>
+        </div>
+      </div>
+      <!--開催日-->
+      <div class="row">
+        <div class="col-10 col-md-6 form-group">
+          <%= f.label :event_date, "開催日", class: "form-label" %>
+          <%= f.datetime_field :event_date, class: "form-control" %>
+        </div>
+      </div>
+      <span>（時間は開始時間を入力してください。）</span>
+      <!--結果内容-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :results_details, "結果内容", class: "form-label" %>
+          <%= f.text_area :results_details, class: "form-control", rows: "10" %>
+        </div>
+      </div>
 
-  <div class="form_group">
-    <%= f.label :image, "試合写真" %>
-    <%= f.attachment_field :image %>
+      <div class="row actions">
+        <%= f.submit "試合結果登録", class: "btn btn-success" %>
+
+      </div>
+
+    <% end %>
   </div>
-  
-  <div class="form_group">
-    <%= f.label :tournament_name, "大会名" %>
-    <%= f.text_field :tournament_name %>
-  </div>
-  <div class="form_group">
-    <%= f.label :game_title, "試合のタイトル" %>
-    <%= f.text_field :game_title %>
-  </div>
-  
-  <div class="form_group">
-    <%= f.label :event_date, "開催日" %>
-    <%= f.datetime_field :event_date %>
-  </div>
-  
-  <div class="form_group">
-    <%= f.label :results_details, "結果内容" %>
-    <%= f.text_area :results_details %>
-  </div>
-  
-  <div class="form_group">
-    <%= f.submit "結果登録" %>
-  </div>  
-  
-  
-<% end %>
+
+</section>
+
+<!--フッター-->
+<%= render '/layouts/footer' %>

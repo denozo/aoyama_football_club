@@ -1,24 +1,44 @@
-<h1>試合結果一覧</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">試合結果一覧</h4>
+  </div>
+  <!--試合結果一覧-->
+  <div class="container admins_graduates_list">
+    <div class="row">
+      <%= link_to "試合結果登録", new_admins_game_result_path, class: "btn btn-success" %>
+    </div>
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table">
+          <head>
+            <tr>
+              <th>開催日</th>
+              <th>大会名</th>
+              <th>試合名</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </head>
+          <tbody>
+            <% @game_results.each do |game_result| %>
+            <tr>
+              <td><%= game_result.event_date.strftime("%Y-%m-%d") %></td>
+              <td><%= game_result.tournament_name %></td>
+              <td><%= game_result.game_title %></td>
+              <td><%= link_to "詳細", admins_game_result_path(game_result.id), class: "text-dark link-secondary" %></td>
+              <td><%= link_to "編集", edit_admins_game_result_path(game_result.id), class: "text-primary link-secondary" %></td>
+              <td><%= link_to "削除", admins_game_result_path(game_result.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "試合結果登録", new_admins_game_result_path %>
-</div>
+</section>
 
-<table>
-  <head>
-    <tr>
-      <th>開催日</th>
-      <th>大会名</th>
-      <th>試合タイトル</th>
-    </tr>
-  </head>
-  <tbody>
-    <% @game_results.each do |game_result| %>
-    <tr>
-      <td><%= game_result.event_date %></td>
-      <td><%= game_result.tournament_name %></td>
-      <td><%= game_result.game_title %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<!--フッター-->
+<%= render '/layouts/footer' %>

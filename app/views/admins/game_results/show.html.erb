@@ -1,20 +1,48 @@
-<h1>試合結果</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">試合結果</h4>
+  </div>
+  <!--試合結果詳細-->
+  <div class="container admins_graduate">
+    <div class="row">
+      <%= attachment_image_tag @game_result, :image, :fill, 200, 200 %>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-4">項目</th>
+            <th class="col-8">詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+      			<td>大会名</td>
+      			<td><%= @game_result.tournament_name %></td>
+          </tr>
+          <tr>
+      			<td>試合のタイトル</td>
+      			<td><%= @game_result.game_title %></td>
+          </tr>
+          <tr>
+      			<td>開催日</td>
+      			<td><%= @game_result.event_date %></td>
+          </tr>
+          <tr>
+      			<td>結果内容</td>
+      			<td><%= simple_format(@game_result.results_details) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <%= link_to "編集", edit_admins_game_result_path(@game_result.id), class: "btn btn-secondary" %>
+      <%= link_to "削除", admins_game_result_path(@game_result.id), method: :delete, "date-confirm" => "削除しますか？", class: "btn btn-danger" %>
+    </div>
+  </div>
 
-<div>
-  <%= attachment_image_tag @game_result, :image, :fill, 200, 200 %>
-</div>
-<div>
-  <%= @game_result.tournament_name %>
-</div>
-<div>
-  <%= @game_result.game_title %>
-</div>
-<div>
-  <%= @game_result.event_date %>
-</div>
-<div>
-  <%= @game_result.results_details %>
-</div>
+  </section>
 
-<%= link_to "編集", edit_admins_game_result_path(@game_result.id) %>
-<%= link_to "削除", admins_game_result_path(@game_result.id), method: :delete, "date-confirm" => "削除しますか？" %>
+<!--フッター-->
+<%= render '/layouts/footer' %>

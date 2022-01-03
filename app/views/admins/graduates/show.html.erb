@@ -19,12 +19,12 @@
         <tbody>
           <tr>
       			<td>メンバー一覧</td>
-      			<td><%= safe_join(@graduate.member_list.split("\n"),tag(:br)) %></td>
+      			<td><%= simple_format(@graduate.member_list) %></td>
           </tr>
           <tr>
           <tr>
       			<td>主な進路</td>
-      			<td><%= safe_join(@graduate.career_after_graduation.split("\n"),tag(:br)) %></td>
+      			<td><%= simple_format(@graduate.career_after_graduation) %></td>
           </tr>
           <tr>
         </tbody>
