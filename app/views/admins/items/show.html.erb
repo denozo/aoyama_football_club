@@ -1,30 +1,48 @@
 
-<h1>アイテム詳細</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">アイテム詳細</h4>
+  </div>
+  <!--アイテム詳細-->
+  <div class="container admins_information">
+    <div class="row">
+      <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-4">項目</th>
+            <th class="col-8">詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+      			<td>アイテム名</td>
+      			<td><%= @item.name %></td>
+          </tr>
+          <tr>
+      			<td>単価（税抜）</td>
+      			<td><%= @item.price %></td>
+          </tr>
+          <tr>
+      			<td>内容</td>
+      			<td><%= simple_format(@item.introduction) %></td>
+          </tr>
+          <tr>
+      			<td>内容</td>
+      			<td><%= @item.is_active_i18n %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <%= link_to "編集", edit_admins_item_path(@item.id), class: "btn btn-secondary" %>
+      <%= link_to "削除", admins_item_path(@item.id), method: :delete, "data-confirm" => "表示されているアイテムを削除しますか?", class: "btn btn-danger" %>
+    </div>
+  <div>
+</section>
 
-<div>
-  <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
-</div>
-
-<div>
-<label>アイテム名</label>
-<%= @item.name %>
-</div>
-
-<div>
-<label>価格(税抜)</label>
-<%= @item.price %>
-</div>
-
-
-<div>
-<label>詳細</label>
-<%= @item.introduction %>
-</div>
-
-<div>
-<label>詳細</label>
-<%= @item.is_active_i18n %>
-</div>
-
-<%= link_to "編集", edit_admins_item_path(@item.id) %>
-<%= link_to "削除", admins_item_path(@item.id), method: :delete, "data-confirm" => "表示されているアイテムを削除しますか?" %>
+<!--フッター-->
+<%= render '/layouts/footer' %>

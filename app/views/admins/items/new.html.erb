@@ -1,36 +1,59 @@
-<h1>アイテム登録</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">アイテムの登録</h4>
+  </div>
+  <div class="container admins_item_new">
+    <%= form_with model: @item, url: "/admins/items", local:true do |f| %>
+    <!--お知らせ登録フォーム-->
+      <!--アイテム名-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :name, "アイテム名", class: "form-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <!--単価-->
+      <div class="row">
+        <div class="col-3 form-group">
+          <%= f.label :price, "単価(税抜)", class: "form-label" %>
+          <%= f.text_field :price, class: "form-control" %>
+        </div>
+      </div>
+      <!--内容-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :introduction, "内容", class: "form-label" %>
+          <%= f.text_area :introduction, class: "form-control", rows: "20" %>
+        </div>
+      </div>
+      <!--写真-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.label :image, "画像", class: "form-label" %>
+          <%= f.attachment_field :image %>
+        </div>
+      </div>
 
-<%= form_with model: @item, url: "/admins/items", local:true do |f| %>
+    <!--写真-->
+      <div class="row">
+        <div class="col-10 col-md-12 form-group">
+          <%= f.radio_button :is_active, Item.is_actives.key(true) %>
+          <%= f.label :is_active, Item.is_actives_i18n[:on_sale], class: "form-label" %>
 
-<div class="form-group">
-  <%= f.label :name, "アイテム名" %>
-  <%= f.text_field :name %>
-</div>
-<div class="form-group">
-  <%= f.label :price, "単価(税抜)" %>
-  <%= f.text_field :price %>
-</div>
+          <%= f.radio_button :is_active, Item.is_actives.key(false) %>
+          <%= f.label :is_active, Item.is_actives_i18n[:sales_stop], class: "form-label" %>
+        </div>
+      </div>
 
-<div class="form-group">
-  <%= f.label :introduction, "内容" %>
-  <%= f.text_area :introduction %>
-</div>
+    <div class="row actions">
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    </div>
 
-<div class="form-group">
-  <%= f.label :image, "画像" %>
-  <%= f.attachment_field :image %>
-</div>
+    <% end %>
+  </div>
 
-<div class="form-group">
-  <%= f.radio_button :is_active, Item.is_actives.key(true) %>
-  <%= f.label :is_active, Item.is_actives_i18n[:on_sale] %>
+</section>
 
-  <%= f.radio_button :is_active, Item.is_actives.key(false) %>
-  <%= f.label :is_active, Item.is_actives_i18n[:sales_stop] %>
-</div>
-
-<div class="form-group">
-  <%= f.submit "新規登録" %>
-</div>
-
-<% end %>
+<!--フッター-->
+<%= render '/layouts/footer' %>

@@ -1,27 +1,48 @@
-<h1>アイテム一覧</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">アイテム一覧</h4>
+  </div>
+  <!--お知らせ一覧-->
+  <div class="container admins_items_list">
+    <div class="row">
+      <%= link_to "アイテム登録", new_admins_item_path, class: "btn btn-success" %>
+    </div>
+    
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table">
+          <head>
+            <tr>
+              <th>イメージ</th>
+              <th>アイテム</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </head>
+          <tbody>
+            <% @items.each do |item| %>
+            <tr>
+              <td>
+                <%= link_to admins_item_path(item.id) do %>
+                <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+                <% end %>
+              </td>
+              <td><%= item.name %></td>
+              <td><%= link_to "詳細", admins_item_path(item.id), class: "text-dark link-secondary" %></td>
+              <td><%= link_to "編集", edit_admins_item_path(item.id), class: "text-primary link-secondary" %></td>
+              <td><%= link_to "削除", admins_item_path(item.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "アイテム登録", new_admins_item_path %>
-</div>
 
-<table>
-  <head>
-    <tr>
-      <th>アイテム</th>
-    </tr>
-  </head>
-  <tbody>
-    <% @items.each do |item| %>
-    <tr>
-      <td>
-        <%= link_to admins_item_path(item.id) do %>
-        <%= attachment_image_tag item, :image, :fill, 100, 100 %>
-        <% end %>
-      </td>
-      <td><%= item.name %></td>
-      <td><%= link_to "編集", edit_admins_item_path(item.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
+</section>
 
-</table>
+<!--フッター-->
+<%= render '/layouts/footer' %>
