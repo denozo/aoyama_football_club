@@ -1,20 +1,37 @@
-<h1>お問い合わせ一覧</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">お問い合わせ一覧</h4>
+  </div>
+  <!--お問い合わせ一覧-->
+  <div class="container admins_contacts_list">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table">
+          <head>
+            <tr>
+              <th>お問い合わせ日時</th>
+              <th>氏名</th>
+              <th>回答ステータス</th>
+              <th></th>
+            </tr>
+          </head>
+          <tbody>
+            <% @contacts.each do |contact| %>
+            <tr>
+              <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= contact.name %></td>
+              <td><%= contact.answer_status_i18n %></td>
+              <td><%= link_to "詳細", admins_contact_path(contact.id), class: "text-dark link-secondary" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-<table>
-  <head>
-    <tr>
-      <th>お問い合わせ日時</th>
-      <th>氏名</th>
-      <th>回答ステータス</th>
-    </tr>
-  </head>
-  <tbody>
-    <% @contacts.each do |contact| %>
-    <tr>
-      <td><%= link_to contact.created_at, admins_contact_path(contact.id) %></td>
-      <td><%= contact.name %></td>
-      <td><%= contact.answer_status %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+</section>
+
+<!--フッター-->
+<%= render '/layouts/footer' %>
