@@ -1,21 +1,37 @@
-<h1>注文一覧</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">注文一覧</h4>
+  </div>
+  <!--注文一覧-->
+  <div class="container admins_order_list">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>注文日時</th>
+              <th>注文ステータス</th>
+              <th>注文者氏名</th>
+              <th>購入金額</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+            <tr>
+              <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"), admins_order_path(order.id) %></td>
+              <td><%= order.order_status_i18n %></td>
+              <td><%= order.name %></td>
+              <td><%= order.total_payment %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>カテゴリー</th>
-      <th>学年</th>
-      <th>氏名</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-    <tr>
-      <td><%= link_to order.created_at, admins_order_path(order.id) %></td>
-      <td><%= order.order_status_i18n %></td>
-      <td><%= order.name %></td>
-      <td><%= order.total_payment %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+</section>
+
+<!--フッター-->
+<%= render '/layouts/footer' %>

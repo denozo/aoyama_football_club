@@ -1,86 +1,100 @@
-<h1>注文詳細</h1>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">注文詳細</h4>
+  </div>
 
-<p id="notice" class="font-weight-bold">
-  <%= notice %> <!-- サクセスメッセージの表示 -->
-</p>
+  <div class="container admins_order">
+    <!-- サクセスメッセージの表示 -->
+    <p id="notice" class="text-danger">
+      <%= notice %>
+    </p>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-4">項目</th>
+            <th class="col-8">内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+      			<td>注文者氏名</td>
+      			<td><%= @order.name %></td>
+          </tr>
+          <tr>
+      			<td>受付日</td>
+      			<td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          </tr>
+          <tr>
+      			<td>更新日</td>
+      			<td><%= @order.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+          </tr>
+          <tr>
+      			<td>配送先名</td>
+      			<td><%= "〒" + @order.postal_code + " " + @order.address %><br><%= "宛名：" + @order.addressee %></td>
+          </tr>
+          <tr>
+      			<td>商品合計</td>
+      			<td><%= @sum.to_s(:delimited) + "円（税込）" %></td>
+          </tr>
+          <tr>
+      			<td>送料</td>
+      			<td><%= @order.shipping_cost.to_s(:delimited) + "円" %></td>
+          </tr>
+          <tr>
+      			<td>請求金額</td>
+      			<td><%= @order.total_payment.to_s(:delimited) + "円（税込）" %></td>
+          </tr>
+          <tr>
+      			<td>支払方法</td>
+      			<td><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+      			<td>商品お渡し</td>
+      			<td><%= @order.product_passing_i18n %></td>
+      			<td><%= @order.other %></td>
+          </tr>
+          <tr>
+      			<td>注文情報の更新</td>
+      			<td>
+              <%= form_with model: @order, url: admins_order_path(@order.id), method: :patch, loacl: true do |f| %>
+              <%= f.label :order_status, "注文ステータス" %>
+              <%= f.select :order_status, Order.order_statuses_i18n.invert %>
+              <br />
+              <%= f.label :delivery_date, "お渡し予定日" %>
+              <%= f.date_field :delivery_date %>
+              <%= f.submit '更新', class: "btn btn-success" %>
+              <% end %>
+      			</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <p>注文グッズ一覧</p>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-active">
+            <th>商品</th>
+            <th>単価(税込)</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.with_tax_price %></td>
+            <td><%= order_detail.amount %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<div>
-  <label>注文者氏名：</label>
-  <%= @order.name %>
-</div>
+</section>
 
-<div>
-  <label>受付日：</label>
-  <%= @order.created_at.strftime("%Y-%m-%d %H:%M") %>
-</div>
-
-<div>
-  <label>更新日：</label>
-  <%= @order.updated_at.strftime("%Y-%m-%d %H:%M") %>
-</div>
-
-
-<div>
-  <label>配送先名：</label>
-  <%= "〒" + @order.postal_code + " " + @order.address %><br><%= "宛名：" + @order.addressee %>
-</div>
-
-<div>
-  <label>商品合計：</label>
-  <%= @sum.to_s(:delimited) + "円（税込）" %>
-</div>
-<div>
-
-  <label>送料：</label>
-  <%= @order.shipping_cost.to_s(:delimited) + "円" %>
-</div>
-
-<div>
-  <label>請求金額：</label>
-  <%= @order.total_payment.to_s(:delimited) + "円（税込）" %>
-</div>
-
-<div>
-  <label>支払方法：</label>
-  <%= @order.payment_method_i18n %>
-</div>
-
-<div>
-  <label>商品お渡し：</label>
-  <%= @order.product_passing_i18n %>
-</div>
-
-<div>
-  <label>注文情報の更新：</label>
-  <%= form_with model: @order, url: admins_order_path(@order.id), method: :patch, loacl: true do |f| %>
-  <%= f.label :order_status, "注文ステータス" %>
-  <%= f.select :order_status, Order.order_statuses_i18n.invert %>
-  <%= f.label :delivery_date, "お渡し予定日" %>
-  <%= f.date_field :delivery_date %>
-  <%= f.submit '更新', class: "btn btn-success" %>
-  <% end %>
-</div>
-
-
-<div>
-  <label>注文商品一覧</label>
-  <table class="table table-bordered">
-  <thead>
-    <tr class="table-active">
-      <th>商品</th>
-      <th>単価(税込)</th>
-      <th>個数</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @order_details.each do |order_detail| %>
-    <tr>
-      <td><%= order_detail.item.name %></td>
-      <td><%= order_detail.item.with_tax_price %></td>
-      <td><%= order_detail.amount %></td>
-    </tr>
-    <% end %>
-  </tbody>
-  </table>
-</div>
+<!--フッター-->
+<%= render '/layouts/footer' %>

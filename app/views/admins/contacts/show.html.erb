@@ -1,21 +1,51 @@
-<h1>お問い合わせ詳細</h1>
-
-  <div>
-    <label>氏名</label>
-    <%= @contact.name %>
-  </div>
-  
-  <div>
-    <label>メールアドレス</label>
-    <%= @contact.email %>
+<section class="inner">
+  <!--セッションタイトル-->
+  <div class="section-ttl">
+    <h4 class="">お問い合わせ詳細</h4>
   </div>
 
-  <div>  
-    <label>お問い合わせ内容</label>
-    <%= @contact.content %>
+  <!--お問い合わせ詳細-->
+  <div class="container admins_contact">
+    <!-- サクセスメッセージの表示 -->
+    <p id="notice" class="text-danger">
+      <%= notice %>
+    </p>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-4">項目</th>
+            <th class="col-8">内容</th>
+          </tr>
+        </thead> 
+        <tbody>
+          <tr>
+      			<td>氏名</td>
+      			<td><%= @contact.name %></td>
+          </tr>
+          <tr>
+      			<td>メールアドレス</td>
+      			<td><%= @contact.email %></td>
+          </tr>
+          <tr>
+      			<td>お問い合わせ内容</td>
+      			<td><%= simple_format(@contact.content) %></td>
+          </tr>
+          <tr>
+      			<td>回答状況</td>
+      			<td>
+      			  <%= form_with model: @contact, url: "/admins/contacts/#{@contact.id}", method: :patch, loacl:true do |f| %>
+              <%= f.select :answer_status, Contact.answer_statuses_i18n.invert %>
+              <%= f.submit '更新' %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  
-  <%= form_with model: @contact, url: "/admins/contacts/#{@contact.id}", method: :patch, loacl:true do |f| %>
-    <%= f.select :answer_status, Contact.answer_statuses_i18n.invert %>
-    <%= f.submit '更新' %>
-  <% end %>
+
+</section>
+
+<!--フッター-->
+<%= render '/layouts/footer' %>

@@ -1,16 +1,16 @@
 class Order < ApplicationRecord
 
-  validates :name, presence: true, length: { maximum: 20 }
-  validates :product_passing, numericality: { only_integer: true }
-  validates :email, presence: true, length: { maximum: 300 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  # validates :other, presence: true, length: { maximum: 20 }
-  # validates :postal_code, presence: true, format: { with: /\A\d{3}[-]?\d{4}\z/ }
-  # validates :address, presence: true
-  # validates :addressee, presence: true, length: { maximum: 20 }
-  validates :product_passing, numericality: { only_integer: true }
-  validates :total_payment, numericality: { only_integer: true }
-  validates :payment_method, numericality: { only_integer: true }
-  validates :order_status, numericality: { only_integer: true }
+  # validates :name, presence: true, length: { maximum: 20 }
+  # validates :product_passing, numericality: { only_integer: true }
+  # validates :email, presence: true, length: { maximum: 300 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  # # validates :other, presence: true, length: { maximum: 20 }
+  # # validates :postal_code, presence: true, format: { with: /\A\d{3}[-]?\d{4}\z/ }
+  # # validates :address, presence: true
+  # # validates :addressee, presence: true, length: { maximum: 20 }
+  # validates :product_passing, numericality: { only_integer: true }
+  # validates :total_payment, numericality: { only_integer: true }
+  # validates :payment_method, numericality: { only_integer: true }
+  # validates :order_status, numericality: { only_integer: true }
 
   enum product_passing: { delivery: 0, other: 1}
   enum payment_method: { cash: 0, transfer: 1}
