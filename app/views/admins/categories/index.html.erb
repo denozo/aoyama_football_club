@@ -1,15 +1,19 @@
-<section class="container w-50 mt-5">
+<section class="maincontent container w-50 mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">カテゴリー管理</h2>
+  <h2 class="section-ttl row mb-3 font-weight-bold">カテゴリー管理</h2>
 
   <!--カテゴリー追加フォーム-->
   <p>メンバー登録時に使用するカテゴリーを追加してください。</p>
 
+  <% if @category.errors.any? %>
+    <p>カテゴリーは必須です！！</p>
+  <% end %>
+
   <%= form_with model: @category, url: admins_categories_path, local:true do |f| %>
     <div class="form_group row mb-3">
-      <%= f.label :category_name, 'カテゴリー名', class: "form-label m-3" %>
+      <%= f.label :category_name, 'カテゴリー名', class: "form-label m-3 font-weight-bold" %>
       <%= f.text_field :category_name, class: "col-md-5 form-control m-3" %>
-      <%= f.submit "新規追加", class: "btn btn-success m-3" %>
+      <%= f.submit "新規追加", class: "btn m-3" %>
     </div>
   <% end %>
 
@@ -20,10 +24,11 @@
     <%= notice %>
   </p>
 
-  <table class="table">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>カテゴリーの名称</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -38,6 +43,3 @@
     </tbody>
   </table>
 </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>

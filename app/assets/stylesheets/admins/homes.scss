@@ -1,3 +1,28 @@
 // Place all the styles related to the admins::homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*管理者トップメニュー*/
+.menu_box {
+  padding: 0.5em 1em;
+  font-weight: bold;
+  color: #193278;
+  width: 300px;
+  height: 150px;
+  background-color: #FFF;
+  border: solid 3px #193278;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+/*管理者トップメニューのリンクカラー*/
+.top_link:link, .top_link:visited, .top_link:hover, .top_link:active {
+  color: #193278;
+  font-size: 20px;
+}
+
+table td {
+  border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
+}

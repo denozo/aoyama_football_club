@@ -8,9 +8,10 @@ class Admins::CategoriesController < ApplicationController
   end
 
   def create
-    category = Category.new(category_params)
+    @category = Category.new(category_params)
+    @categories = Category.all
 
-    if category.save
+    if @category.save
       redirect_to admins_categories_path, notice: "カテゴリーを追加しました。"
     else
       render :index
