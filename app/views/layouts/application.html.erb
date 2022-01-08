@@ -10,69 +10,68 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-<header>
-  <!--ナビゲーションバー-->
-  <nav class="navbar navbar-expand-md navbar-dark sticky-top">
-    <!--サブコンポーネント-->
-    <div class="container">
-      <!--ブランド-->
-      <% if admin_signed_in? %>
-        <a href="/admins", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
-        <span>管理者でログイン中</span>
-      <% else%>
-        <a href="/", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
-      <% end %>
-
-      <!--切り替えボタン-->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!--ナビゲーション-->
-      <div class="collapse navbar-collapse" id="navbar-content">
-        <ul class="row navbar-nav mr-auto">
+  
+  <!--フッターコンテンツ-->
+  <header style="background-color: #f0821e;">
+    <div class="row justify-content-center">
+      <!--ナビゲーションバー-->
+      <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+        <!--サブコンポーネント-->
+        <!--ブランド-->
+        <div class="col-md-4 col-sm-12">
           <% if admin_signed_in? %>
-            <li class="col justify-content-end">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
+            <a href="/admins", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
+            <span>管理者でログイン中</span>
           <% else%>
-            <li class="col nav-item">
-              <%= link_to "サッカー部について", about_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="col nav-item">
-              <%= link_to "選手・スタッフ", members_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="col nav-item">
-              <%= link_to "お知らせ", informations_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="col nav-item">
-              <%= link_to "スケジュール", events_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="col nav-item">
-              <%= link_to "試合結果", game_results_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="col nav-item">
-              <%= link_to "応援グッズ", items_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="col nav-item">
-              <%= link_to "保護者専用", guardians_information_for_guardians_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="col nav-item">
-              <%= link_to "お問い合わせ", new_contact_path, class: 'nav-link text-dark' %>
-            </li>
+            <a href="/", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部" style="width: 250px; height: 150px;"></a>
           <% end %>
-        </ul>
-      </div>
+        </div>
+
+        <div class="col-md-9 col-sm-12">
+          <!--切り替えボタン-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <!--ナビゲーション-->
+          <div class="collapse navbar-collapse" id="navbar-content">
+            <ul class="row navbar-nav mr-auto">
+              <% if admin_signed_in? %>
+                <li class="justify-content-end">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+                </li>
+              <% else%>
+                <li class="nav-item">
+                  <%= link_to "サッカー部について", about_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "選手・スタッフ", members_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "お知らせ", informations_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "スケジュール", events_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "試合結果", game_results_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "応援グッズ", items_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "保護者専用", guardians_information_for_guardians_path, class: 'nav-link text-dark' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
-  </nav>
-
-</header>
-
-  <body>
-    <%= yield %>
-  </body>
-
+  </header>
+  <!--メインコンテンツ-->
+  <%= yield %>
+  
   <!--フッターコンテンツ-->
   <footer class="footer mt-5 p-2" style="background-color: #3e3e3e; color: #fff;">
     <div class="container-fluid">

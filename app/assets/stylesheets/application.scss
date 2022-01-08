@@ -29,10 +29,13 @@ body {
     sans-serif;
   background-color: #eff2f8;
 }
-
- header {
-   background-color: #f0821e;
- }
+ 
+.input_box {
+  background-color: white;
+  width: 500px;
+  margin: 50px;
+  border-radius: 1em;
+}
 
 
 /*container幅を固定*/

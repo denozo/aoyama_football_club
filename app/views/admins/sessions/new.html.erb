@@ -1,31 +1,23 @@
-<div class="container w-25">
-  <h2 class="section-ttl">管理者ログイン</h2>
-  
-  <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
-  
-    <div class="field mb2">
-      <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-  
-    <div class="field mb2">
-      <%= f.label :password, "パスワード" %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-  
-    <% if devise_mapping.rememberable? %>
-     <div class="field mb2">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
-  
-    <div class="actions">
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
-    </div>
-  
-  <% end %>
-</div>
+<section class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="input_box shadow">
+      <h2 class="section-ttl col-md-12">Admin Sign In</h2>
+      <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
 
-<!--フッター-->
-<%= render '/layouts/footer' %>
+        <div class="field col-md-12">
+          <%= f.label :email, "メールアドレス", class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="field col-md-12">
+          <%= f.label :password, "パスワード", class: "form-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+
+        <div class="actions col-2">
+          <%= f.submit "ログイン", class: "btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
