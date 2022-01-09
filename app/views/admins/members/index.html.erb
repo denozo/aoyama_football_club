@@ -1,10 +1,10 @@
 <section class="container w-50 mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">メンバー一覧</h2>
+  <h2 class="section-ttl row mb-3">選手・スタッフ一覧</h2>
 
   <!--メンバー追加画面へのリンク-->
   <div>
-    <%= link_to "スタッフ・選手を登録する", new_admins_member_path, class: "btn btn-success m-3" %>
+    <%= link_to "スタッフ・選手を登録する", new_admins_member_path, class: "btn btn-outline-secondary m-3" %>
   </div>
 
   <!--メンバー一覧-->
@@ -26,16 +26,13 @@
     <tbody>
       <% @members.each do |member| %>
       <tr>
-        <td><%= link_to member.last_name + " " + member.first_name,admins_member_path(member.id) %></td>
+        <td><%= link_to member.last_name + " " + member.first_name,admins_member_path(member.id), class: "text-dark link-secondary" %></td>
         <td><%= member.category.category_name %></td>
         <td><%= member.grade_i18n %></td>
-        <td><%= link_to "編集する", edit_admins_member_path(member.id), class: "text-dark link-secondary" %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 
+  <%= paginate @members %>
 </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>

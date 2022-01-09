@@ -6,18 +6,15 @@
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/a0ac96da17.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   
-  <!--フッターコンテンツ-->
-  <header style="background-color: #f0821e;">
-    <div class="row justify-content-center">
-      <!--ナビゲーションバー-->
-      <nav class="navbar navbar-expand-md navbar-dark sticky-top">
-        <!--サブコンポーネント-->
-        <!--ブランド-->
+  <body>
+    <!--フッターコンテンツ-->
+    <header style="background-color: #f0821e;">
+      <div class="row justify-content-around">
         <div class="col-md-4 col-sm-12">
           <% if admin_signed_in? %>
             <a href="/admins", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
@@ -26,8 +23,9 @@
             <a href="/", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部" style="width: 250px; height: 150px;"></a>
           <% end %>
         </div>
-
-        <div class="col-md-9 col-sm-12">
+    
+        <!--ナビゲーションバー-->
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top">
           <!--切り替えボタン-->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,7 +35,7 @@
           <div class="collapse navbar-collapse" id="navbar-content">
             <ul class="row navbar-nav mr-auto">
               <% if admin_signed_in? %>
-                <li class="justify-content-end">
+                <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
                 </li>
               <% else%>
@@ -65,51 +63,51 @@
               <% end %>
             </ul>
           </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-  <!--メインコンテンツ-->
-  <%= yield %>
-  
-  <!--フッターコンテンツ-->
-  <footer class="footer mt-5 p-2" style="background-color: #3e3e3e; color: #fff;">
-    <div class="container-fluid">
-      <!--所在地-->
-      <div class="row justify-content-center mt-5">
-        <div class="footer-left col-md-3 col-sm-12">
-          <span class="h4">AOYAMA H.S FOOTBALL CLUB</span>
-          <p class="mt-3">
-            学校法人 青山学院<br>
-            青山高等学校 サッカー部<br>
-            〒000-0000<br>
-            青森県青森市青山１丁目１１番地５丁目<br>
-            TEL:0100-0000-0000<br>
-            FAX:0200-0000-0000<br>
-          </p>
-          <!--お問い合わせリンク-->
-          <p class="mt-3">
-            <%= link_to "お問い合わせはこちら", new_contact_path, class: 'btn bg-light text-dark' %>
-          </p>
-        </div>
-        <!--所在地マップ-->
-        <div class="footer-center col-md-3 col-sm-12 mr-3  d-none d-md-block embed-responsive embed-responsive-16by9">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7239.032838021456!2d140.88535933004871!3d38.2603930643534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28180c510b87%3A0xb2a30b91be1ffdbc!2z5LuZ5Y-w6aeF!5e0!3m2!1sja!2sjp!4v1640513829852!5m2!1sja!2sjp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-          <!--ソーシャルリンク-->
-        <div class="footer-right col-md-3 col-sm-12">
-          <div class="icons">
-            <a href="/"><i class="fab fa-facebook-square fa-3x text-light m-3"></i></a>
-            <a href="/"><i class="fab fa-twitter-square fa-3x text-light m-3"></i></a>
-            <a href="/"><i class="fab fa-instagram fa-3x text-light m-3"></i></a>
+        </nav>
+      </div>
+    </header>
+    <!--メインコンテンツ-->
+    <%= yield %>
+    <!--フッターコンテンツ-->
+    <footer class="footer mt-5 p-2" style="background-color: #3e3e3e; color: #fff;">
+      <div class="container-fluid">
+        <!--所在地-->
+        <div class="row justify-content-center mt-5">
+          <div class="footer-left col-md-3 col-sm-12">
+            <span class="h4">AOYAMA H.S FOOTBALL CLUB</span>
+            <p class="mt-3">
+              学校法人 青山学院<br>
+              青山高等学校 サッカー部<br>
+              〒000-0000<br>
+              青森県青森市青山１丁目１１番地５丁目<br>
+              TEL:0100-0000-0000<br>
+              FAX:0200-0000-0000<br>
+            </p>
+            <!--お問い合わせリンク-->
+            <p class="mt-3">
+              <%= link_to "お問い合わせはこちら", new_contact_path, class: 'btn bg-light text-dark' %>
+            </p>
+          </div>
+          <!--所在地マップ-->
+          <div class="footer-center col-md-3 col-sm-12 mr-3  d-none d-md-block embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7239.032838021456!2d140.88535933004871!3d38.2603930643534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28180c510b87%3A0xb2a30b91be1ffdbc!2z5LuZ5Y-w6aeF!5e0!3m2!1sja!2sjp!4v1640513829852!5m2!1sja!2sjp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+            <!--ソーシャルリンク-->
+          <div class="footer-right col-md-3 col-sm-12">
+            <div class="icons">
+              <a href="/"><i class="fab fa-facebook-square fa-3x text-light m-3"></i></a>
+              <a href="/"><i class="fab fa-twitter-square fa-3x text-light m-3"></i></a>
+              <a href="/"><i class="fab fa-instagram fa-3x text-light m-3"></i></a>
+            </div>
           </div>
         </div>
+        <!--Copyright-->
+        <div class="row justify-content-center mt-5">
+          <p>CopyRight 2021 denozo</p>
+        </div>
       </div>
-      <!--Copyright-->
-      <div class="row justify-content-center mt-5">
-        <p>CopyRight 2021 denozo</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </body>
+  
 
 </html>

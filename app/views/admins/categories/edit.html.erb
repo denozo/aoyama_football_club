@@ -1,13 +1,15 @@
 <section class="container w-50 mt-5">
+
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">カテゴリー管理</h2>
+  <h5 class="section-ttl row mb-3 font-weight-bold">カテゴリーを編集してください。</h5>
 
   <!--カテゴリー編集フォーム-->
   <%= form_with model: @category, url: "/admins/categories/#{@category.id}", local:true do |f| %>
     <div class="form_group row mb-3">
       <%= f.label :category_name, 'カテゴリー名', class: "form-label m-3" %>
       <%= f.text_field :category_name, class: "col-md-5 form-control m-3" %>
-      <%= f.submit "変更を保存", class: "btn btn-success m-3" %>
+      <%= f.submit "変更を保存", class: "btn btn-outline-secondary m-3" %>
     </div>
   <% end %>
+
 </section>

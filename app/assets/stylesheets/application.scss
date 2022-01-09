@@ -28,8 +28,41 @@ body {
     Meiryo,
     sans-serif;
   background-color: #eff2f8;
+
 }
- 
+
+//ページネーションのレイアウト
+
+.page-item.active .page-link{
+  background: #434343;
+  border: noen;
+}
+
+.pagination>li>a {
+  background: #e3dfdc;
+  border: none;
+  color: #1a0b08;
+  margin-top: 10px;
+}
+
+.pagination>.active>a {
+  background: #434343;
+  border: none;
+  color: #FFF;
+}
+
+.pagination>li>a:hover {
+  background: #FFF;
+  border: none;
+  color: #1a0b08;
+}
+
+.pagination {
+}
+
+
+
+ //管理者ログイン画面レイアウト
 .input_box {
   background-color: white;
   width: 500px;
@@ -104,7 +137,7 @@ width: 620px;
 }
 
 
-.btn, .btn:hover {
-  background-color: #193278;
-  color: #FFF;
-}
+// .btn, .btn:hover {
+//   background-color: #193278;
+//   color: #FFF;
+// }
