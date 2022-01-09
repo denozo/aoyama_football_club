@@ -5,6 +5,7 @@ ja:
       category: カテゴリ
       graduate: OB
       game_result: 試合結果
+      information: お知らせ
     attributes:
       member:
         category: カテゴリ
@@ -31,3 +32,8 @@ ja:
         game_title: 試合のタイトル
         event_date: 開催日
         results_details: 結果内容
+      information:
+        category: カテゴリ
+        title: タイトル
+        content: 内容
+

@@ -3,7 +3,7 @@ class Admins::InformationsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @informations = Information.all
+    @informations = Information.page(params[:page]).per(10)
   end
 
   def new
@@ -11,10 +11,11 @@ class Admins::InformationsController < ApplicationController
   end
 
   def create
-    information = Information.new(information_params)
+    @information = Information.new(information_params)
 
-    if information.save
-      redirect_to admins_information_path(information), notice: "お知らせを登録しました"
+    if @information.save
+      flash[:notice] = '新規登録されました。'
+      redirect_to admins_information_path(@information)
     else
       render :new
     end
@@ -29,10 +30,11 @@ class Admins::InformationsController < ApplicationController
   end
 
   def update
-    information = Information.find(params[:id])
+    @information = Information.find(params[:id])
 
-    if information.update(information_params)
-      redirect_to admins_information_path(information), notice: "変更を保存しました"
+    if @information.update(information_params)
+      flash[:notice] = '変更を保存しました。'
+      redirect_to admins_information_path(@information)
     else
       render :edit
     end
@@ -40,8 +42,13 @@ class Admins::InformationsController < ApplicationController
 
   def destroy
     information = Information.find(params[:id])
-    information.destroy
-    redirect_to admins_informations_path
+    
+    if information.destroy
+      flash[:notice] = '削除されました。'
+      redirect_to admins_informations_path
+    else
+      render :index
+    end
   end
 
   private

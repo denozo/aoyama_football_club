@@ -42,7 +42,7 @@
     </table>
   </div>
   <%= link_to "編集", edit_admins_game_result_path(@game_result.id), class: "btn btn-outline-secondary m-3" %>
-  <%= link_to "削除", admins_game_result_path(@game_result.id), method: :delete, "date-confirm" => "削除しますか？", class: "btn btn-outline-secondary text-danger m-3" %>
+  <%= link_to "削除", admins_game_result_path(@game_result.id), method: :delete, "data-confirm" => "表示されている試合結果を削除しますか?", class: "btn btn-outline-secondary text-danger m-3" %>
   <%= link_to "戻る", admins_game_results_path, class: "btn btn-outline-secondary m-3" %>
 
 </section>

@@ -1,44 +1,43 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class="">お知らせ詳細</h4>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">お知らせ詳細</h2>
+
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
+  <!--試合結果詳細-->
+  <div class="row justify-content-center m-5">
+    <%= attachment_image_tag  @information, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
   </div>
-  <!--お知らせ詳細-->
-  <div class="container admins_information">
-    <div class="row">
-      <%= attachment_image_tag @information, :image, :fill, 200, 200 %>
-    </div>
-    <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="col-4">項目</th>
-            <th class="col-8">詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-      			<td>カテゴリー</td>
-      			<td><%= @information.category_i18n %></td>
-          </tr>
-          <tr>
-      			<td>タイトル</td>
-      			<td><%= @information.title %></td>
-          </tr>
-          <tr>
-      			<td>内容</td>
-      			<td><%= simple_format(@information.content) %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="row">
-      <%= link_to "編集", edit_admins_information_path(@information.id), class: "btn btn-secondary" %>
-      <%= link_to "削除", admins_information_path(@information.id), method: :delete, "data-confirm" => "削除しますか?", class: "btn btn-danger" %>
-    </div>
+
+  <div class="roe justify-content-center bg-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-4">項目</th>
+          <th class="col-8">詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    			<td>カテゴリー</td>
+    			<td><%= @information.category_i18n %></td>
+        </tr>
+        <tr>
+    			<td>タイトル</td>
+    			<td><%= @information.title %></td>
+        </tr>
+        <tr>
+    			<td>内容</td>
+    			<td><%= simple_format(@information.content) %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+  <%= link_to "編集", edit_admins_information_path(@information.id), class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "削除", admins_information_path(@information.id), method: :delete, "data-confirm" => "表示されているお知らせを削除しますか?", class: "btn btn-outline-secondary text-danger m-3" %>
+  <%= link_to "戻る", admins_informations_path, class: "btn btn-outline-secondary m-3" %>
 
   </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>

@@ -1,14 +1,16 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class="">お知らせの編集</h4>
-  </div>
-  <div class="container admins_information_edit">
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">お知らせを編集してください。</h2>
+
+  <!--お知らせ編集フォーム-->
     <%= form_with model: @information, url: "/admins/informations/#{@information.id}", local:true do |f| %>
-    <!--お知らせ編集フォーム-->
-      <!--写真-->
+    
+    <!--エラーメッセージ-->
+    <%= render 'layouts/error_messages', model: f.object %>
+  
+      <!--カテゴリ-->
       <div class="row">
-        <div class="col-10 col-md-6 form-group">
+        <div class="form-group col-md-12">
           <%= f.radio_button :category, Information.categories.key(0) %>
           <%= f.label :category, Information.categories_i18n[:general], class: "form-label" %>
 
@@ -21,33 +23,32 @@
       </div>
       <!--タイトル-->
       <div class="row">
-        <div class="col-10 col-md-12 form-group">
+        <div class="form-group col-md-12">
           <%= f.label :title, "タイトル", class: "form-label" %>
           <%= f.text_field :title, class: "form-control" %>
         </div>
       </div>
       <!--内容-->
       <div class="row">
-        <div class="col-10 col-md-12 form-group">
+        <div class="form-group col-md-12">
           <%= f.label :content, "内容", class: "form-label" %>
           <%= f.text_area :content, class: "form-control", rows: "20" %>
         </div>
       </div>
       <!--写真-->
       <div class="row">
-        <div class="col-10 col-md-6 form-group">
+        <div class="form-group col-md-12">
           <%= f.label :image, "画像", class: "form-label" %>
           <%= f.attachment_field :image %>
         </div>
       </div>
 
-      <div class="row actions">
-        <%= f.submit "変更を保存", class: "btn btn-success" %>
+      <div class="row">
+        <div class="form-group">
+        <%= f.submit "変更を保存", class: "btn btn-outline-secondary m-3" %>
+        </div>
       </div>
 
     <% end %>
-  </div>
-</section>
 
-<!--フッター-->
-<%= render '/layouts/footer' %>
+</section>
