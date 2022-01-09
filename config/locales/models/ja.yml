@@ -4,6 +4,7 @@ ja:
       member: 選手・スタッフ
       category: カテゴリ
       graduate: OB
+      game_result: 試合結果
     attributes:
       member:
         category: カテゴリ
@@ -25,3 +26,8 @@ ja:
         year: 入学年度
         member_list: メンバー一覧
         career_after_graduation: 主な進路
+      game_result:
+        tournament_name: 大会名
+        game_title: 試合のタイトル
+        event_date: 開催日
+        results_details: 結果内容

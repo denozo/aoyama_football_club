@@ -3,7 +3,7 @@ class Admins::GameResultsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @game_results = GameResult.all
+    @game_results = GameResult.page(params[:page]).per(10)
   end
 
   def new
@@ -11,10 +11,11 @@ class Admins::GameResultsController < ApplicationController
   end
 
   def create
-    game_result = GameResult.new(game_result_params)
+    @game_result = GameResult.new(game_result_params)
     
-    if game_result.save
-      redirect_to admins_game_result_path(game_result), notice: "試合結果を登録しました"
+    if @game_result.save
+      flash[:notice] = '新規登録されました。'
+      redirect_to admins_game_result_path(@game_result)
     else
       render :new
     end
@@ -29,10 +30,11 @@ class Admins::GameResultsController < ApplicationController
   end
 
   def update
-    game_result = GameResult.find(params[:id])
+    @game_result = GameResult.find(params[:id])
     
-    if game_result.update(game_result_params)
-      redirect_to admins_game_result_path(game_result), notice: "変更を保存"
+    if @game_result.update(game_result_params)
+      flash[:notice] = '変更を保存しました。'
+      redirect_to admins_game_result_path(@game_result)
     else
       render :edit
     end
