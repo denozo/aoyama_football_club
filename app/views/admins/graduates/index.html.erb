@@ -1,37 +1,39 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class="">保護者一覧</h4>
-  </div>
-  <!--OB登録一覧-->
-  <div class="container admins_graduates_list">
-    <div class="row">
-      <%= link_to "OB紹介登録", new_admins_graduate_path, class: "btn btn-success" %>
-    </div>
-    <div class="row">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>卒業年度</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @graduates.each do |graduate| %>
-            <tr>
-              <td><%= graduate.year.to_s + "年度卒業" %></td>
-              <td><%= link_to "詳細", admins_graduate_path(graduate.id), class: "text-dark link-secondary" %></td>
-              <td><%= link_to "削除", admins_graduate_path(graduate.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">OB紹介一覧</h2>
 
-<!--フッター-->
-<%= render '/layouts/footer' %>
+  <!--OB登録追加画面へのリンク-->
+  <div>
+    <%= link_to "OB紹介を登録する", new_admins_graduate_path, class: "btn btn-outline-secondary m-3" %>
+  </div>
+
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
+  <!--OB一覧-->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>卒業年度</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @graduates.each do |graduate| %>
+        <tr>
+          <td><%= graduate.year.to_s + "年度卒業" %></td>
+          <td><%= link_to "詳細", admins_graduate_path(graduate.id), class: "text-dark link-secondary" %></td>
+          <td><%= link_to "削除", admins_graduate_path(graduate.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= paginate@graduates %>
+
+</section>

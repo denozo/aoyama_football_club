@@ -1,9 +1,9 @@
 class Admins::GraduatesController < ApplicationController
-  
+
   before_action :authenticate_admin!
 
   def index
-    @graduates = Graduate.all
+    @graduates = Graduate.page(params[:page]).per(10)
   end
 
   def new
@@ -11,10 +11,11 @@ class Admins::GraduatesController < ApplicationController
   end
 
   def create
-    graduate = Graduate.new(graduate_params)
-    
-    if graduate.save
-      redirect_to admins_graduate_path(graduate), notice: "OB紹介を登録しました"
+    @graduate = Graduate.new(graduate_params)
+
+    if @graduate.save
+      flash[:notice] = '新規登録されました。'
+      redirect_to admins_graduate_path(@graduate)
     else
       render :new
     end
@@ -29,19 +30,25 @@ class Admins::GraduatesController < ApplicationController
   end
 
   def update
-    graduate = Graduate.find(params[:id])
-    
-    if graduate.update(graduate_params)
-      redirect_to admins_graduate_path(graduate), notice: "変更を保存しました"
+    @graduate = Graduate.find(params[:id])
+
+    if @graduate.update(graduate_params)
+      flash[:notice] = '変更を保存しました。'
+      redirect_to admins_graduate_path(@graduate)
     else
-    　render :edit
+      render :edit
     end
   end
 
   def destroy
     graduate = Graduate.find(params[:id])
-    graduate.destroy
-    redirect_to admins_graduates_path
+
+    if graduate.destroy
+      flash[:notice] = '削除されました。'
+      redirect_to admins_graduates_path
+    else
+      render :index
+    end
   end
 
   private

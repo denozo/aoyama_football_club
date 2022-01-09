@@ -1,4 +1,4 @@
-<section class="container w-50 mt-5">
+<section class="container col-md-5 mt-5">
   <!--セクションタイトル-->
   <h2 class="section-ttl row mb-3">選手・スタッフ一覧</h2>
 
@@ -7,32 +7,33 @@
     <%= link_to "スタッフ・選手を登録する", new_admins_member_path, class: "btn btn-outline-secondary m-3" %>
   </div>
 
-  <!--メンバー一覧-->
-
   <!-- サクセスメッセージの表示 -->
   <p id="notice" class="text-danger">
     <%= notice %>
   </p>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>氏名</th>
-        <th>学年</th>
-        <th>カテゴリ</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @members.each do |member| %>
-      <tr>
-        <td><%= link_to member.last_name + " " + member.first_name,admins_member_path(member.id), class: "text-dark link-secondary" %></td>
-        <td><%= member.grade_i18n %></td>
-        <td><%= member.category.category_name %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <!--メンバー一覧-->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>氏名</th>
+          <th>学年</th>
+          <th>カテゴリ</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @members.each do |member| %>
+        <tr>
+          <td><%= link_to member.last_name + " " + member.first_name,admins_member_path(member.id), class: "text-dark link-secondary" %></td>
+          <td><%= member.grade_i18n %></td>
+          <td><%= member.category.category_name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
   <%= paginate @members %>
 </section>

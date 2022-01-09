@@ -1,43 +1,48 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class=""><%= @graduate.year.to_s + "年度の卒業生" %></h4>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">OB詳細</h2>
+
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
+  <!-OB詳細内容-->
+    <!--OB画像-->
+  <div class="row justify-content-center m-5">
+    <%= attachment_image_tag  @graduate, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
   </div>
-  <!--卒業生詳細内容-->
-  <div class="container admins_graduate_info">
-    <div class="row">
-      <%= attachment_image_tag @graduate, :image, :fill, 200, 200 %>
-    </div>
-    <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="col-4">項目</th>
-            <th class="col-8">詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-      			<td>メンバー一覧</td>
-      			<td><%= simple_format(@graduate.member_list) %></td>
-          </tr>
-          <tr>
-          <tr>
-      			<td>主な進路</td>
-      			<td><%= simple_format(@graduate.career_after_graduation) %></td>
-          </tr>
-          <tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="row">
-      <%= link_to "編集", edit_admins_graduate_path(@graduate.id), class: "btn btn-secondary" %>
-      <%= link_to "削除", admins_graduate_path(@graduate.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger" %>
-    </div>
+    <!--OB詳細説明-->
+  <div class="roe justify-content-center bg-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-2 col-md-3">項目</th>
+          <th class="col-10 col-md-9">詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    			<td>卒業年度</td>
+    			<td><%= @graduate.year %></td>
+        </tr>
+        <tr>
+    			<td>メンバー一覧</td>
+    			<td><%= simple_format(@graduate.member_list) %></td>
+        </tr>
+        <tr>
+        <tr>
+    			<td>主な進路</td>
+    			<td><%= simple_format(@graduate.career_after_graduation) %></td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
   </div>
 
+
+  <%= link_to "編集", edit_admins_graduate_path(@graduate.id), class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "削除", admins_graduate_path(@graduate.id), method: :delete, "data-confirm" => "表示されているOB紹介を削除しますか?", class: "btn btn-outline-secondary text-danger m-3" %>
+  <%= link_to "戻る", admins_graduates_path, class: "btn btn-outline-secondary m-3" %>
 
 </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>

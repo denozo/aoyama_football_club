@@ -7,8 +7,8 @@ class Member < ApplicationRecord
     validates :last_name_kana, presence: true, length: { maximum: 20 }
     validates :first_name_kana, presence: true, length: { maximum: 20 }
     validates :position, presence: true, length: { maximum: 30 }
-    validates :height, numericality: { only_integer: true}, length: {in: 1..3}
-    validates :weight, numericality: { only_integer: true}, length: {in: 1..3}
+    validates :height, numericality: { only_integer: true}, length: {is: 3}
+    validates :weight, numericality: { only_integer: true}, length: {in: 2..3}
     validates :original_team, presence: true, length: { maximum: 50 }
     validates :hobby, presence: true, length: { maximum: 50 }
     validates :goal, presence: true, length: { maximum: 50 }

@@ -3,6 +3,7 @@ ja:
     models:
       member: 選手・スタッフ
       category: カテゴリ
+      graduate: OB
     attributes:
       member:
         category: カテゴリ
@@ -20,3 +21,7 @@ ja:
         image: 画像
       category:
         category_name: カテゴリ
+      graduate:
+        year: 入学年度
+        member_list: メンバー一覧
+        career_after_graduation: 主な進路
