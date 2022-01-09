@@ -6,6 +6,7 @@ ja:
       graduate: OB
       game_result: 試合結果
       information: お知らせ
+      information_for_guardian: 保護者専用お知らせ
     attributes:
       member:
         category: カテゴリ
@@ -36,4 +37,7 @@ ja:
         category: カテゴリ
         title: タイトル
         content: 内容
-
+      information_for_guardian:
+        category: カテゴリ
+        title: タイトル
+        content: 内容

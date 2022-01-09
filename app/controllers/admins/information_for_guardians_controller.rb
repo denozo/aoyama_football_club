@@ -3,7 +3,7 @@ class Admins::InformationForGuardiansController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @informationforguardians = InformationForGuardian.all
+    @informationforguardians = InformationForGuardian.page(params[:page]).per(10)
   end
 
   def new
@@ -11,10 +11,11 @@ class Admins::InformationForGuardiansController < ApplicationController
   end
 
   def create
-    informationforguardian = InformationForGuardian.new(information_for_guardian_params)
+    @informationforguardian = InformationForGuardian.new(information_for_guardian_params)
 
-    if informationforguardian.save
-      redirect_to admins_information_for_guardian_path(informationforguardian), notice: "お知らせを登録しました"
+    if @informationforguardian.save
+      flash[:notice] = '新規登録されました。'
+      redirect_to admins_information_for_guardian_path(@informationforguardian)
     else
       render :new
     end
@@ -29,19 +30,25 @@ class Admins::InformationForGuardiansController < ApplicationController
   end
 
   def update
-    informationforguardian = InformationForGuardian.find(params[:id])
+    @informationforguardian = InformationForGuardian.find(params[:id])
 
-    if informationforguardian.update(information_for_guardian_params)
-      redirect_to admins_information_for_guardian_path(informationforguardian), notice: "お知らせを登録しました"
+    if @informationforguardian.update(information_for_guardian_params)
+      flash[:notice] = '変更を保存しました。'
+      redirect_to admins_information_for_guardian_path(@informationforguardian)
     else
-      render :new
+      render :edit
     end
   end
 
   def destroy
     informationforguardian = InformationForGuardian.find(params[:id])
-    informationforguardian.destroy
-    redirect_to admins_information_for_guardians_path
+    
+    if informationforguardian.destroy
+      flash[:notice] = '削除されました。'
+      redirect_to admins_information_for_guardians_path
+    else
+      render :index
+    end
   end
 
   private

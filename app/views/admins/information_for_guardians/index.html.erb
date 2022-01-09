@@ -1,42 +1,36 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class="">保護者お知らせ一覧</h4>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">保護者専用お知らせ一覧</h2>
+  
+  <!--メンバー追加画面へのリンク-->
+  <div>
+    <%= link_to "お知らせ登録", new_admins_information_for_guardian_path, class: "btn btn-outline-secondary m-3" %>
   </div>
-  <!--保護者お知らせ一覧-->
-  <div class="container admins_information_for_guardian_list">
-    <div class="row">
-      <%= link_to "お知らせ登録", new_admins_information_for_guardian_path, class: "btn btn-success" %>
-    </div>
-    <div class="row">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>更新日</th>
-              <th>タイトル</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @informationforguardians.each do |informationforguardian| %>
-            <tr>
-              <td><%= informationforguardian.updated_at %></td>
-              <td><%= informationforguardian.title %></td>
-              <td><%= link_to "詳細", admins_information_for_guardian_path(informationforguardian.id), class: "text-dark link-secondary" %></td>
-              <td><%= link_to "編集", edit_admins_information_for_guardian_path(informationforguardian.id), class: "text-primary link-secondary" %></td>
-              <td><%= link_to "削除", admins_information_for_guardian_path(informationforguardian.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
+
+  <!--お知らせ一覧-->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>更新日</th>
+          <th>タイトル</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @informationforguardians.each do |informationforguardian| %>
+        <tr>
+          <td><%= informationforguardian.updated_at.strftime("%Y-%m-%d %H:%M")  %></td>
+          <td><%= informationforguardian.title %></td>
+          <td><%= link_to "詳細", admins_information_for_guardian_path(informationforguardian.id), class: "text-dark link-secondary" %></td>
+          <td><%= link_to "削除", admins_information_for_guardian_path(informationforguardian.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+  
+  <%= paginate @informationforguardians %>
 
 </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>
