@@ -1,6 +1,6 @@
-<section class="container w-50 mt-5">
+<section class="container col-md-5 mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">メンバー新規登録</h2>
+  <h2 class="section-ttl row mb-3">メンバー情報を編集してください。</h2>
 
   <!--メンバー追加フォーム-->
   <%= form_with model: @member, url: "/admins/members/#{@member.id}", local:true do |f| %>
@@ -98,7 +98,7 @@
 
     <div class="row">
       <div class="form-group col">
-      <%= f.submit "登録する", class: "btn btn-success mt-3" %>
+      <%= f.submit "変更を保存", class: "btn btn-outline-secondary m-3" %>
       </div>
     </div>
 
@@ -106,6 +106,3 @@
 
 
 </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>

@@ -7,6 +7,7 @@
     <%= link_to "スタッフ・選手を登録する", new_admins_member_path, class: "btn btn-outline-secondary m-3" %>
   </div>
 
+
   <!--メンバー一覧-->
 
   <!-- サクセスメッセージの表示 -->
@@ -17,9 +18,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th>カテゴリー</th>
-        <th>学年</th>
         <th>氏名</th>
+        <th>学年</th>
+        <th>カテゴリ</th>
         <th></th>
       </tr>
     </thead>
@@ -27,8 +28,8 @@
       <% @members.each do |member| %>
       <tr>
         <td><%= link_to member.last_name + " " + member.first_name,admins_member_path(member.id), class: "text-dark link-secondary" %></td>
-        <td><%= member.category.category_name %></td>
         <td><%= member.grade_i18n %></td>
+        <td><%= member.category.category_name %></td>
       </tr>
       <% end %>
     </tbody>
