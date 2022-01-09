@@ -1,7 +1,8 @@
 class Category < ApplicationRecord
   
+  has_many :members
+  
   validates :category_name, presence: true
 
-  has_many :members
 
 end

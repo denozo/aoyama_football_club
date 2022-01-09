@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      member: 選手・スタッフ
+      category: カテゴリ
+    attributes:
+      member:
+        category: カテゴリ
+        last_name: 姓
+        first_name: 名
+        last_name_kana: セイ
+        first_name_kana: メイ
+        grade: 学年
+        position: ポジション
+        height: 身長
+        weight: 体重
+        original_team: 出身チーム
+        hobby: 趣味
+        goal: 目標
+        image: 画像
+      category:
+        category_name: カテゴリ

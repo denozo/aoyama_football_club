@@ -1,7 +1,7 @@
 class Admins::MembersController < ApplicationController
-  
+
   before_action :authenticate_admin!
-  
+
   def index
     @members = Member.page(params[:page]).per(10).order(grade: "ASC") ##学年・スタッフ順、10行まで表示
   end
@@ -11,14 +11,15 @@ class Admins::MembersController < ApplicationController
   end
 
   def create
-    member =  Member.new(member_params)
-    
-    if member.save
-      redirect_to admins_member_path(member), notice: "メンバーを追加しました"
+    @member =  Member.new(member_params)
+
+    if @member.save
+      flash[:notice] = '新規登録されました。'
+      redirect_to admins_member_path(@member)
     else
       render :new
     end
-    
+
   end
 
   def show
@@ -31,24 +32,32 @@ class Admins::MembersController < ApplicationController
   end
 
   def update
-    member = Member.find(params[:id])
-    
-    if member.update(member_params)
-     redirect_to admins_member_path(member), notice: "変更を保存しました"
+    @member = Member.find(params[:id])
+
+    if @member.update(member_params)
+      flash[:notice] = '変更を保存しました。'
+      redirect_to admins_member_path(@member)
     else
       render :edit
     end
   end
-  
+
   def destroy
     member = Member.find(params[:id])
-    member.destroy
-    redirect_to admins_members_path
+
+    if member.destroy
+      flash[:notice] = '削除されました。'
+      redirect_to admins_members_path
+    else
+      render :index
+    end
+
+
   end
-  
-  
+
+
   private
-  
+
   def member_params
     params.require(:member).permit(
       :category_id,
@@ -65,5 +74,5 @@ class Admins::MembersController < ApplicationController
       :hobby,
       :goal)
   end
-  
+
 end

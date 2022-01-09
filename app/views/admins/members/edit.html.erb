@@ -5,9 +5,12 @@
   <!--メンバー追加フォーム-->
   <%= form_with model: @member, url: "/admins/members/#{@member.id}", local:true do |f| %>
 
+  <!--エラーメッセージ-->
+  <%= render 'layouts/error_messages', model: f.object %>
+
     <div class="form-group">
       <%= f.label :category_id, "カテゴリ", class: "form-label" %>
-      <%= f.collection_select :category_id, Category.all, :id, :category_name, include_blank: "-- 選択してください --", class: "form-control" %>
+      <%= f.collection_select :category_id, Category.all, :id, :category_name, include_blank: "-- 選択してください --", class: "form-control invalid-feedback" %>
     </div>
 
     <div class="row">

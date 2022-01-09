@@ -4,6 +4,9 @@
 
   <!--メンバー追加フォーム-->
   <%= form_with model: @member, url: '/admins/members', local:true do |f| %>
+  
+  <!--エラーメッセージ-->
+  <%= render 'layouts/error_messages', model: f.object %>
 
     <div class="form-group">
       <%= f.label :category_id, "カテゴリ", class: "form-label" %>
