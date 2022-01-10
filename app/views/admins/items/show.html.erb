@@ -1,47 +1,47 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class="">アイテム詳細</h4>
-  </div>
-  <!--アイテム詳細-->
-  <div class="container admins_information">
-    <div class="row">
-      <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
-    </div>
-    <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="col-4">項目</th>
-            <th class="col-8">詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-      			<td>アイテム名</td>
-      			<td><%= @item.name %></td>
-          </tr>
-          <tr>
-      			<td>単価（税抜）</td>
-      			<td><%= @item.price %></td>
-          </tr>
-          <tr>
-      			<td>内容</td>
-      			<td><%= simple_format(@item.introduction) %></td>
-          </tr>
-          <tr>
-      			<td>内容</td>
-      			<td><%= @item.is_active_i18n %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="row">
-      <%= link_to "編集", edit_admins_item_path(@item.id), class: "btn btn-secondary" %>
-      <%= link_to "削除", admins_item_path(@item.id), method: :delete, "data-confirm" => "表示されているアイテムを削除しますか?", class: "btn btn-danger" %>
-    </div>
-  <div>
-</section>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">アイテム詳細</h2>
 
-<!--フッター-->
-<%= render '/layouts/footer' %>
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
+  <!--アイテム詳細-->
+  <div class="row">
+    <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
+  </div>
+
+  <div class="row justify-content-center bg-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-4">項目</th>
+          <th class="col-8">詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    			<td>アイテム名</td>
+    			<td><%= @item.name %></td>
+        </tr>
+        <tr>
+    			<td>単価（税抜）</td>
+    			<td><%= @item.price %></td>
+        </tr>
+        <tr>
+    			<td>内容</td>
+    			<td><%= simple_format(@item.introduction) %></td>
+        </tr>
+        <tr>
+    			<td>内容</td>
+    			<td><%= @item.is_active_i18n %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to "編集", edit_admins_item_path(@item.id), class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "削除",admins_item_path(@item.id), method: :delete, "data-confirm" => "表示されているお知らせを削除しますか?", class: "btn btn-outline-secondary text-danger m-3" %>
+  <%= link_to "戻る", admins_items_path, class: "btn btn-outline-secondary m-3" %>
+
+</section>

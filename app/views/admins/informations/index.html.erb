@@ -7,6 +7,11 @@
     <%= link_to "試合結果を登録する", new_admins_information_path, class: "btn btn-outline-secondary m-3" %>
   </div>
   
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+  
   <!--お知らせ一覧-->
   <div class="table-responsive">
     <table class="table">

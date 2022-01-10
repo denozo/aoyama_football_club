@@ -3,7 +3,7 @@ class Admins::ItemsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(10)
   end
 
   def new
@@ -11,10 +11,11 @@ class Admins::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
+    @item = Item.new(item_params)
 
-    if item.save
-      redirect_to admins_item_path(item), notice: "アイテムを追加しました"
+    if @item.save
+      flash[:notice] = '新規登録されました。'
+      redirect_to admins_item_path(@item)
     else
       render :new
     end
@@ -30,10 +31,11 @@ class Admins::ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
+    @item = Item.find(params[:id])
     
-    if item.update(item_params)
-      redirect_to admins_item_path(item), notice: "アイテム情報を更新しました"
+    if @item.update(item_params)
+      flash[:notice] = '変更を保存しました。'
+      redirect_to admins_item_path(@item)
     else
       render :edit
     end
@@ -42,8 +44,13 @@ class Admins::ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
-    redirect_to admins_items_path
+    
+    if item.destroy
+      flash[:notice] = '削除されました。'
+      redirect_to admins_items_path
+    else
+      render :index
+    end
   end
 
   private

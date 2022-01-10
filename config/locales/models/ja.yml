@@ -8,6 +8,7 @@ ja:
       information: お知らせ
       information_for_guardian: 保護者専用お知らせ
       guardian: 保護者
+      item: 応援グッズ
     attributes:
       member:
         category: カテゴリ
@@ -53,3 +54,7 @@ ja:
         postal_code: 郵便番号
         address: 住所
         tel: 電話番号
+      item:
+        name: 商品名
+        price: 単価
+        introduction: 内容

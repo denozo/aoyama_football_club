@@ -1,8 +1,9 @@
 class Item < ApplicationRecord
   
-  validates :name, presence: true, length: { maximum: 30 }
-  validates :introduction, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 40 }
   validates :price, numericality: { only_integer: true }
+  validates :introduction, presence: true, length: { maximum: 200 }
+  validates :image_id, presence: true
 
   has_many :cart_items
   has_many :order_details

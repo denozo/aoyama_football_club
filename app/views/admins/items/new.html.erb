@@ -1,59 +1,59 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class="">アイテムの登録</h4>
-  </div>
-  <div class="container admins_item_new">
-    <%= form_with model: @item, url: "/admins/items", local:true do |f| %>
-    <!--お知らせ登録フォーム-->
-      <!--アイテム名-->
-      <div class="row">
-        <div class="col-10 col-md-12 form-group">
-          <%= f.label :name, "アイテム名", class: "form-label" %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-      </div>
-      <!--単価-->
-      <div class="row">
-        <div class="col-3 form-group">
-          <%= f.label :price, "単価(税抜)", class: "form-label" %>
-          <%= f.text_field :price, class: "form-control" %>
-        </div>
-      </div>
-      <!--内容-->
-      <div class="row">
-        <div class="col-10 col-md-12 form-group">
-          <%= f.label :introduction, "内容", class: "form-label" %>
-          <%= f.text_area :introduction, class: "form-control", rows: "20" %>
-        </div>
-      </div>
-      <!--写真-->
-      <div class="row">
-        <div class="col-10 col-md-12 form-group">
-          <%= f.label :image, "画像", class: "form-label" %>
-          <%= f.attachment_field :image %>
-        </div>
-      </div>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">アイテム登録</h2>
 
+  <!--応援グッズ投稿フォーム-->
+  <%= form_with model: @item, url: "/admins/items", local:true do |f| %>
+
+    <!--エラーメッセージ-->
+    <%= render 'layouts/error_messages', model: f.object %>
+
+    <!--アイテム名-->
+    <div class="row">
+      <div class="form-group col-md-8">
+        <%= f.label :name, "商品名", class: "form-label" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <!--単価-->
+    <div class="row">
+      <div class="form-group col-md-2">
+        <%= f.label :price, "単価(税抜)", class: "form-label" %>
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+    </div>
+    <!--内容-->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <%= f.label :introduction, "内容", class: "form-label" %>
+        <%= f.text_area :introduction, class: "form-control", rows: "20" %>
+      </div>
+    </div>
     <!--写真-->
-      <div class="row">
-        <div class="col-10 col-md-12 form-group">
-          <%= f.radio_button :is_active, Item.is_actives.key(true) %>
-          <%= f.label :is_active, Item.is_actives_i18n[:on_sale], class: "form-label" %>
-
-          <%= f.radio_button :is_active, Item.is_actives.key(false) %>
-          <%= f.label :is_active, Item.is_actives_i18n[:sales_stop], class: "form-label" %>
-        </div>
+    <div class="row">
+      <div class="col-10 col-md-12 form-group">
+        <%= f.label :image, "画像", class: "form-label" %>
+        <%= f.attachment_field :image %>
       </div>
-
-    <div class="row actions">
-      <%= f.submit "新規登録", class: "btn btn-success" %>
     </div>
 
-    <% end %>
-  </div>
+  <!--写真-->
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= f.radio_button :is_active, Item.is_actives.key(true) %>
+        <%= f.label :is_active, Item.is_actives_i18n[:on_sale], class: "form-label" %>
+
+        <%= f.radio_button :is_active, Item.is_actives.key(false) %>
+        <%= f.label :is_active, Item.is_actives_i18n[:sales_stop], class: "form-label" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+      <%= f.submit "変更を保存", class: "btn btn-outline-secondary m-3" %>
+      </div>
+    </div>
+
+  <% end %>
 
 </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>
