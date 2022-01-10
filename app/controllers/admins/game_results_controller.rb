@@ -42,8 +42,13 @@ class Admins::GameResultsController < ApplicationController
 
   def destroy
     game_result = GameResult.find(params[:id])
-    game_result.destroy
-    redirect_to admins_game_results_path
+    
+    if game_result.destroy
+      flash[:notice] = '削除されました。'
+      redirect_to admins_game_results_path
+    else
+      render :index
+    end
   end
   
   private

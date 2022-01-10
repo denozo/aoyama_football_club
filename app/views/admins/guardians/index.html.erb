@@ -1,43 +1,40 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class="">保護者一覧</h4>
-  </div>
+<section class="container mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">保護者一覧</h2>
+  
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
   <!--保護者登録一覧-->
-  <div class="container admins_guardians_list">
-    <div class="row">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>更新日</th>
-              <th>保護者氏名</th>
-              <th>続柄</th>
-              <th>生徒氏名</th>
-              <th>電話番号</th>
-              <th>メールアドレス</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @guardians.each do |guardian| %>
-            <tr>
-              <td><%= guardian.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
-              <td><%= guardian.last_name + '　' + guardian.first_name %></td>
-              <td><%= guardian.relationship %></td>
-              <td><%= guardian.member_name %></td>
-              <td><%= guardian.tel %></td>
-              <td><%= guardian.email %></td>
-              <td><%= link_to "詳細",  admins_guardian_path(guardian.id) %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>更新日</th>
+          <th>保護者氏名</th>
+          <th>続柄</th>
+          <th>生徒氏名</th>
+          <th>電話番号</th>
+          <th>メールアドレス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @guardians.each do |guardian| %>
+        <tr>
+          <td><%= guardian.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= guardian.last_name + '　' + guardian.first_name %></td>
+          <td><%= guardian.relationship %></td>
+          <td><%= guardian.member_name %></td>
+          <td><%= guardian.tel %></td>
+          <td><%= guardian.email %></td>
+          <td><%= link_to "詳細",  admins_guardian_path(guardian.id), class: "text-dark link-secondary" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-
+  <%= paginate @guardians %>
 </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>

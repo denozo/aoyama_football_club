@@ -7,6 +7,7 @@ ja:
       game_result: 試合結果
       information: お知らせ
       information_for_guardian: 保護者専用お知らせ
+      guardian: 保護者
     attributes:
       member:
         category: カテゴリ
@@ -41,3 +42,14 @@ ja:
         category: カテゴリ
         title: タイトル
         content: 内容
+      guardian:
+        last_name: 姓
+        first_name: 名
+        last_name_kana: セイ
+        first_name_kana: メイ
+        relationship: 続柄
+        member_name: 生徒氏名
+        year_of_enrollment: 入学年度
+        postal_code: 郵便番号
+        address: 住所
+        tel: 電話番号

@@ -1,65 +1,64 @@
-<section class="inner">
-  <!--セッションタイトル-->
-  <div class="section-ttl">
-    <h4 class="">保護者詳細</h4>
-  </div>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">保護者専用お知らせ詳細</h2>
+
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
   <!--保護者詳細内容-->
-  <div class="container admins_guardians_info">
-    <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="col-4">項目</th>
-            <th class="col-8">詳細</th>
-          </tr>
+  <div class="row justify-content-center bg-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-4">項目</th>
+          <th class="col-8">詳細</th>
+        </tr>
         </thead>
-        <tbody>
-          <tr>
-      			<td>保護者氏名</td>
-      			<td><%= @guardian.last_name + ' ' + @guardian.first_name %></td>
-          </tr>
-          <tr>
-      			<td>フリガナ</td>
-      			<td><%= @guardian.last_name_kana + ' ' + @guardian.first_name_kana %></td>
-          </tr>
-          <tr>
-      			<td>生徒氏名</td>
-      			<td><%= @guardian.member_name %></td>
-          </tr>
-          <tr>
-      			<td>入学年度</td>
-      			<td><%= @guardian.year_of_enrollment %></td>
-          </tr>
-          <tr>
-      			<td>続柄</td>
-      			<td><%= @guardian.relationship %></td>
-          </tr>
-          <tr>
-      			<td>郵便番号</td>
-      			<td><%= @guardian.postal_code %></td>
-          </tr>
-          <tr>
-      			<td>住所</td>
-      			<td><%= @guardian.address %></td>
-          </tr>
-          <tr>
-      			<td>電話番号</td>
-      			<td><%= @guardian.tel %></td>
-          </tr>
-          <tr>
-      			<td>メールアドレス</td>
-      			<td><%= @guardian.email %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="row">
-      <%= link_to "編集", edit_admins_guardian_path(@guardian.id), class: "btn btn-secondary" %>
-      <%= link_to "削除", admins_guardian_path(@guardian.id), method: :delete, "data-confirm" => "削除しますか?", class: "btn btn-danger" %>
-    </div>
+      <tbody>
+        <tr>
+    			<td>保護者氏名</td>
+    			<td><%= @guardian.last_name + ' ' + @guardian.first_name %></td>
+        </tr>
+        <tr>
+    			<td>フリガナ</td>
+    			<td><%= @guardian.last_name_kana + ' ' + @guardian.first_name_kana %></td>
+        </tr>
+        <tr>
+    			<td>生徒氏名</td>
+    			<td><%= @guardian.member_name %></td>
+        </tr>
+        <tr>
+    			<td>入学年度</td>
+    			<td><%= @guardian.year_of_enrollment %></td>
+        </tr>
+        <tr>
+    			<td>続柄</td>
+    			<td><%= @guardian.relationship %></td>
+        </tr>
+        <tr>
+    			<td>郵便番号</td>
+    			<td><%= @guardian.postal_code %></td>
+        </tr>
+        <tr>
+    			<td>住所</td>
+    			<td><%= @guardian.address %></td>
+        </tr>
+        <tr>
+    			<td>電話番号</td>
+    			<td><%= @guardian.tel %></td>
+        </tr>
+        <tr>
+    			<td>メールアドレス</td>
+    			<td><%= @guardian.email %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+  <%= link_to "編集", edit_admins_guardian_path(@guardian.id), class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "削除",admins_guardian_path(@guardian.id), method: :delete, "data-confirm" => "表示されているお知らせを削除しますか?", class: "btn btn-outline-secondary text-danger m-3" %>
+  <%= link_to "戻る", admins_guardians_path, class: "btn btn-outline-secondary m-3" %>
+
 
 </section>
-
-<!--フッター-->
-<%= render '/layouts/footer' %>
