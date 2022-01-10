@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   #保護者
   namespace :guardians do
-    root to: 'homes#show'
+    root to: 'information_for_guardians#index'
     resources :homes, only:[:edit, :update]
     resources :information_for_guardians, only:[:index, :show] do
       resource :favorites, only: [:create, :destroy]

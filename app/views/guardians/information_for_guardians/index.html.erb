@@ -1,18 +1,30 @@
-<h1>保護者お知らせ一覧</h1>
+<section class="container mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">保護者専用お知らせ一覧</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>更新日</th>
-      <th>タイトル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @informationforguardians.each do |informationforguardian| %>
-    <tr>
-      <td><%= informationforguardian.updated_at %></td>
-      <td><%= link_to informationforguardian.title, guardians_information_for_guardian_path(informationforguardian.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <!--お知らせ一覧-->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>更新日</th>
+          <th>タイトル</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @informationforguardians.each do |informationforguardian| %>
+        <tr>
+          <td><%= informationforguardian.updated_at.strftime("%Y-%m-%d %H:%M")  %></td>
+          <td><%= informationforguardian.title %></td>
+          <td><%= link_to "詳細", guardians_information_for_guardian_path(informationforguardian.id), class: "text-dark link-secondary" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
+  <%= paginate @informationforguardians %>
+
+</section>

@@ -1,37 +1,26 @@
-<div class="container w-25">
-  <h2 class="section-ttl">保護者ログイン</h2>
-  
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
-  
-    <div class="field mb2">
-      <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="input_box shadow">
+      <h2 class="section-ttl col-md-12">保護者ログイン</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="field col-md-12">
+          <%= f.label :email, "メールアドレス", class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="field col-md-12">
+          <%= f.label :password, "パスワード", class: "form-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+
+        <div class="actions col-2">
+          <%= f.submit "ログイン", class: "btn btn-outline-secondary m-3" %>
+        </div>
+      <% end %>
     </div>
-  
-    <div class="field mb2">
-      <%= f.label :password, "パスワード" %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-  
-  
-  
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
-  
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
-  <% end %>
+  </div>
   
   <%= render "guardians/shared/links" %>
   
-</div>
-
-
-<!--フッター-->
-<%= render '/layouts/footer' %>
+</section>

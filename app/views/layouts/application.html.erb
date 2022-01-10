@@ -19,6 +19,9 @@
           <% if admin_signed_in? %>
             <a href="/admins", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
             <span>管理者でログイン中</span>
+          <% elsif%>
+            <a href="/guardians", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
+            <span>保護者専用ページにログイン中</span>
           <% else%>
             <a href="/", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部" style="width: 250px; height: 150px;"></a>
           <% end %>
@@ -38,7 +41,14 @@
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
                 </li>
-              <% else%>
+              <% elsif guardian_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "保護者専用お知らせ",  guardians_information_for_guardians_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_guardian_session_path, method: :delete, class: 'nav-link text-dark' %>
+                </li>
+              <% else %>
                 <li class="nav-item">
                   <%= link_to "サッカー部について", about_path, class: 'nav-link text-dark' %>
                 </li>
