@@ -31,6 +31,12 @@ body {
 
 }
 
+//マウスオーバー時のリンク下線リセット
+a:hover {
+  text-decoration: none;
+}
+
+
 //エラーメッセージレイアウト
 .error-message {
   background-color: #fadbda;
@@ -135,4 +141,25 @@ ul {
 .simple-calendar table th,
 .simple-calendar table td,{
   border-color: #fff;
+}
+
+ /*選手・スタッフ紹介カードビューレイアウト*/
+ 
+.member-content {
+  .card-body {
+    background-color: #193278;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .card-subtitle {
+    background-color: #fff;
+    color: #333333;
+    padding: 3px;
+    border-radius: 3px;
+  }
+  
+  .card-title {
+    margin: 5px 0 0 0;
+  }
 }

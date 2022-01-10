@@ -1,2 +1,30 @@
-<h1>Informations#show</h1>
-<p>Find me in app/views/informations/show.html.erb</p>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3"><%= @information.title %></h2>
+
+  <!--お知らせ詳細-->
+  <div class="row justify-content-center m-5">
+    <%= attachment_image_tag  @information, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
+  </div>
+
+  <div class="roe justify-content-center bg-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-4">項目</th>
+          <th class="col-8">詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    			<td>カテゴリー</td>
+    			<td><%= @information.category_i18n %></td>
+        </tr>
+        <tr>
+    			<td>内容</td>
+    			<td><%= simple_format(@information.content) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

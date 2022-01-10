@@ -10,7 +10,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
-  
+
   <body>
     <!--フッターコンテンツ-->
     <header style="background-color: #f0821e;">
@@ -19,21 +19,21 @@
           <% if admin_signed_in? %>
             <a href="/admins", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
             <span>管理者でログイン中</span>
-          <% elsif%>
+          <% elsif guardian_signed_in? %>
             <a href="/guardians", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
             <span>保護者専用ページにログイン中</span>
-          <% else%>
+          <% else %>
             <a href="/", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部" style="width: 250px; height: 150px;"></a>
           <% end %>
         </div>
-    
+
         <!--ナビゲーションバー-->
         <nav class="navbar navbar-expand-md navbar-dark sticky-top">
           <!--切り替えボタン-->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-    
+
           <!--ナビゲーション-->
           <div class="collapse navbar-collapse" id="navbar-content">
             <ul class="row navbar-nav mr-auto">
@@ -43,7 +43,7 @@
                 </li>
               <% elsif guardian_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "保護者専用お知らせ",  guardians_information_for_guardians_path, class: 'nav-link text-dark' %>
+                  <%= link_to "登録情報", guardians_home_path(current_guardian), class: 'nav-link text-dark' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_guardian_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -54,6 +54,9 @@
                 </li>
                 <li class="nav-item">
                   <%= link_to "選手・スタッフ", members_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "OB紹介", members_path, class: 'nav-link text-dark' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "お知らせ", informations_path, class: 'nav-link text-dark' %>
@@ -118,6 +121,6 @@
       </div>
     </footer>
   </body>
-  
+
 
 </html>

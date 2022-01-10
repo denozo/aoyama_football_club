@@ -1,2 +1,31 @@
-<h1>Informations#index</h1>
-<p>Find me in app/views/informations/index.html.erb</p>
+<section class="container mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">お知らせ一覧</h2>
+
+  <div class="main_info container">
+    <div class="row justify-content-around">
+      <% @informations.each do |information| %>
+        <!--カードの枠-->
+        <%= link_to information_path(information.id) do %>
+        <article class="card mt-4 shadow" style="max-width: 20rem;">
+            <!--カード本文-->
+            <div class="card-body">
+                <!--カードの副見出し-->
+                <h7 class="card-subtitle text-dark text-decoration-none"><%= "<" + information.category_i18n + ">" %></h6>
+                <!--カードの見出し-->
+                <h6 class="card-title text-dark link-secondary"><%= information.title %></h4>
+                <!--カードの内容文--->
+                <p class="card-text"></p>
+            </div>
+            <!--カード下部に画像を表示-->
+            
+              <%= attachment_image_tag information, :image, class: "card-img-button" %>
+        </article>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <%= paginate @informations %>
+
+</section>

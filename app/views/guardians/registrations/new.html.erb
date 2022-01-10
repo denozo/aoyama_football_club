@@ -1,80 +1,105 @@
-<h2>保護者登録画面</h2>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">保護者アカウント</h2>
 
-<%= form_with model: @guardian, url: '/guardians', local: true do |f| %>
+  <!--保護者登録フォーム-->
+  <%= form_with model: @guardian, url: '/guardians', local: true do |f| %>
 
-<div class="field">
-    <%= f.label :last_name, "姓" %><br />
-    <%= f.text_field :last_name %>
-  </div>
+    <!--エラーメッセージ-->
+    <%= render 'layouts/error_messages', model: f.object %>
 
-  <div class="field">
-    <%= f.label :first_name, "名" %><br />
-    <%= f.text_field :first_name %>
-  </div>
+    <!--氏名-->
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= f.label :last_name, "姓", class: "form-label" %>
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.label :first_name, "名", class: "form-label" %>
+        <%= f.text_field :first_name, class: "form-control" %>
+      </div>
+    </div>
+    <!--フリガナ-->
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= f.label :last_name_kana, "セイ", class: "form-label" %>
+        <%= f.text_field :last_name_kana, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.label :first_name_kana, "メイ", class: "form-label" %>
+        <%= f.text_field :first_name_kana, class: "form-control" %>
+      </div>
+    </div>
+    <!--生徒氏名・入学年度・続柄-->
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= f.label :member_name, "生徒氏名", class: "form-label" %>
+        <%= f.text_field :member_name, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-3">
+        <%= f.label :year_of_enrollment, "入学年度", class: "form-label" %>
+        <%= f.text_field :year_of_enrollment, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-3">
+        <%= f.label :relationship, "続柄", class: "form-label" %>
+        <%= f.text_field :relationship, class: "form-control" %>
+      </div>
+    </div>
+    <!--郵便番号-->
+    <div class="row">
+      <div class="form-group col-md-3">
+        <%= f.label :postal_code, "郵便番号", class: "form-label" %>
+        <%= f.text_field :postal_code, class: "form-control" %>
+      </div>
+    </div>
+    <!--住所-->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <%= f.label :address, "住所", class: "form-label" %>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+    </div>
+    <!--電話番号-->
+    <div class="row">
+      <div class="form-group col-md-4">
+        <%= f.label :tel, "電話番号", class: "form-label" %>
+        <%= f.text_field :tel, class: "form-control" %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="form-group col-md-12">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :last_name_kana, "セイ" %><br />
-    <%= f.text_field :last_name_kana %>
-  </div>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :first_name_kana, "メイ" %><br />
-    <%= f.text_field :first_name_kana %>
-  </div>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :relationship, "続柄" %><br />
-    <%= f.text_field :relationship %>
-  </div>
+    <div class="row">
+      <div class="form-group">
+      <%= f.submit "新規登録", class: "btn btn-outline-secondary m-3" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :member_name, "生徒氏名" %><br />
-    <%= f.text_field :member_name %>
-  </div>
+  <% end %>
+  
+  
+  既に登録している方は<%= link_to "こちら", new_guardian_session_path %>からログインしてください。
 
-  <div class="field">
-    <%= f.label :year_of_enrollment, "入学年度" %><br />
-    <%= f.text_field :year_of_enrollment %>
-  </div>
-
-  <div class="field">
-    <%= f.label :postal_code, "郵便番号" %><br />
-    <%= f.text_field :postal_code %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address, "住所" %><br />
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :tel, "電話番号" %><br />
-    <%= f.text_field :tel %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-
-<% end %>
-
-
-<%= link_to "こちら", new_guardian_session_path %>　からログインしてください。
+</section>

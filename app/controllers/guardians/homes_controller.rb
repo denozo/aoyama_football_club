@@ -1,7 +1,7 @@
 class Guardians::HomesController < ApplicationController
-  
+
     before_action :authenticate_guardian!
-  
+
 
   def show
    @guardian = current_guardian
@@ -13,8 +13,13 @@ class Guardians::HomesController < ApplicationController
 
   def update
     guardian = current_guardian
-    guardian.update(guardian_params)
-    redirect_to guardians_root_path
+
+    if guardian.update(guardian_params)
+      flash[:notice] = '変更を保存しました。'
+      redirect_to guardians_home_path
+    else
+      render :index
+    end
   end
 
   private

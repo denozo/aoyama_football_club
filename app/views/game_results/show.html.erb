@@ -1,2 +1,41 @@
-<h1>GameResults#show</h1>
-<p>Find me in app/views/game_results/show.html.erb</p>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3"><%= @game_result.game_title %></h2>
+  
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
+  <!--試合結果詳細-->
+  <div class="row justify-content-center m-5">
+    <%= attachment_image_tag  @game_result, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
+  </div>
+
+  <!--OB詳細説明-->
+  <div class="roe justify-content-center bg-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-4">項目</th>
+          <th class="col-8">詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    			<td>大会名</td>
+    			<td><%= @game_result.tournament_name %></td>
+        </tr>
+        <tr>
+    			<td>開催日</td>
+    			<td><%= @game_result.event_date.strftime("%Y-%m-%d") %></td>
+        </tr>
+        <tr>
+    			<td>結果内容</td>
+    			<td><%= simple_format(@game_result.results_details) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>

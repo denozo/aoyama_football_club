@@ -1,7 +1,7 @@
 class InformationsController < ApplicationController
 
   def index
-    @informations = Information.all
+    @informations = Information.page(params[:page]).per(10)
   end
 
   def show

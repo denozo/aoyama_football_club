@@ -1,41 +1,41 @@
-<div class="container">
-    <h4 class="m-5">スタッフ・選手詳細</h4>
-</div>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">スタッフ・選手詳細</h2>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <!--メンバー画像-->
-    <div class="col">
-      <%= attachment_image_tag @member, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
-    </div>
-    <!--メンバー詳細説明-->
-    <div class="col font-weight-bold pt-5">
-      <label>氏名：</label>
-      <%= @member.last_name + " " + @member.first_name %>
-      <br>
-      <label>学年：</label>
-      <%= @member.grade_i18n %>
-      <br>
-      <label>ポジション：</label>
-      <%= @member.position %>
-      <br>
-      <label>身長：</label>
-      <%= @member.height %>
-      <br>
-      <label>体重：</label>
-      <%= @member.weight %>
-      <br>
-      <label>出身チーム：</label>
-      <%= @member.original_team %>
-      <br>
-      <label>趣味：</label>
-      <%= @member.hobby %>
-      <br>
-      <label>目標：</label>
-      <%= @member.goal %>
+  <div class="bg-light">
+    <div class="row justify-content-center">
+      <!--メンバー画像-->
+      <div class="col-md-6 col-sm-12">
+        <%= attachment_image_tag @member, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
+      </div>
+      <!--メンバー詳細説明-->
+      <div class="col-md-6 col-sm-12 font-weight-bold pt-5">
+        <label>氏名：</label>
+        <%= @member.last_name + " " + @member.first_name %>
+        <br>
+        <label>学年：</label>
+        <%= @member.grade_i18n %>
+        <br>
+        <label>ポジション：</label>
+        <%= @member.position %>
+        <br>
+        <label>身長：</label>
+        <%= @member.height %>
+        <br>
+        <label>体重：</label>
+        <%= @member.weight %>
+        <br>
+        <label>出身チーム：</label>
+        <%= @member.original_team %>
+        <br>
+        <label>趣味：</label>
+        <%= @member.hobby %>
+        <br>
+        <label>目標：</label>
+        <%= @member.goal %>
+      </div>
     </div>
   </div>
-</div>
 
-<!--フッター-->
-<%= render '/layouts/footer' %>
+  <%= link_to "戻る", members_path, class: "btn btn-outline-secondary m-3" %>
+</section>
