@@ -1,12 +1,27 @@
-<%= link_to "予定を追加", new_admins_event_path %>
+<section class="container mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">スケジュール管理</h2>
+  
+    <!--スケジュール追加画面へのリンク-->
+  <div>
+    <%= link_to "スケジュールを登録する", new_admins_event_path, class: "btn btn-outline-secondary m-3" %>
+  </div>
+  
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
 
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>
   
   <% events.each do |event| %>
     <div>
-      <%= link_to event.title, admins_event_path(event.id) %>
+      <%= link_to event.title, admins_event_path(event.id), class: "text-dark link-secondary" %>
     </div>
   <% end %>
   
 <% end %>
+
+</section>

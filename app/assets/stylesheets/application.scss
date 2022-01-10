@@ -73,7 +73,6 @@ ul {
 }
 
 
-
  //管理者ログイン画面レイアウト
 .input_box {
   background-color: white;
@@ -97,4 +96,43 @@ ul {
 /*ボタン箇所のマージン統一*/
 .btn {
   margin: 10px;
+}
+
+
+/*simplecalendarカスタマイズ*/
+
+/*角丸設定*/
+.simple-calendar table {
+  border: 0;
+  border-collapse: separate;
+  border-radius: 10px 10px 0 0;
+  border-spacing: 0;
+  thead {
+    border-color: #fff;
+    background-color: #193278;
+    color: #fff;
+    th:first-child{
+      border-radius: 10px 0 0 0;
+    }
+    th:last-child {
+      border-radius: 0 10px 0 0;
+    }
+  }
+}
+
+/*土日の背景カラー変更*/
+.simple-calendar table {
+  tbody {
+    td:nth-child(6){
+      background-color: #d3def1;
+    }
+    td:last-child{
+      background-color: #fadbda;
+    }
+  }
+}
+
+.simple-calendar table th,
+.simple-calendar table td,{
+  border-color: #fff;
 }

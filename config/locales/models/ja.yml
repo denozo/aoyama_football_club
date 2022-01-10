@@ -9,6 +9,7 @@ ja:
       information_for_guardian: 保護者専用お知らせ
       guardian: 保護者
       item: 応援グッズ
+      event: スケジュール
     attributes:
       member:
         category: カテゴリ
@@ -58,3 +59,8 @@ ja:
         name: 商品名
         price: 単価
         introduction: 内容
+      event:
+        title: スケジュールタイトル
+        start_time: 開始時間
+        end_time: 終了時間
+        content: 内容

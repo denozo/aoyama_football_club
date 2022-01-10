@@ -11,10 +11,11 @@ class Admins::EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(event_params)
+    @event = Event.new(event_params)
     
-    if event.save
-      redirect_to admins_events_path, notice: "予定を登録しました"
+    if @event.save
+      flash[:notice] = '新規登録されました。'
+      redirect_to admins_events_path
     else
       render :new
     end
@@ -30,10 +31,11 @@ class Admins::EventsController < ApplicationController
   end
   
   def update
-    event = Event.find(params[:id])
+    @event = Event.find(params[:id])
     
-    if event.update(event_params)
-      redirect_to admins_event_path(event), notice: "予定を変更しました"
+    if @event.update(event_params)
+      flash[:notice] = '変更を保存しました。'
+      redirect_to admins_event_path(@event)
     else
       render :edit
     end
@@ -42,8 +44,14 @@ class Admins::EventsController < ApplicationController
 
   def destroy
     event = Event.find(params[:id])
-    event.destroy
-    redirect_to admins_events_path
+    
+    if event.destroy
+      flash[:notice] = '削除されました。'
+      redirect_to admins_events_path
+    else
+      render :index
+    end
+
   end
   
   private

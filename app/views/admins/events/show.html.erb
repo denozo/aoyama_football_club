@@ -1,17 +1,40 @@
-<h1>予定詳細</h1>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">スケジュール詳細</h2>
 
-<div>
-  <%= @event.title %>
-</div>
-<div>
-  <%= @event.start_time %>
-</div>
-<div>
-  <%= @event.end_time %>
-</div>
-<div>
-  <%= @event.content %>
-</div>
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
 
-<%= link_to "編集", edit_admins_event_path(@event.id) %>
-<%= link_to "削除", admins_event_path(@event.id), method: :delete, "data-confirm" => "削除しますか？" %>
+  <div class="row justify-content-center bg-light">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th class="col-4">項目</th>
+          <th class="col-8">内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    			<td>スケジュールタイトル</td>
+    			<td><%= @event.title %></td>
+        </tr>
+        <tr>
+    			<td>開始日時</td>
+    			<td><%= @event.start_time %></td>
+        </tr>
+        <tr>
+    			<td>お問い合わせ内容</td>
+    			<td><%= simple_format(@event.content) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <%= link_to "編集", edit_admins_event_path(@event.id), class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "削除", admins_event_path(@event.id), method: :delete, "data-confirm" => "表示されているメンバーを削除しますか?", class: "btn btn-outline-secondary text-danger m-3" %>
+  <%= link_to "戻る", admins_events_path, class: "btn btn-outline-secondary m-3" %>
+
+</section>
