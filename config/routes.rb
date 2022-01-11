@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :members, only:[:index, :show]
   resources :informations, only:[:index, :show]
   resources :game_results, only:[:index, :show]
+  resources :graduates, only:[:index, :show]
   resources :events, only:[:index, :show]
   resources :items, only: [:index, :show]
   resources :cart_items, only: [:index, :update, :destroy, :create] do

@@ -4,27 +4,25 @@
 
   <div class="main_info container">
     <div class="row justify-content-around">
-      <% @game_results.each do |game_result| %>
+      <% @graduates.each do |graduate| %>
         <!--カードの枠-->
-        <%= link_to game_result_path(game_result.id) do %>
+        <%= link_to graduate_path(graduate.id) do %>
           <article class="card mt-4 shadow" style="max-width: 20rem;">
             <!--カード本文-->
             <div class="card-body">
-                <!--カードの副見出し-->
-                <h7 class="card-subtitle text-dark text-decoration-none"><%= game_result.game_title %></h6>
                 <!--カードの見出し-->
-                <h6 class="card-title text-dark link-secondary"><%= game_result.game_title %></h4>
+                <h6 class="card-title text-dark link-secondary"><%= graduate.year %></h4>
                 <!--カードの内容文--->
                 <p class="card-text"></p>
             </div>
             <!--カード下部に画像を表示-->
-            <%= attachment_image_tag game_result, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300', class: "card-img-button" %>
+            <%= attachment_image_tag graduate, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300', class: "card-img-button" %>
           </article>
         <% end %>
       <% end %>
     </div>
   </div>
   
-  <%= paginate @game_results %>
+  <%= paginate @graduates %>
 
 </section>

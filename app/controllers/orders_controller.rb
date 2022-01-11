@@ -6,25 +6,27 @@ class OrdersController < ApplicationController
 
   def confirm
 
-    #カート内の値を取得
-    @cart_items = current_cart.cart_items
+    @order = Order.new(order_params)
     
+    #バリデーションチェックでnewに遷移
+    render :new if @order.invalid?
+  
+    # カート内の値を取得
+    @cart_items = current_cart.cart_items
 
-    # 個数合計
+    # 注文商品の個数を合計計算
     @amount_sum = 0
     @cart_items.each do |cart_item|
       @amount_sum += cart_item.amount
     end
-
-    # 合計金額の計算
+    
+    # 注文商品の小計を合計計算
     @sum = 0
     @cart_items.each do |cart_item|
       @sum += cart_item.subtotal
     end
 
-    #請求金額の計算(商品合計＋送料)
-
-    @order = Order.new(order_params)
+    # 送料を含む支払額を合計
     total_payment = @sum + 800
     @order.total_payment = total_payment.to_i
     @order.shipping_cost = 800
@@ -34,7 +36,7 @@ class OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.save
-    
+
     cart_items = current_cart.cart_items
       cart_items.each do |cart_item|
         order_details = OrderDetail.new
@@ -44,14 +46,14 @@ class OrdersController < ApplicationController
         order_details.amount = cart_item.amount
         order_details.save
       end
-    
+
     cart_items = current_cart.cart_items
     cart_items.destroy_all
-    
+
     redirect_to thanks_orders_path
-    
+
   end
-  
+
   def thanks
   end
 

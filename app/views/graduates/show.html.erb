@@ -1,0 +1,37 @@
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">OB詳細</h2>
+
+  <!--OB詳細内容-->
+  <!--OB画像-->
+  <div class="row justify-content-center m-5">
+    <%= attachment_image_tag  @graduate, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
+  </div>
+  <!--OB詳細説明-->
+  <div class="roe justify-content-center bg-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-2">項目</th>
+          <th class="col-10">詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    			<td>卒業年度</td>
+    			<td><%= @graduate.year %></td>
+        </tr>
+        <tr>
+    			<td>メンバー一覧</td>
+    			<td><%= simple_format(@graduate.member_list) %></td>
+        </tr>
+        <tr>
+        <tr>
+    			<td>主な進路</td>
+    			<td><%= simple_format(@graduate.career_after_graduation) %></td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+</section>

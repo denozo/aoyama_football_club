@@ -1,2 +1,35 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<section class="container col-md-5 mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">スケジュール詳細</h2>
+
+  <!-- サクセスメッセージの表示 -->
+  <p id="notice" class="text-danger">
+    <%= notice %>
+  </p>
+
+  <div class="row justify-content-center bg-light">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th class="col-4">項目</th>
+          <th class="col-8">内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    			<td>スケジュールタイトル</td>
+    			<td><%= @event.title %></td>
+        </tr>
+        <tr>
+    			<td>開始日時</td>
+    			<td><%= @event.start_time %></td>
+        </tr>
+        <tr>
+    			<td>お問い合わせ内容</td>
+    			<td><%= simple_format(@event.content) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>

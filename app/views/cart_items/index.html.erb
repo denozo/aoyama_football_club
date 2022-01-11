@@ -1,4 +1,6 @@
-<h1>カート内商品</h1>
+<section class="container mt-5">
+  <!--セクションタイトル-->
+  <h2 class="section-ttl row mb-3">カート内商品</h2>
 
 <p id="notice" class="font-weight-bold">
   <%= notice %> <!-- サクセスメッセージの表示 -->
@@ -40,6 +42,4 @@
 
 <%= link_to "注文内容入力に進む", new_order_path, class: "btn btn-success #{ 'activecolor' if @condition }" %>
 
-
-<!--フッター-->
-<%= render '/layouts/footer' %>
+</section>

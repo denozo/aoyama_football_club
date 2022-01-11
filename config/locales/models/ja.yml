@@ -10,6 +10,7 @@ ja:
       guardian: 保護者
       item: 応援グッズ
       event: スケジュール
+      orders: オーダー
     attributes:
       member:
         category: カテゴリ
@@ -64,3 +65,11 @@ ja:
         start_time: 開始時間
         end_time: 終了時間
         content: 内容
+      order:
+        name: 注文者氏名
+        product_passing: お渡しの方法
+        other: その他受取場所
+        postal_code: 配送先郵便番号
+        address: 配送先住所
+        addressee: 配送先宛名
+        payment_method: 支払方法
