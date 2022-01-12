@@ -6,14 +6,10 @@ class Order < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :product_passing, presence: true
-
-  if :product_passing == "delivery"
-    validates :postal_code, presence: true, format: { with: /\A\d{3}[-]?\d{4}\z/ }
-    validates :address, presence: true
-    validates :addressee, presence: true, length: { maximum: 50 }
-  else
-    validates :other, presence: true, length: { maximum: 20 }
-  end
+  validates :other, presence: true, length: { maximum: 20 }, if: -> { product_passing == "other"}
+  validates :postal_code, presence: true, format: { with: /\A\d{3}[-]?\d{4}\z/ }, if: -> { product_passing == "delivery"}
+  validates :address, presence: true, if: -> { product_passing == "delivery"}
+  validates :addressee, presence: true, length: { maximum: 50 }, if: -> { product_passing == "delivery"}
 
 
   validates :payment_method, presence: true
