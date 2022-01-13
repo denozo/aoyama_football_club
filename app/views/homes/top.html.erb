@@ -47,7 +47,9 @@
     
 <section>
     <div class="container">
-        <h4>お知らせ新着</h4>
+        <h3 class="row section-ttl justify-content-center">
+            <span>お知らせ新着</span>
+        </h3>
     </div>
 
   <div class="main_info container">
@@ -67,7 +69,7 @@
             </div>
             <!--カード下部に画像を表示-->
             
-              <%= attachment_image_tag information, :image, class: "card-img-button" %>
+              <%= attachment_image_tag information, :image, fallback: "noImage.jpg", class: "card-img-button" %>
         </article>
         <% end %>
       <% end %>

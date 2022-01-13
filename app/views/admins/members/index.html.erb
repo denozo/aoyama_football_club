@@ -6,7 +6,20 @@
   <div>
     <%= link_to "スタッフ・選手を登録する", new_admins_member_path, class: "btn m-3" %>
   </div>
-
+  
+  <%= form_with url: import_admins_members_path do |f| %>
+    <%= f.file_field :file, accept: '.csv' %>
+    <%= f.submit "アップロード" %>
+    
+    <% if @errors.present? %>
+      <% @errors.each do |error| %>
+        <% error[:message].each do |message| %>
+          <li><%= "#{error[:row_num]}行目 : #{message}" %></li>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+ 
   <!-- サクセスメッセージの表示 -->
   <p id="notice" class="text-danger">
     <%= notice %>

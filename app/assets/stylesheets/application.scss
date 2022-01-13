@@ -30,6 +30,20 @@ body {
   background-color: #f6f6f6;
 }
 
+// ヘッダーデザイン
+.nav-link {
+  color: #fff !important;
+  font-weight: bold;
+  padding: 10px;
+  border-right: 1px solid #3e3e3e;
+  transform: skewX(160deg);
+}
+
+.nav-link:hover {
+  color: #3e3e3e !important;
+}
+
+
 //マウスオーバー時のリンク下線リセット
 a:hover {
   text-decoration: none;
@@ -142,7 +156,7 @@ ul {
 
 .member-content {
   .card-body {
-    background-color: #193278;
+    background-color: #3e3e3e;
     color: #fff;
     padding: 10px;
   }
@@ -160,22 +174,13 @@ ul {
 }
 
 
-/*ヘッダーデザイン*/
-.nav-link {
-  color: #fff !important;
-  background-color: #3e3e3e;
-  padding: 0px;
-  margin: 2px;
-}
-
-
 .about-main {
   align-items: center;
 }
 
 
-.section-ttl > p {
-  background:linear-gradient(transparent 70%, #FFFF00 0%);
+.section-ttl span {
+    background:linear-gradient(transparent 70%, #FFFF00 0%);
 }
 
 
@@ -190,6 +195,7 @@ ul {
   color: #00b300;
 }
 // 閲覧者用リンクボタンの装飾ここまで
+
 
 
 .table th, .table td {

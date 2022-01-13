@@ -51,8 +51,11 @@ class Admins::MembersController < ApplicationController
     else
       render :index
     end
-
-
+  end
+  
+  def import
+    Member.import(params[:file])
+    redirect_to admins_members_path
   end
 
 

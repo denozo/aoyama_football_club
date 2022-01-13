@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   namespace :admins do
     root to: 'homes#top'
     resources :categories, only:[:index, :create, :edit, :update, :destroy]
-    resources :members
+    resources :members do
+      collection {post :import}
+    end
     resources :graduates
     resources :game_results
     resources :informations

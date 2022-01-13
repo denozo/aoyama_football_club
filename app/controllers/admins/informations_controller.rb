@@ -3,7 +3,13 @@ class Admins::InformationsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @informations = Information.page(params[:page]).per(10)
+
+    if params[:tag_name]
+      @informations = Information.tagged_with("#{params[:tag_name]}").page(params[:page]).per(10) #タグによる検索
+    else
+      @informations = Information.page(params[:page]).per(10) #タグ以外の場合
+    end
+    
   end
 
   def new
