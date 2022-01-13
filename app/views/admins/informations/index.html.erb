@@ -29,7 +29,7 @@
         <tr>
           <td><%= information.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= information.title %></td>
-          <td><%= information.tag_list %></td>
+          <td><%= render 'layouts/tag_list', tag_list: information.tag_list %></td>
           <td><%= link_to "詳細", admins_information_path(information.id), class: "text-dark link-secondary" %></td>
           <td><%= link_to "削除", admins_information_path(information.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
         </tr>
