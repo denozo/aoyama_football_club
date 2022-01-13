@@ -54,7 +54,7 @@ class Admins::InformationsController < ApplicationController
   private
 
   def information_params
-    params.require(:information).permit(:category, :title, :content, :image)
+    params.require(:information).permit(:category, :title, :content, :image, :tag_list)
   end
 
 end

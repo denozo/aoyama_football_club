@@ -1,24 +1,25 @@
-<section class="container col-md-5 mt-5">
+<section class="container mt-5">
   <!--セクションタイトル-->
   <h2 class="section-ttl row mb-3">お知らせ一覧</h2>
-  
+
   <!--メンバー追加画面へのリンク-->
   <div>
     <%= link_to "試合結果を登録する", new_admins_information_path, class: "btn btn-outline-secondary m-3" %>
   </div>
-  
+
   <!-- サクセスメッセージの表示 -->
   <p id="notice" class="text-danger">
     <%= notice %>
   </p>
-  
+
   <!--お知らせ一覧-->
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-light table-striped">
       <thead>
-        <tr>
+        <tr class="table-dark text-dark">
           <th>更新日</th>
           <th>タイトル</th>
+          <th>タグ</th>
           <th></th>
           <th></th>
         </tr>
@@ -28,6 +29,7 @@
         <tr>
           <td><%= information.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= information.title %></td>
+          <td><%= information.tag_list %></td>
           <td><%= link_to "詳細", admins_information_path(information.id), class: "text-dark link-secondary" %></td>
           <td><%= link_to "削除", admins_information_path(information.id), method: :delete, "data-confirm" => "削除しますか？", class: "text-danger" %></td>
         </tr>
@@ -35,7 +37,7 @@
       </tbody>
     </table>
   </div>
-  
+
   <%= paginate @informations %>
 
 </section>

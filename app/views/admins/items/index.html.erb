@@ -1,22 +1,22 @@
-<section class="container col-md-5 mt-5">
+<section class="container w-50 mt-5">
   <!--セクションタイトル-->
   <h2 class="section-ttl row mb-3">応援グッズ一覧</h2>
-  
+
   <!--応援グッズ追加画面へのリンク-->
   <div>
     <%= link_to "アイテム登録", new_admins_item_path, class: "btn btn-outline-secondary m-3" %>
   </div>
-  
+
   <!-- サクセスメッセージの表示 -->
   <p id="notice" class="text-danger">
     <%= notice %>
   </p>
-  
+
   <!--応援グッズ一覧-->
   <div class="table-responsive">
-    <table class="table">
-      <head>
-        <tr>
+    <table class="table table-light table-striped">
+      <thead>
+        <tr class="table-dark text-dark">
           <th>イメージ</th>
           <th>アイテム</th>
           <th>販売</th>
@@ -37,7 +37,7 @@
       </tbody>
     </table>
   </div>
-  
+
   <%= paginate @items %>
 
 </section>

@@ -27,8 +27,7 @@ body {
     "Hiragino Sans",
     Meiryo,
     sans-serif;
-  background-color: #eff2f8;
-
+  background-color: #f6f6f6;
 }
 
 //マウスオーバー時のリンク下線リセット
@@ -75,9 +74,6 @@ ul {
   color: #1a0b08;
 }
 
-.pagination {
-}
-
 
  //管理者ログイン画面レイアウト
 .input_box {
@@ -88,25 +84,21 @@ ul {
 }
 
 
-/*container幅を固定*/
-.about-main {
-  width: 640px;
-}
-
-/*見出しのマージン指定*/
-.about-main h2 {
-  margin-top: 20px;
-}
-
-
 /*ボタン箇所のマージン統一*/
 .btn {
   margin: 10px;
+  background-color: #3e3e3e;
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.7;
+  color: #fff;
 }
 
 
-/*simplecalendarカスタマイズ*/
 
+/*simplecalendarカスタマイズ*/
 /*角丸設定*/
 .simple-calendar table {
   border: 0;
@@ -129,6 +121,9 @@ ul {
 /*土日の背景カラー変更*/
 .simple-calendar table {
   tbody {
+    td{
+      background-color: #f5f5f5;
+    }
     td:nth-child(6){
       background-color: #d3def1;
     }
@@ -144,22 +139,65 @@ ul {
 }
 
  /*選手・スタッフ紹介カードビューレイアウト*/
- 
+
 .member-content {
   .card-body {
     background-color: #193278;
     color: #fff;
     padding: 10px;
   }
-  
+
   .card-subtitle {
     background-color: #fff;
     color: #333333;
     padding: 3px;
     border-radius: 3px;
   }
-  
+
   .card-title {
     margin: 5px 0 0 0;
   }
+}
+
+
+/*ヘッダーデザイン*/
+.nav-link {
+  color: #fff !important;
+  background-color: #3e3e3e;
+  padding: 0px;
+  margin: 2px;
+}
+
+
+.about-main {
+  align-items: center;
+}
+
+
+.section-ttl > p {
+  background:linear-gradient(transparent 70%, #FFFF00 0%);
+}
+
+
+// 閲覧者用リンクボタンの装飾
+.link-item {
+  background-color: #333333;
+  color: #fff;
+  padding: 5px 7px 5px 7px;
+}
+
+.link-item:hover{
+  color: #00b300;
+}
+// 閲覧者用リンクボタンの装飾ここまで
+
+
+.table th, .table td {
+  border-top: none;
+}
+
+.table > tr {
+  border-left: none;
+  border-right: none;
+  border: #333333;
 }

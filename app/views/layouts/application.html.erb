@@ -13,65 +13,64 @@
 
   <body>
     <!--フッターコンテンツ-->
-    <header style="background-color: #f0821e;">
+    <header class="fixed-top" style="background-color: #E67E00;">
       <div class="row justify-content-around">
-        <div class="col-md-4 col-sm-12">
+        <div>
           <% if admin_signed_in? %>
-            <a href="/admins", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
-            <span>管理者でログイン中</span>
+            <a href="/admins", class="p-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
           <% elsif guardian_signed_in? %>
-            <a href="/guardians", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
-            <span>保護者専用ページにログイン中</span>
+            <a href="/guardians", class="p-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
+            <span class="text-light">保護者専用ページにログイン中</span>
           <% else %>
-            <a href="/", class="pr-5"><img src="/assets/logo.png" alt="青山高校サッカー部" style="width: 250px; height: 150px;"></a>
+            <a href="/", class="p-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
           <% end %>
         </div>
 
         <!--ナビゲーションバー-->
-        <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light sticky-top">
           <!--切り替えボタン-->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <!--ナビゲーション-->
           <div class="collapse navbar-collapse" id="navbar-content">
-            <ul class="row navbar-nav mr-auto">
+            <ul class="row navbar-nav">
               <% if admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+                  <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
                 </li>
               <% elsif guardian_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "登録情報", guardians_home_path(current_guardian), class: 'nav-link text-dark' %>
+                  <%= link_to "登録情報", guardians_home_path(current_guardian), class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_guardian_session_path, method: :delete, class: 'nav-link text-dark' %>
+                  <%= link_to "ログアウト", destroy_guardian_session_path, method: :delete, class: 'nav-link' %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "サッカー部について", about_path, class: 'nav-link text-dark' %>
+                  <%= link_to "サッカー部について", about_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "選手・スタッフ", members_path, class: 'nav-link text-dark' %>
+                  <%= link_to "選手・スタッフ", members_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "OB紹介", graduates_path, class: 'nav-link text-dark' %>
+                  <%= link_to "OB紹介", graduates_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "お知らせ", informations_path, class: 'nav-link text-dark' %>
+                  <%= link_to "お知らせ", informations_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "スケジュール", events_path, class: 'nav-link text-dark' %>
+                  <%= link_to "スケジュール", events_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "試合結果", game_results_path, class: 'nav-link text-dark' %>
+                  <%= link_to "試合結果", game_results_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "応援グッズ", items_path, class: 'nav-link text-dark' %>
+                  <%= link_to "応援グッズ", items_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "保護者専用", guardians_information_for_guardians_path, class: 'nav-link text-dark' %>
+                  <%= link_to "保護者専用", guardians_information_for_guardians_path, class: 'nav-link' %>
                 </li>
               <% end %>
             </ul>
@@ -80,9 +79,11 @@
       </div>
     </header>
     <!--メインコンテンツ-->
-    <%= yield %>
+    <body style="padding-top: 7rem">
+      <%= yield %>
+    </body>
     <!--フッターコンテンツ-->
-    <footer class="footer mt-5 p-2" style="background-color: #3e3e3e; color: #fff;">
+    <footer class="footer mt-5 p-2" style="background-color: #E67E00; color: #fff;">
       <div class="container-fluid">
         <!--所在地-->
         <div class="row justify-content-center mt-5">

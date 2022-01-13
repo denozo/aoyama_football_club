@@ -4,7 +4,7 @@
 
   <!--お知らせ登録フォーム-->
   <%= form_with model: @information, url: "/admins/informations/#{@information.id}", local:true do |f| %>
-  
+
   <!--エラーメッセージ-->
   <%= render 'layouts/error_messages', model: f.object %>
 
@@ -33,6 +33,13 @@
       <div class="form-group col-md-12">
         <%= f.label :content, "内容", class: "form-label" %>
         <%= f.text_area :content, class: "form-control", rows: "20" %>
+      </div>
+    </div>
+    <!--タグ付け-->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <%= f.label :tag_list, "タグ付け", class: "form-label" %>
+        <%= f.text_field :tag_list, value: @information.tag_list.join(','), class: "form-control" %>
       </div>
     </div>
     <!--写真-->

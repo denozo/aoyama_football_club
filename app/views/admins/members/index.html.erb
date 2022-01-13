@@ -4,7 +4,7 @@
 
   <!--メンバー追加画面へのリンク-->
   <div>
-    <%= link_to "スタッフ・選手を登録する", new_admins_member_path, class: "btn btn-outline-secondary m-3" %>
+    <%= link_to "スタッフ・選手を登録する", new_admins_member_path, class: "btn m-3" %>
   </div>
 
   <!-- サクセスメッセージの表示 -->
@@ -14,13 +14,12 @@
 
   <!--メンバー一覧-->
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-light table-striped">
       <thead>
-        <tr>
+        <tr class="table-dark text-dark">
           <th>氏名</th>
           <th>学年</th>
           <th>カテゴリ</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
