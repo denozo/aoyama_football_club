@@ -1,35 +1,33 @@
-<section class="container col-md-5 mt-5">
+<section class="container p-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row justify-content-center mb-3"><p>試合結果一覧</p></h2>
-  
-  <div class="row">
-    <!--メンバー一覧-->
-    <div class="table-responsive">
-      <table class="table">
-        <!--<head>-->
-        <!--  <tr class="table-dark text-dark">-->
-        <!--    <th>開催日</th>-->
-        <!--    <th>大会名</th>-->
-        <!--    <th>試合名</th>-->
-        <!--    <th></th>-->
-        <!--  </tr>-->
-        <!--</head>-->
-        <tbody>
-          <% @game_results.each do |game_result| %>
-          <tr>
-            <td><%= game_result.event_date.strftime("%Y-%m-%d") %></td>
-            <td><%= game_result.tournament_name %></td>
-            <td><%= game_result.game_title %></td>
-            <td><%= link_to "詳細", game_result_path(game_result.id), class: "link-item" %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>試合結果</span>
+  </h3>
+
+  <div class="main_info container">
+    <div class="row justify-content-around">
+      <%@game_results.each do |game_result| %>
+        <!--カードの枠-->
+        <%= link_to game_result_path(game_result.id) do %>
+          <article class="card mt-4 shadow" style="max-width: 20rem;">
+            <!--カード本文-->
+            <div class="card-body">
+                <!--カードの見出し-->
+                <h6 class="card-title text-dark font-weight-bold"><span class="alert-success"><%= game_result.event_date.strftime("%Y-%m-%d") %></span></h4>
+                <!--カードの内容文--->
+                <p class="card-text"></p>
+            </div>
+            <!--カード下部に画像を表示-->
+            <%= attachment_image_tag game_result, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300', class: "card-img-button" %>
+          </article>
+        <% end %>
+      <% end %>
     </div>
-    
   </div>
   
-  
-  <%= paginate @game_results %>
+  <!--ページネーション-->
+  <div class="row justify-content-center mt-5">
+    <%= paginate @game_results %>
+  </div>
 
 </section>

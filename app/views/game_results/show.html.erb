@@ -1,11 +1,8 @@
 <section class="container col-md-5 mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3"><%= @game_result.game_title %></h2>
-  
-  <!-- サクセスメッセージの表示 -->
-  <p id="notice" class="text-danger">
-    <%= notice %>
-  </p>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span><%= @game_result.game_title %></span>
+  </h3>
 
   <!--試合結果詳細-->
   <div class="row justify-content-center m-5">
@@ -17,8 +14,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="col-4">項目</th>
-          <th class="col-8">詳細</th>
+          <th class="col-3">項目</th>
+          <th class="col-">詳細</th>
         </tr>
       </thead>
       <tbody>

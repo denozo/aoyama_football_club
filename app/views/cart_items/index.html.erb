@@ -1,45 +1,59 @@
 <section class="container mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">カート内商品</h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>カート内商品</span>
+  </h3>
 
-<p id="notice" class="font-weight-bold">
-  <%= notice %> <!-- サクセスメッセージの表示 -->
-</p>
-
-<%= link_to 'カートを空にする', destroyall_cart_items_path, class: 'Dastroy btn btn-danger', method: :delete, "data-confirm" => "カートを空にする？" %>
-
-<table>
-  <thead>
-    <tr>
-      <th>イメージ</th>
-      <th>商品名</th>
-      <th>単価</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
-    <tr>
-      <td><%= attachment_image_tag cart_item.item, :image, :fill, 150, 100 %></td>
-      <td><%= cart_item.item.name %></td>
-      <td><%= cart_item.item.with_tax_price.to_s(:delimited) + "円" %></td>
-      <td>
-        <%= form_with model: @cart_item, url: cart_item_path(cart_item.id), method: :patch, loacl:true do |f| %>
-          <%= f.select :amount, *[1..10],include_blank: " 個数選択 ", selected: cart_item.amount %>
-          <%= f.submit '変更', class: "btn btn-success" %>
-        <% end %>
-      </td>
-      <td><%= cart_item.subtotal.to_s(:delimited) + "円" %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<p><%= "数量：" + @amount_sum.to_s(:delimited) + "個" %></p>
-<p><%= "合計：" + @sum.to_s(:delimited) + "円" %></p>
-
-<%= link_to "注文内容入力に進む", new_order_path, class: "btn btn-success #{ 'activecolor' if @condition }" %>
+  <div class="container">
+    <!-- サクセスメッセージの表示 -->
+    <div class="row">
+      <p id="notice" class="font-weight-bold">
+        <%= notice %>
+      </p>
+    </div>
+    <!-- カートを空にする -->
+    <div class="row">
+      <%= link_to 'カートを空にする', destroyall_cart_items_path, class: 'Dastroy btn btn-danger', method: :delete, "data-confirm" => "カートを空にする？" %>
+    </div>
+    <!-- カート内商品一覧 -->
+    <div class="row justify-content-center">
+      <table class="cart_item m-5 table-responsive">
+        <thead>
+          <tr>
+            <th class="d-none d-sm-block">イメージ</th>
+            <th>商品名</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td class="d-none d-sm-block"><%= attachment_image_tag cart_item.item, :image, :fill, 150, 100 %></td>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.with_tax_price.to_s(:delimited) + "円" %></td>
+            <td>
+              <%= form_with model: @cart_item, url: cart_item_path(cart_item.id), method: :patch, loacl:true do |f| %>
+                <%= f.select :amount, *[1..10],include_blank: " 個数選択 ", selected: cart_item.amount %>
+                <%= f.submit '変更', class: "btn" %>
+              <% end %>
+            </td>
+            <td><%= cart_item.subtotal.to_s(:delimited) + "円" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <!-- 数量・金額合計 -->
+    <div class="row mb-5">
+      <%= "数量：" + @amount_sum.to_s(:delimited) + "個" %><br>
+      <%= "合計：" + @sum.to_s(:delimited) + "円" %>
+    </div>
+    <!-- 注文内容入力画面に進む-->
+    <div class="row">
+      <%= link_to "注文内容入力に進む", new_order_path, class: "btn #{'disabled' if @condition}" %>
+    </div>
+  </div>
 
 </section>

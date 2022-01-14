@@ -1,7 +1,7 @@
 class GraduatesController < ApplicationController
-  
+
   def index
-    @graduates = Graduate.page(params[:page]).per(10)
+    @graduates = Graduate.page(params[:page]).per(10).order(year: "DESC")
   end
 
   def show

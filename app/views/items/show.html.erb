@@ -1,32 +1,36 @@
-<section class="container">
-  <h2 class="section-ttl">アイテム詳細</h2>
-  <div class="flex">
-    <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
+<section class="container p-5">
+  <!--セクションタイトル-->
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span><%= @item.name %></span>
+  </h3>
+  
+  <div class="row justify-content-around">
     <div class="item_info">
-      <div>
-      <label>アイテム名：</label>
-      <%= @item.name %>
-      </div>
-
-      <div>
-      <label>価格：</label>
-      <%= @item.with_tax_price.to_s + "円(税込)" %>
-      </div>
-
-
-      <div>
-      <label>詳細：</label>
-      <%= @item.introduction %>
-      </div>
-
-      <%= form_with model: @cart_item, url:"/cart_items", loacl:true do |f| %>
-      <!--非表示-->
-      <%= f.hidden_field :item_id, value: @item.id %>
-      <!--個数-->
-      <%= f.select :amount, *[1..10],include_blank: " 個数選択 ", class: 'form-select m-3' %>
-      <!--カートボタン-->
-      <%= f.submit 'カートに入れる', class: 'btn btn-primary m-3' %>
+        <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
+        <!--詳細-->
+        <div class="m-3 font-weight-bold">
+          <label>< 詳細 ></label>
+        </div>
+        <div>
+          <%= @item.introduction %>
+        </div>
+        <!--価格-->
+        <div class="m-3 font-weight-bold">
+          <label>< 価格 ></label>
+        </div>
+        <div class="m-3">
+          <%= @item.with_tax_price.to_s + "円(税込)" %>
+        </div>
+    
+        <%= form_with model: @cart_item, url:"/cart_items", loacl:true do |f| %>
+        <!--非表示-->
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <!--個数-->
+        <%= f.select :amount, *[1..10],include_blank: " 個数選択 ", class: 'form-select m-3' %>
+        <!--カートボタン-->
+        <%= f.submit 'カートに入れる', class: "btn btn-outline-secondary" %>
       <% end %>
     </div>
   </div>
+
 </section>

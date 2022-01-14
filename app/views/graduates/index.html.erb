@@ -1,6 +1,8 @@
-<section class="container mt-5">
+<section class="container p-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">試合結果</h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>OB紹介</span>
+  </h3>
 
   <div class="main_info container">
     <div class="row justify-content-around">
@@ -11,7 +13,7 @@
             <!--カード本文-->
             <div class="card-body">
                 <!--カードの見出し-->
-                <h6 class="card-title text-dark link-secondary"><%= graduate.year %></h4>
+                <h6 class="card-title text-dark font-weight-bold"><span class="alert-success"><%= '卒業年度' + " " + graduate.year.to_s %></span></h4>
                 <!--カードの内容文--->
                 <p class="card-text"></p>
             </div>
@@ -22,7 +24,9 @@
       <% end %>
     </div>
   </div>
-  
-  <%= paginate @graduates %>
+    <!--ページネーション-->
+  <div class="row justify-content-center mt-5">
+    <%= paginate @graduates %>
+  </div>
 
 </section>

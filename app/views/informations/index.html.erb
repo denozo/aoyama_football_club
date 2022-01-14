@@ -1,6 +1,8 @@
 <section class="container mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">お知らせ一覧</h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>お知らせ一覧</span>
+  </h3>
 
   <div class="main_info container">
     <div class="row justify-content-around">
@@ -19,13 +21,16 @@
             </div>
             <!--カード下部に画像を表示-->
             
-              <%= attachment_image_tag information, :image, class: "card-img-button" %>
+              <%= attachment_image_tag information, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300', class: "card-img-button" %>
         </article>
         <% end %>
       <% end %>
     </div>
   </div>
   
-  <%= paginate @informations %>
+  <!--ページネーション-->
+  <div class="row justify-content-center mt-5">
+    <%= paginate @informations %>
+  </div>
 
 </section>

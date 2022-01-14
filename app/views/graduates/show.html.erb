@@ -1,6 +1,8 @@
-<section class="container col-md-5 mt-5">
+<section class="container">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">OB詳細</h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>OB詳細</span>
+  </h3>
 
   <!--OB詳細内容-->
   <!--OB画像-->
@@ -12,8 +14,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="col-2">項目</th>
-          <th class="col-10">詳細</th>
+          <th class="col-2"></th>
+          <th class="com-10"></th>
         </tr>
       </thead>
       <tbody>
@@ -22,7 +24,7 @@
     			<td><%= @graduate.year %></td>
         </tr>
         <tr>
-    			<td>メンバー一覧</td>
+    			<td>メンバー</td>
     			<td><%= simple_format(@graduate.member_list) %></td>
         </tr>
         <tr>
@@ -34,4 +36,5 @@
       </tbody>
     </table>
   </div>
+
 </section>

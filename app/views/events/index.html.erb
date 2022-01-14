@@ -1,8 +1,10 @@
 <section class="container mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">スケジュール管理</h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>スケジュール管理</span>
+  </h3>
 
-
+  <div
   <%= month_calendar events: @events do |date, events| %>
     <%= date.day %>
     <% events.each do |event| %>
