@@ -1,6 +1,8 @@
-<section class="container col-md-5 mt-5">
+<section class="container mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3"><%= @information.title %></h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span><%= @information.title %></span>
+  </h3>
 
   <!--お知らせ詳細-->
   <div class="row justify-content-center m-5">
@@ -11,8 +13,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="col-4">項目</th>
-          <th class="col-8">詳細</th>
+          <th class="col-3">項目</th>
+          <th class="col-9">詳細</th>
         </tr>
       </thead>
       <tbody>
@@ -27,4 +29,10 @@
       </tbody>
     </table>
   </div>
+  
+  <div class="row justify-content-end">
+    <%= link_to "戻る", informations_path, class: "btn btn-outline-secondary" %>
+  </div>
+  
+  
 </section>
