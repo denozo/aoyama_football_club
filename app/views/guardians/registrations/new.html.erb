@@ -1,6 +1,6 @@
 <section class="container col-md-5 mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">保護者アカウント</h2>
+  <h2 class="section-ttl row mb-3">保護者アカウント登録</h2>
 
   <!--保護者登録フォーム-->
   <%= form_with model: @guardian, url: '/guardians', local: true do |f| %>
@@ -66,7 +66,7 @@
         <%= f.text_field :tel, class: "form-control" %>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="form-group col-md-12">
         <%= f.label :email %><br />
@@ -98,8 +98,8 @@
     </div>
 
   <% end %>
-  
-  
+
+
   既に登録している方は<%= link_to "こちら", new_guardian_session_path %>からログインしてください。
 
 </section>

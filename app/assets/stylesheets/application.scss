@@ -20,6 +20,7 @@
  padding: 0;
 }
 
+
 body {
   font-family: "Helvetica Neue",
     Arial,
@@ -210,4 +211,11 @@ ul {
 
 .cart_item >tbody > tr > td {
   padding: 20px;
+}
+
+// カートアイテム数量変更ボタン
+
+.item-btn {
+  background-color: #3e3e3e;
+  color: #fff;
 }
