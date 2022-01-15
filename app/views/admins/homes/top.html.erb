@@ -1,8 +1,14 @@
 <section class="container">
-  <div class="row mt-3 mb-3">
-    <h2 class="font-weight-bold">管理者MENU</h2>
-  </div>
-  <div class="row">
+  <!--セクションタイトル-->
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>管理者MENU</span>
+  </h3>
+
+  <div class="row justify-content-center">
+    <!-- サクセスメッセージの表示 -->
+    <p id="notice" class="text-danger">
+      <%= notice %>
+    </p>
     <div class="menu_box">
       <%= link_to "カテゴリー管理", admins_categories_path, class: "top_link" %>
       <p class="mt-2">選手・スタッフの登録で使用するカテゴリを設定します。</p>

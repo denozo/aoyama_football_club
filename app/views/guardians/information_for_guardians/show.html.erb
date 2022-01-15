@@ -1,14 +1,16 @@
-<section class="container col-md-5 mt-5">
+<section class="container col-md-5 mt-2 p-2">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">保護者お知らせ詳細</h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>保護者お知らせ詳細</span>
+  </h3>
 
   <!--保護者専用お知らせ詳細-->
-  <div class="row justify-content-center m-5">
+  <div class="row justify-content-center m-5 p-2">
     <%= attachment_image_tag  @informationforguardian, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
   </div>
 
-  <div class="row justify-content-center bg-light">
-    <table class="table mb-0">
+  <div class="row justify-content-center bg-light p-2">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th class="col-4">項目</th>
@@ -32,8 +34,8 @@
     </table>
   </div>
 
-  <div class="row justify-content-between">
-    <div class="col-2 mt-3">
+  <div class="row justify-content-between p-2">
+    <div>
       <!--未読確認-->
       <% if @informationforguardian.favorited_by?(current_guardian) %>
       <p>
@@ -49,8 +51,8 @@
       </p>
       <% end %>
     </div>
-    <div class="col-2">
-      <%= link_to "戻る", guardians_information_for_guardians_path, class: "btn btn-outline-secondary m-3" %>
+    <div>
+      <%= link_to "戻る", guardians_information_for_guardians_path, class: "btn m-3" %>
     </div>
   </div>
 

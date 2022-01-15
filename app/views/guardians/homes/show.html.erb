@@ -1,6 +1,8 @@
 <section class="container col-md-5 mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">保護者登録情報</h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>保護者登録情報</span>
+  </h3>
   
   <!-- サクセスメッセージの表示 -->
   <p id="notice" class="text-danger">
@@ -8,8 +10,8 @@
   </p>
 
   <!--保護者詳細内容-->
-  <div class="row justify-content-center bg-light">
-    <table class="table mb-0">
+  <div class="row justify-content-center bg-light p-3">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th class="col-4">項目</th>
@@ -56,6 +58,6 @@
       </tbody>
     </table>
   </div>
-  <%= link_to "編集", edit_guardians_home_path(@guardian.id), class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "編集", edit_guardians_home_path(@guardian.id), class: "btn m-3" %>
 
 </section>

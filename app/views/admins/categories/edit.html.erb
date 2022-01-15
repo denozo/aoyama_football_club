@@ -1,7 +1,7 @@
-<section class="container w-50 mt-5">
+<section class="container col-md-5 mt-5">
 
   <!--セクションタイトル-->
-  <h5 class="section-ttl row mb-3 font-weight-bold">カテゴリーを編集してください。</h5>
+  <h5 class="section-ttl row mb-3 ml-2 font-weight-bold">カテゴリーを編集してください。</h5>
 
   <!--カテゴリー編集フォーム-->
   <%= form_with model: @category, url: "/admins/categories/#{@category.id}", local:true do |f| %>

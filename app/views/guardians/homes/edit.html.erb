@@ -1,6 +1,8 @@
 <section class="container col-md-5 mt-5">
   <!--セクションタイトル-->
-  <h2 class="section-ttl row mb-3">保護者情報を編集してください。</h2>
+  <h3 class="row section-ttl justify-content-center mb-5">
+    <span>保護者情報を編集</span>
+  </h3>
 
   <!--保護者編集フォーム-->
   <%= form_with model: @guardian, url: "/guardians/homes/#{@guardian.id}", local: true do |f| %>
@@ -69,7 +71,7 @@
 
     <div class="row">
       <div class="form-group">
-      <%= f.submit "変更を保存", class: "btn btn-outline-secondary m-3" %>
+      <%= f.submit "変更を保存", class: "btn m-3" %>
       </div>
     </div>
 

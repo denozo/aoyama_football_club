@@ -1,0 +1,7 @@
+ja:
+  devise:
+    confirmations:
+      confirmed: 'アカウントを登録しました。'
+    sessions:
+      signed_in: 'ログインしました。'
+      signed_out: 'ログアウトしました。'
