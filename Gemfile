@@ -84,3 +84,8 @@ gem 'rails-i18n'
 gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'roo'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
