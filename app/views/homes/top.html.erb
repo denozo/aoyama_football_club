@@ -14,19 +14,19 @@
                 <div class="carousel-inner">
                     <!--スライド01-->
                     <div class="carousel-item active">
-                        <img class="img-fluid" src="/assets/top/2021-01.jpg" alt="青山高校サッカー部">
+                        <%= image_tag asset_path("top/2021-01.jpg", alt: "青山高校サッカー部"), class: "img-fluid" %>
                     </div>
                     <!--スライド02-->
                     <div class="carousel-item">
-                        <img class="img-fluid" src="/assets/top/2021-02.jpg" alt="青山高校サッカー部">
+                        <%= image_tag asset_path("top/2021-02.jpg", alt: "青山高校サッカー部"), class: "img-fluid" %>
                     </div>
                     <!--スライド03-->
                     <div class="carousel-item">
-                        <img class="img-fluid" src="/assets/top/2021-03.jpg" alt="青山高校サッカー部">
+                        <%= image_tag asset_path("top/2021-03.jpg", alt: "青山高校サッカー部"), class: "img-fluid" %>
                     </div>
                     <!--スライド04-->
                     <div class="carousel-item">
-                        <img class="img-fluid" src="/assets/top/2021-04.jpg" alt="青山高校サッカー部">
+                        <%= image_tag asset_path("top/2021-04.jpg", alt: "青山高校サッカー部"), class: "img-fluid" %>
                     </div>
                 </div>
 
@@ -43,8 +43,8 @@
         </div>
     </div>
 </div>
-    
-    
+
+
 <section>
     <div class="container">
         <h3 class="row section-ttl justify-content-center">
@@ -68,8 +68,8 @@
                 <p class="card-text"></p>
             </div>
             <!--カード下部に画像を表示-->
-            
-              <%= attachment_image_tag information, :image, fallback: "noImage.jpg", class: "card-img-button" %>
+
+              <%= attachment_image_tag information, :image, fallback: asset_path("noImage.jpg"), class: "card-img-button" %>
         </article>
         <% end %>
       <% end %>
