@@ -17,12 +17,12 @@
       <div class="row justify-content-around">
         <div>
           <% if admin_signed_in? %>
-            <a href="/admins", class="p-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
+            <a href="/admins", class="p-5"><%= image_tag asset_path("logo.png", alt: "青山高校サッカー部") %></a>
           <% elsif guardian_signed_in? %>
-            <a href="/guardians", class="p-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
+            <a href="/guardians", class="p-5"><%= image_tag asset_path("logo.png", alt: "青山高校サッカー部") %></a>
             <span class="text-light">保護者専用ページにログイン中</span>
           <% else %>
-            <a href="/", class="p-5"><img src="/assets/logo.png" alt="青山高校サッカー部"></a>
+            <a href="/", class="p-5"><%= image_tag asset_path("logo.png", alt: "青山高校サッカー部") %></a>
           <% end %>
         </div>
 
