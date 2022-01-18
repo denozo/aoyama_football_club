@@ -1,10 +1,10 @@
 <section class="container mt-3">
 
   <!--セクションタイトル-->
-  <h2 class="section-ttl row ml-2 font-weight-bold">カテゴリー管理</h2>
+  <h2 class="section-ttl row ml-2 font-weight-bold">カテゴリ管理</h2>
 
   <!--カテゴリー追加フォーム-->
-  <p>メンバー登録時に使用するカテゴリーを追加してください。</p>
+  <p>メンバー登録時に使用するカテゴリを追加してください。</p>
 
   <!--バリデーションチェックメッセージ-->
   <% if @category.errors.any? %>
@@ -29,7 +29,8 @@
   <table class="table table-hover table-light table-striped">
     <thead>
       <tr class="table-dark text-dark">
-        <th>カテゴリーの名称</th>
+        <th>カテゴリID</th>
+        <th>カテゴリの名称</th>
         <th></th>
         <th></th>
       </tr>
@@ -37,6 +38,7 @@
     <tbody>
       <% @categories.each do |category| %>
       <tr>
+        <td><%= category.id %></td>
         <td><%= category.category_name %></td>
         <td><%= link_to "編集する", edit_admins_category_path(category.id), class: "text-dark link-secondary" %></td>
         <td><%= link_to "削除する", admins_category_path(category.id), method: :delete, "data-confirm" => "表示されているメンバーを削除しますか?", class: "text-danger" %></td>
