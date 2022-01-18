@@ -3,7 +3,7 @@ class Admins::InformationForGuardiansController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @informationforguardians = InformationForGuardian.page(params[:page]).per(10)
+    @informationforguardians = InformationForGuardian.page(params[:page]).per(10).order(updated_at: "DESC")
   end
 
   def new

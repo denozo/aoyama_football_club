@@ -4,7 +4,7 @@ class Guardians::InformationForGuardiansController < ApplicationController
   
   
   def index
-    @informationforguardians = InformationForGuardian.page(params[:page]).per(10)
+    @informationforguardians = InformationForGuardian.page(params[:page]).per(10).order(updated_at: "DESC")
   end
 
   def show

@@ -3,7 +3,7 @@ class Admins::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @members = Member.page(params[:page]).per(10).order(grade: "ASC") ##学年・スタッフ順、10行まで表示
+    @members = Member.page(params[:page]).per(10).order(grade: "ASC")
   end
 
   def new

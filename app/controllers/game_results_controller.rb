@@ -1,7 +1,7 @@
 class GameResultsController < ApplicationController
   
   def index
-    @game_results = GameResult.page(params[:page]).per(10)
+    @game_results = GameResult.order(event_date: "DESC").page(params[:page]).per(10)
   end
 
   def show

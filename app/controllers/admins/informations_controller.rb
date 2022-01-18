@@ -1,15 +1,15 @@
 class Admins::InformationsController < ApplicationController
-  
+
   before_action :authenticate_admin!
 
   def index
 
     if params[:tag_name]
-      @informations = Information.tagged_with("#{params[:tag_name]}").page(params[:page]).per(10) #タグによる検索
+      @informations = Information.tagged_with("#{params[:tag_name]}").page(params[:page]).per(10).order(updated_at: "DESC") #タグによる検索
     else
-      @informations = Information.page(params[:page]).per(10) #タグ以外の場合
+      @informations = Information.page(params[:page]).per(10).order(updated_at: "DESC") #タグ以外の場合
     end
-    
+
   end
 
   def new
@@ -48,7 +48,7 @@ class Admins::InformationsController < ApplicationController
 
   def destroy
     information = Information.find(params[:id])
-    
+
     if information.destroy
       flash[:notice] = '削除されました。'
       redirect_to admins_informations_path

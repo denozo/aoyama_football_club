@@ -3,7 +3,7 @@ class Admins::GraduatesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @graduates = Graduate.page(params[:page]).per(10)
+    @graduates = Graduate.page(params[:page]).per(10).order(year: "DESC")
   end
 
   def new

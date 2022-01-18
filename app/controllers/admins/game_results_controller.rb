@@ -3,7 +3,7 @@ class Admins::GameResultsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @game_results = GameResult.page(params[:page]).per(10)
+    @game_results = GameResult.order(event_date: "DESC").page(params[:page]).per(10)
   end
 
   def new
