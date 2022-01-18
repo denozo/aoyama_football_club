@@ -6,7 +6,7 @@
 
   <!--お知らせ詳細-->
   <div class="row justify-content-center m-5">
-    <%= attachment_image_tag  @information, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
+    <%= attachment_image_tag  @information, :image, :fill, 300, 300, fallback: asset_path("noImage.jpg"), size:'300x250' %>
   </div>
 
   <div class="roe justify-content-center bg-light">
@@ -29,10 +29,10 @@
       </tbody>
     </table>
   </div>
-  
+
   <div class="row justify-content-end">
     <%= link_to "戻る", informations_path, class: "btn btn-outline-secondary" %>
   </div>
-  
-  
+
+
 </section>

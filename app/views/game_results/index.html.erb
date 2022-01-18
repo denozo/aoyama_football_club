@@ -18,13 +18,13 @@
                 <p class="card-text"></p>
             </div>
             <!--カード下部に画像を表示-->
-            <%= attachment_image_tag game_result, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300', class: "card-img-button" %>
+            <%= attachment_image_tag game_result, :image, :fill, 300, 250, fallback: asset_path("noImage.jpg"), size:'300x250', class: "card-img-button" %>
           </article>
         <% end %>
       <% end %>
     </div>
   </div>
-  
+
   <!--ページネーション-->
   <div class="row justify-content-center mt-5">
     <%= paginate @game_results %>

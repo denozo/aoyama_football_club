@@ -3,10 +3,10 @@
   <h3 class="row section-ttl justify-content-center mb-5">
     <span><%= @item.name %></span>
   </h3>
-  
+
   <div class="row justify-content-around">
     <div class="item_info">
-        <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
+        <%= attachment_image_tag @item, :image, :fill, 300, 250, fallback: asset_path("noImage.jpg"), size:'300x250' %>
         <!--詳細-->
         <div class="m-3 font-weight-bold">
           <label>< 詳細 ></label>
@@ -21,7 +21,7 @@
         <div class="m-3">
           <%= @item.with_tax_price.to_s + "円(税込)" %>
         </div>
-    
+
         <%= form_with model: @cart_item, url:"/cart_items", loacl:true do |f| %>
         <!--非表示-->
         <%= f.hidden_field :item_id, value: @item.id %>

@@ -12,7 +12,7 @@
         <article class="card mt-4 shadow" style="max-width: 20rem;">
             <!--カード上部に画像を表示-->
             <%= link_to member_path(member.id) do %>
-              <%= attachment_image_tag member, :image, :fill, 300, 300, fallback: asset_path("no_image.jpg"), size:'300x300', class: "card-img-button" %>
+              <%= attachment_image_tag member, :image, :fill, 300, 250, fallback: asset_path("no_image.jpg"), size:'300x250', class: "card-img-button" %>
             <% end %>
             <!--カード本文-->
             <div class="card-body">
