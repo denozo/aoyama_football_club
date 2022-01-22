@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :member do
     association :category, factory: :category
-    # category_id { 5 }
     last_name { "田中" }
     first_name { "太郎" }
     last_name_kana{ "タナカ" }

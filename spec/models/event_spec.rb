@@ -12,9 +12,9 @@ describe Event do
       expect(event.errors[:title]).to include("を入力してください")
     end
     it "titleが30文字以上だと登録できない" do
-      event = build(:event, title: "a" * 31)
+      event = build(:event, title: "あ" * 31)
       event.valid?
-      expect(event.errors[:title][0]).not_to include("は30文字以上で入力してください")
+      expect(event.errors[:title]).to include("は30文字以内で入力してください")
     end
     it "start_timeに入力がないと登録ができない" do
       event = build(:event, start_time: nil)
@@ -26,16 +26,16 @@ describe Event do
       event.valid?
       expect(event.errors[:end_time]).to include("を入力してください")
     end
-    # it "start_timeが現在の日時より遅い時間を選択しないと登録できない" do
-    #   event = build(:event, start_time: Time.zone.today )
-    #   event.valid?
-    #   expect(event.errors[:start_time]).not_to include("は現在の日時より遅い時間を選択してください")
-    # end
-    # it "end_timeがstart_timeより遅い時間を選択しないと登録できない" do
-    #   event = build(:event, end_time: "2019-01-01")
-    #   event.valid?
-    #   expect(event.errors[:end_time]).not_to include("より遅い時間を選択してください")
-    # end
+    it "start_timeが現在の日時より遅い時間を選択しないと登録できない" do
+      event = build(:event, start_time: "2022-01-20")
+      event.valid?
+      expect(event.errors[:start_time]).to include("は現在の日時より遅い時間を選択してください。")
+    end
+    it "end_timeがstart_timeより遅い時間を選択しないと登録できない" do
+      event = build(:event, start_time: "2030-01-20", end_time: "2030-01-19)")
+      event.valid?
+      expect(event.errors[:end_time]).to include("は開始日時より遅い時間を選択してください。")
+    end
     it "contentに入力がないと登録ができない" do
       event = build(:event, content: nil)
       event.valid?
