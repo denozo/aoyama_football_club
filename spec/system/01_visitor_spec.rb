@@ -90,7 +90,7 @@ describe '[STEP1]Visitorのテスト' do
     end
   end
   # サッカー部について画面のテスト
-  describe 'サッカー部についての画面の確認' do
+  context 'サッカー部についての画面の確認' do
     # about画面の表示
     before do
       visit about_path
@@ -118,7 +118,7 @@ describe '[STEP1]Visitorのテスト' do
     end
   end
   # OB紹介画面のテスト
-  describe 'OB紹介画面の確認' do
+  context 'OB紹介画面の確認' do
     #OB紹介画面の表示
     before do
       visit graduates_path
@@ -133,7 +133,7 @@ describe '[STEP1]Visitorのテスト' do
     end
   end
   # お知らせ画面のテスト
-  describe 'お知らせ画面の確認' do
+  context 'お知らせ画面の確認' do
     #お知らせ画面の表示
     before do
       visit informations_path
@@ -148,7 +148,7 @@ describe '[STEP1]Visitorのテスト' do
     end
   end
   # スケジュール画面のテスト
-  describe 'スケジュール画面の確認' do
+  context 'スケジュール画面の確認' do
     #スケジュール画面の表示
     before do
       visit events_path
@@ -163,7 +163,7 @@ describe '[STEP1]Visitorのテスト' do
     end
   end
   # 試合結果画面のテスト
-  describe '試合結果画面の確認' do
+  context '試合結果画面の確認' do
     #試合結果画面の表示
     before do
       visit game_results_path
@@ -178,7 +178,7 @@ describe '[STEP1]Visitorのテスト' do
     end
   end
   # 応援グッズ画面のテスト
-  describe '応援グッズ画面の確認' do
+  context '応援グッズ画面の確認' do
     #応援グッズ画面の表示
     before do
       visit items_path
@@ -193,7 +193,7 @@ describe '[STEP1]Visitorのテスト' do
     end
   end
   # カート画面のテスト
-  describe '応援グッズ画面の確認' do
+  context '応援グッズ画面の確認' do
     #カート画面の表示
     before do
       visit cart_items_path
@@ -214,7 +214,7 @@ describe '[STEP1]Visitorのテスト' do
     end
   end
   # 保護者専用画面のテスト
-  describe '保護者専用ログイン画面の確認' do
+  context '保護者専用ログイン画面の確認' do
     #保護者専用ログイン画面の表示
     before do
       visit new_guardian_session_path
@@ -231,6 +231,9 @@ describe '[STEP1]Visitorのテスト' do
       end
       it 'passwordフォームが表示される' do
         expect(page).to have_field 'guardian[password]'
+      end
+      it 'ログインボタンが表示される' do
+        expect(page).to have_button 'ログイン'
       end
     end
   end

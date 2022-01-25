@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 FactoryBot.define do
   factory :guardian do
     last_name { "田中" }
@@ -10,8 +12,8 @@ FactoryBot.define do
     postal_code { "021-1234" }
     address { Faker::Lorem.characters(number:20) }
     tel { "000-0000-0000" }
-    email { Faker::Internet.free_email }
-    password  { "1234567" }
-    encrypted_password { "1234567" }
+    email { Faker::Internet.email }
+    password { 'password' }
+    encrypted_password { 'password' }
   end
 end
