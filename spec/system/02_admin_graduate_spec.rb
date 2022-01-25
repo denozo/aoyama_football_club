@@ -103,7 +103,7 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
         click_button '変更を保存'
       end
       it 'member_listが正しく更新される' do
-        expect(graduate.reload.member_list).not_to eq @graduate_old_last_name
+        expect(graduate.reload.member_list).not_to eq @graduate_old_member_list
       end
       it 'リダイレクト先がOB紹介管理画面になっている' do
         expect(current_path).to eq admins_graduate_path(graduate)
