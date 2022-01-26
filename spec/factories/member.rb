@@ -11,6 +11,7 @@ FactoryBot.define do
     original_team { "青山中学校" }
     hobby { "読書" }
     goal { "頑張ります" }
-    # image_id { Rack::Test::UploadedFile.new(File.join(Rails.root,'spec/fixture/image.jpg')) }
+    image_id { Faker::Number.between(from: 10).to_i }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root,'spec/fixture/image.jpg')) }
   end
 end

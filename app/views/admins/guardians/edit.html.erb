@@ -3,7 +3,7 @@
   <h2 class="section-ttl row mb-3 ml-2">保護者情報を編集してください。</h2>
 
   <!--保護者編集フォーム-->
-  <%= form_with model: @guardian, url: "/admins/guardian/#{@guardian.id}", local: true do |f| %>
+  <%= form_with model: @guardian, url: "/admins/guardians/#{@guardian.id}", local: true do |f| %>
 
     <!--エラーメッセージ-->
     <%= render 'layouts/error_messages', model: f.object %>

@@ -36,7 +36,7 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
     before do
       visit admins_graduate_path(graduate)
     end
-    it "入力フォームが正しく表示される" do
+    it "詳細画面の項目が正しく表示される" do
       expect(page).to have_content '卒業年度'
       expect(page).to have_content 'メンバー一覧'
       expect(page).to have_content '主な進路'
@@ -72,7 +72,6 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
     context "OB紹介新規登録の成功のテスト"do
       before do
         visit new_admins_graduate_path
-        graduate = create(:graduate)
         click_button '新規登録'
       end
       it 'リダイレクト先がOB紹介管理画面になっている' do

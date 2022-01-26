@@ -36,7 +36,7 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
     before do
       visit admins_information_for_guardian_path(information_for_guardian)
     end
-    it "入力フォームが正しく表示される" do
+    it "詳細画面の項目が正しく表示される" do
       expect(page).to have_content 'カテゴリー'
       expect(page).to have_content 'タイトル'
       expect(page).to have_content '内容'
@@ -70,7 +70,6 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
     context "保護者専用お知らせ新規登録の成功のテスト"do
       before do
         visit new_admins_information_for_guardian_path
-        information_for_guardian = create(:information_for_guardian)
         click_button '新規登録'
       end
       it 'リダイレクト先が保護者専用お知らせ管理画面になっている' do
@@ -98,7 +97,7 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
         fill_in 'information_for_guardian[title]', with: Faker::Lorem.characters(number:10)
         click_button '変更を保存'
       end
-      it 'member_listが正しく更新される' do
+      it 'titleが正しく更新される' do
         expect(information_for_guardian.reload.title).not_to eq @information_for_guardian_old_title
       end
       it 'リダイレクト先が保護者専用お知らせ管理画面になっている' do

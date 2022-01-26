@@ -36,7 +36,7 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
     before do
       visit admins_information_path(information)
     end
-    it "入力フォームが正しく表示される" do
+    it "詳細画面の項目が正しく表示される" do
       expect(page).to have_content 'カテゴリー'
       expect(page).to have_content 'タイトル'
       expect(page).to have_content '内容'
@@ -70,7 +70,6 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
     context "お知らせ新規登録の成功のテスト"do
       before do
         visit new_admins_information_path
-        information = create(:information)
         click_button '新規登録'
       end
       it 'リダイレクト先がお知らせ管理画面になっている' do
@@ -98,7 +97,7 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
         fill_in 'information[title]', with: Faker::Lorem.characters(number:10)
         click_button '変更を保存'
       end
-      it 'member_listが正しく更新される' do
+      it 'titleが正しく更新される' do
         expect(information.reload.title).not_to eq @information_old_title
       end
       it 'リダイレクト先がお知らせ管理画面になっている' do

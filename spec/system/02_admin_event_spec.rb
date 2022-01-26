@@ -74,7 +74,7 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
     context "スケジュール新規登録の成功のテスト"do
       before do
         visit new_admins_event_path
-        event = create(:event)
+        let!(:event) { create(:event) }
         click_button '新規登録'
       end
       it 'リダイレクト先がスケジュール管理画面になっている' do
@@ -104,7 +104,7 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
         fill_in 'event[title]', with: Faker::Lorem.characters(number:10)
         click_button '変更を保存'
       end
-      it 'member_listが正しく更新される' do
+      it 'titleが正しく更新される' do
         expect(event.reload.title).not_to eq  @event_old_title
       end
       it 'リダイレクト先がスケジュール管理画面になっている' do
