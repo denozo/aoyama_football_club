@@ -36,7 +36,6 @@ class OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.save
-
     cart_items = current_cart.cart_items
       cart_items.each do |cart_item|
         order_details = OrderDetail.new
@@ -45,7 +44,8 @@ class OrdersController < ApplicationController
         order_details.price = cart_item.subtotal
         order_details.amount = cart_item.amount
         order_details.save
-      end
+    end
+
 
     cart_items = current_cart.cart_items
     cart_items.destroy_all

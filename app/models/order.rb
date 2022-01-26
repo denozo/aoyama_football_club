@@ -10,9 +10,9 @@ class Order < ApplicationRecord
   validates :postal_code, presence: true, format: { with: /\A\d{3}[-]?\d{4}\z/ }, if: -> { product_passing == "delivery"}
   validates :address, presence: true, if: -> { product_passing == "delivery"}
   validates :addressee, presence: true, length: { maximum: 50 }, if: -> { product_passing == "delivery"}
-
-
   validates :payment_method, presence: true
+
+
 
 
   has_many :order_details
