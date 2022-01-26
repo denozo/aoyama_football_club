@@ -46,7 +46,6 @@ class OrdersController < ApplicationController
         order_details.save
     end
 
-
     cart_items = current_cart.cart_items
     cart_items.destroy_all
 
