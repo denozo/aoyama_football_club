@@ -7,14 +7,7 @@ class ContactsController < ApplicationController
   end
 
   def confirm
-    p contact_params
-    if contact_params.present?
-      p "nil!!"
       @contact = Contact.new(contact_params)
-    else
-      p "new!!!!!"
-      redirect_to confirm_contacts_path
-    end
   end
 
   def create

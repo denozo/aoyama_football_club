@@ -1,7 +1,6 @@
 <section class="container mt-5">
   <!--セクションタイトル-->
   <h2 class="section-ttl row mb-3">注文情報を入力してください。</h2>
-
     <%= form_with model: @order, url: confirm_orders_path, local:true do |f| %>
       <!--エラーメッセージ-->
       <%= render 'layouts/error_messages', model: f.object %>
@@ -12,6 +11,13 @@
         <div class="form-group col-md-6">
           <%= f.label :name, "注文者氏名", class: "form-label" %>
           <%= f.text_field :name, placeholder: '田中　太郎', class: "form-control" %>
+        </div>
+      </div>
+      <!--メールアドレス-->
+      <div class="row">
+        <div class="form-group col-md-6">
+          <%= f.label :email, "メールアドレス", class: "form-label" %>
+          <%= f.text_field :email, placeholder: 'test@gmail.com', class: "form-control" %>
         </div>
       </div>
 

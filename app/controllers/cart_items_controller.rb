@@ -65,7 +65,6 @@ class CartItemsController < ApplicationController
       cart_item.save
       redirect_to cart_items_path, notice: '商品を新規追加しました！'
     end
-
   end
 
 

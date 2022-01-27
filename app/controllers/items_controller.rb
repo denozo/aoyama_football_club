@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).per(10)
     
-    #販売停止を
     @items = @items.where.not(is_active: false)
     
   end
