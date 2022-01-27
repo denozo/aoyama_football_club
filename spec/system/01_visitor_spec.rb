@@ -287,27 +287,5 @@ describe '[STEP1]Visitorのテスト' do
     #   end
     # end
 
-    # 保護者専用画面のテスト
-    # describe '保護者専用ログイン画面の確認' do
-    #   before do
-    #     visit new_guardian_session_path
-    #   end
-    #   it 'URLが正しい' do
-    #     expect(current_path).to eq new_guardian_session_path
-    #   end
-    #   it 'ログイン画面が表示されている' do
-    #     expect(page).to have_content '保護者ログイン'
-    #   end
-    #   it 'emailフォームが表示される' do
-    #     expect(page).to have_field 'guardian[email]'
-    #   end
-    #   it 'passwordフォームが表示される' do
-    #     expect(page).to have_field 'guardian[password]'
-    #   end
-    #   it 'ログインボタンが表示される' do
-    #     expect(page).to have_button 'ログイン'
-    #   end
-    # end
-
   end #＝＝＝＝
 end #＝＝＝＝

@@ -14,7 +14,7 @@ describe '[STEP2-1]管理者ログイン後の応援グッズ管理テスト' do
     visit admins_items_path
   end
 
-  context "応援グッズ管理画面のテスト"do
+  describe "応援グッズ管理画面のテスト"do
     it "応援グッズ管理画面に正しく遷移する" do
       expect(current_path).to eq admins_items_path
     end
@@ -33,7 +33,7 @@ describe '[STEP2-1]管理者ログイン後の応援グッズ管理テスト' do
     end
   end
 
-  context "応援グッズ詳細画面のテスト" do
+  describe "応援グッズ詳細画面のテスト" do
     before do
       visit admins_item_path(item)
     end
@@ -50,7 +50,7 @@ describe '[STEP2-1]管理者ログイン後の応援グッズ管理テスト' do
     end
   end
 
-  context "応援グッズ新規登録画面のテスト"do
+  describe "応援グッズ新規登録画面のテスト"do
     before do
       visit new_admins_item_path(item)
     end
@@ -70,7 +70,7 @@ describe '[STEP2-1]管理者ログイン後の応援グッズ管理テスト' do
       expect(page).to have_button '登録する'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "応援グッズ新規登録の成功のテスト"do
+    describe "応援グッズ新規登録の成功のテスト"do
       before do
         visit new_admins_item_path
         click_button '登録する'
@@ -81,7 +81,7 @@ describe '[STEP2-1]管理者ログイン後の応援グッズ管理テスト' do
     end
   end
 
-  context "応援グッズ編集画面のテスト"do
+  describe "応援グッズ編集画面のテスト"do
     before do
       visit edit_admins_item_path(item)
     end
@@ -89,13 +89,12 @@ describe '[STEP2-1]管理者ログイン後の応援グッズ管理テスト' do
       expect(page).to have_field 'item[name]', with: item.name
       expect(page).to have_field 'item[introduction]', with: item.introduction
       expect(page).to have_field 'item[price]', with: item.price
-      # expect(page).to have_field 'item[image_id]', with: item.image_id
     end
     it "変更・ボタンが存在する" do
       expect(page).to have_button '変更を保存'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "応援グッズ編集成功のテスト"do
+    describe "応援グッズ編集成功のテスト"do
       before do
         visit edit_admins_item_path(item)
         @item_old_name = item.name
@@ -112,13 +111,13 @@ describe '[STEP2-1]管理者ログイン後の応援グッズ管理テスト' do
   end
 
 
-  context "応援グッズ削除テスト" do
+  describe "応援グッズ削除テスト" do
     before do
       item = create(:item, name: 'test')
       visit admins_item_path(item)
       click_link '削除'
     end
-    context "応援グッズ削除の成功" do
+    describe "応援グッズ削除の成功" do
       it '正しく削除される' do
         expect(page).not_to eq have_content 'test'
       end

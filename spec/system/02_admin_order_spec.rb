@@ -14,87 +14,60 @@ describe '[STEP2-1]管理者ログイン後の注文内容管理管理テスト'
     visit admins_orders_path
   end
 
-  context "注文内容管理管理画面のテスト"do
+  describe "注文内容管理管理画面のテスト"do
     it "注文内容管理管理画面に正しく遷移する" do
       expect(current_path).to eq admins_orders_path
     end
-    it "注文内容管理一覧が表示されている" do
-      expect(page).to have_content '注文内容管理一覧'
-    end
-    it "注文内容管理を登録するボタンが存在する" do
-      expect(page).to have_link '注文内容管理を登録する'
+    it "注文一覧が表示されている" do
+      expect(page).to have_content '注文一覧'
     end
     it '一覧に詳細リンクが存在する' do
-      expect(page).to have_link '詳細', href: "/admins/orders/#{order.id}"
+      expect(page).to have_link "", href: "/admins/orders/#{order.id}"
     end
     it "クリックすると注文内容管理詳細画面に遷移する" do
-      click_link '詳細'
+      click_link ""
       expect(current_path).to eq "/admins/orders/#{order.id}"
     end
   end
 
-  context "注文内容管理詳細画面のテスト" do
+  describe "注文内容管理詳細画面のテスト" do
     before do
       visit admins_order_path(order)
     end
     it "注文内容管理詳細画面が正しく表示される" do
-      expect(page).to have_content '商品名'
-      expect(page).to have_content '単価（税抜）'
-      expect(page).to have_content '内容'
+      expect(page).to have_content '注文者氏名'
+      expect(page).to have_content 'メールアドレス'
+      expect(page).to have_content '受付日'
+      expect(page).to have_content '更新日'
+      expect(page).to have_content '配送先名'
+      expect(page).to have_content '商品合計'
+      expect(page).to have_content '送料'
+      expect(page).to have_content '請求金額'
+      expect(page).to have_content '支払方法'
+      expect(page).to have_content '商品お渡し'
+      expect(page).to have_content '注文情報の更新'
+      expect(page).to have_content '注文グッズ一覧'
     end
 
-    it "編集・削除・戻るボタンが存在する" do
-      expect(page).to have_link '編集'
-      expect(page).to have_link '削除'
+    it "更新・戻るボタンが存在する" do
+      expect(page).to have_button '更新'
       expect(page).to have_link '戻る'
     end
-  end
-
-  context "注文内容管理編集画面のテスト"do
-    before do
-      visit edit_admins_order_path(order)
-    end
-    it "編集フォームが正しく表示されている" do
-      expect(page).to have_field 'order[name]', with: order.name
-      expect(page).to have_field 'order[introduction]', with: order.introduction
-      expect(page).to have_field 'order[price]', with: order.price
-      # expect(page).to have_field 'order[image_id]', with: order.image_id
-    end
-    it "変更・ボタンが存在する" do
-      expect(page).to have_button '変更を保存'
-    end
-    #入力後「変更を保存」をクリックすると正しく更新される
-    context "注文内容管理編集成功のテスト"do
+    describe "注文内容管理編集成功のテスト"do
       before do
-        visit edit_admins_order_path(order)
-        @order_old_name = order.name
-        fill_in 'order[name]', with: Faker::Lorem.characters(number:10)
-        click_button '変更を保存'
-      end
-      it 'nameが正しく更新される' do
-        expect(order.reload.name).not_to eq @order_old_name
-      end
-      it 'リダイレクト先が注文内容管理管理画面になっている' do
-        expect(current_path).to eq admins_order_path(order)
-      end
+          visit admins_order_path(order)
+          @order_old_order_status = order.order_status
+          find("option[value='contact_complete']").select_option
+          click_button '更新'
+        end
+        it 'order_statusが正しく更新される' do
+          expect(order.reload.order_status).not_to eq @order_status
+        end
+        it 'リダイレクト先が注文内容詳細画面になっている' do
+          expect(current_path).to eq admins_order_path(order)
+        end
     end
   end
 
-
-  context "注文内容管理削除テスト" do
-    before do
-      order = create(:order, name: 'test')
-      visit admins_order_path(order)
-      click_link '削除'
-    end
-    context "注文内容管理削除の成功" do
-      it '正しく削除される' do
-        expect(page).not_to eq have_content 'test'
-      end
-      it 'リダイレクト先が注文内容管理管理画面になっている' do
-        expect(current_path).to eq admins_orders_path
-      end
-    end
-  end
 
 end

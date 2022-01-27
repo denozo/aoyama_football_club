@@ -13,7 +13,7 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
     visit admins_events_path
   end
 
-  context "スケジュール管理画面のテスト"do
+  describe "スケジュール管理画面のテスト"do
     it "スケジュール管理画面に正しく遷移する" do
       expect(current_path).to eq admins_events_path
     end
@@ -32,7 +32,7 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
     end
   end
 
-  context "スケジュール詳細画面のテスト" do
+  describe "スケジュール詳細画面のテスト" do
     before do
       visit admins_event_path(event)
     end
@@ -49,7 +49,7 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
     end
   end
 
-  context "スケジュール新規登録画面のテスト"do
+  describe "スケジュール新規登録画面のテスト"do
     before do
       visit new_admins_event_path(event)
     end
@@ -71,7 +71,7 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
       expect(page).to have_button '新規登録'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "スケジュール新規登録の成功のテスト"do
+    describe "スケジュール新規登録の成功のテスト"do
       before do
         visit new_admins_event_path
         let!(:event) { create(:event) }
@@ -83,7 +83,7 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
     end
   end
 
-  context "スケジュール編集画面のテスト"do
+  describe "スケジュール編集画面のテスト"do
     before do
       visit edit_admins_event_path(event)
     end
@@ -97,7 +97,7 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
       expect(page).to have_button '変更を保存'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "スケジュール編集成功のテスト"do
+    describe "スケジュール編集成功のテスト"do
       before do
         visit edit_admins_event_path(event)
         @event_old_title = event.title
@@ -114,13 +114,13 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
   end
 
 
-  context "スケジュール削除テスト" do
+  describe "スケジュール削除テスト" do
     before do
       event = create(:event, title: 'test')
       visit admins_event_path(event)
       click_link '削除'
     end
-    context "スケジュール削除の成功" do
+    describe "スケジュール削除の成功" do
       it '正しく削除される' do
         expect(page).not_to eq have_content 'test'
       end

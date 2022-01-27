@@ -3,7 +3,7 @@ require 'rails_helper'
 describe '[STEP2-1]管理者ログイン後のカテゴリ管理テスト' do
   let(:admin) { create(:admin) }
   let!(:category) { create(:category) }
-  
+
   #管理者としてログイン後カテゴリ画面へ遷移する
   before do
     visit new_admin_session_path
@@ -13,7 +13,7 @@ describe '[STEP2-1]管理者ログイン後のカテゴリ管理テスト' do
     visit admins_categories_path
   end
 
-  context "カテゴリ画面のテスト"do
+  describe "カテゴリ画面のテスト"do
     it "カテゴリ管理画面に正しく遷移する" do
       expect(current_path).to eq admins_categories_path
     end
@@ -38,7 +38,7 @@ describe '[STEP2-1]管理者ログイン後のカテゴリ管理テスト' do
     end
   end
 
-  context "カテゴリ編集画面のテスト"do
+  describe "カテゴリ編集画面のテスト"do
     before do
       visit edit_admins_category_path(category)
     end
@@ -49,7 +49,7 @@ describe '[STEP2-1]管理者ログイン後のカテゴリ管理テスト' do
       expect(page).to have_button '変更を保存'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "カテゴリ編集成功のテスト"do
+    describe "カテゴリ編集成功のテスト"do
       before do
         visit edit_admins_category_path(category)
         @category_old_category_name = category.category_name
@@ -64,14 +64,14 @@ describe '[STEP2-1]管理者ログイン後のカテゴリ管理テスト' do
       end
     end
   end
-  
-  
-  context "カテゴリ削除テスト" do
+
+
+  describe "カテゴリ削除テスト" do
     let!(:category) { create(:category, category_name: 'test') }
     before do
       click_link '削除する'
     end
-    context "カテゴリ削除の成功" do
+    describe "カテゴリ削除の成功" do
       it '正しく削除される' do
         expect(page).not_to eq have_content 'test'
       end

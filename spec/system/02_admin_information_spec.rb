@@ -13,7 +13,7 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
     visit admins_informations_path
   end
 
-  context "お知らせ管理画面のテスト"do
+  describe "お知らせ管理画面のテスト"do
     it "お知らせ管理画面に正しく遷移する" do
       expect(current_path).to eq admins_informations_path
     end
@@ -32,7 +32,7 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
     end
   end
 
-  context "お知らせ詳細画面のテスト" do
+  describe "お知らせ詳細画面のテスト" do
     before do
       visit admins_information_path(information)
     end
@@ -49,7 +49,7 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
     end
   end
 
-  context "お知らせ新規登録画面のテスト"do
+  describe "お知らせ新規登録画面のテスト"do
     before do
       visit new_admins_information_path(information)
     end
@@ -67,7 +67,7 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
       expect(page).to have_button '新規登録'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "お知らせ新規登録の成功のテスト"do
+    describe "お知らせ新規登録の成功のテスト"do
       before do
         visit new_admins_information_path
         click_button '新規登録'
@@ -78,7 +78,7 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
     end
   end
 
-  context "お知らせ編集画面のテスト"do
+  describe "お知らせ編集画面のテスト"do
     before do
       visit edit_admins_information_path(information)
     end
@@ -90,7 +90,7 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
       expect(page).to have_button '変更を保存'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "お知らせ編集成功のテスト"do
+    describe "お知らせ編集成功のテスト"do
       before do
         visit edit_admins_information_path(information)
         @information_old_title = information.title
@@ -107,13 +107,13 @@ describe '[STEP2-1]管理者ログイン後のお知らせ管理テスト' do
   end
 
 
-  context "お知らせ削除テスト" do
+  describe "お知らせ削除テスト" do
     before do
       information = create(:information, title: 'test')
       visit admins_information_path(information)
       click_link '削除'
     end
-    context "お知らせ削除の成功" do
+    describe "お知らせ削除の成功" do
       it '正しく削除される' do
         expect(page).not_to eq have_content 'test'
       end

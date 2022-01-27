@@ -13,7 +13,7 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
     visit admins_information_for_guardians_path
   end
 
-  context "保護者専用お知らせ管理画面のテスト"do
+  describe "保護者専用お知らせ管理画面のテスト"do
     it "保護者専用お知らせ管理画面に正しく遷移する" do
       expect(current_path).to eq admins_information_for_guardians_path
     end
@@ -32,7 +32,7 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
     end
   end
 
-  context "保護者専用お知らせ詳細画面のテスト" do
+  describe "保護者専用お知らせ詳細画面のテスト" do
     before do
       visit admins_information_for_guardian_path(information_for_guardian)
     end
@@ -49,14 +49,13 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
     end
   end
 
-  context "保護者専用お知らせ新規登録画面のテスト"do
+  describe "保護者専用お知らせ新規登録画面のテスト"do
     before do
       visit new_admins_information_for_guardian_path(information_for_guardian)
     end
     it "入力フォームが正しく表示されている" do
       expect(page).to have_field 'information_for_guardian[title]'
       expect(page).to have_field 'information_for_guardian[content]'
-      # expect(page).to have_field 'information_for_guardian[image_id]', with: information_for_guardian.image_id
     end
     it "入力フォームが空欄である" do
       expect(find_field('information_for_guardian[title]').text).to be_blank
@@ -67,7 +66,7 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
       expect(page).to have_button '新規登録'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "保護者専用お知らせ新規登録の成功のテスト"do
+    describe "保護者専用お知らせ新規登録の成功のテスト"do
       before do
         visit new_admins_information_for_guardian_path
         click_button '新規登録'
@@ -78,7 +77,7 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
     end
   end
 
-  context "保護者専用お知らせ編集画面のテスト"do
+  describe "保護者専用お知らせ編集画面のテスト"do
     before do
       visit edit_admins_information_for_guardian_path(information_for_guardian)
     end
@@ -90,7 +89,7 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
       expect(page).to have_button '変更を保存'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "保護者専用お知らせ編集成功のテスト"do
+    describe "保護者専用お知らせ編集成功のテスト"do
       before do
         visit edit_admins_information_for_guardian_path(information_for_guardian)
         @information_for_guardian_old_title = information_for_guardian.title
@@ -107,13 +106,13 @@ describe '[STEP2-1]管理者ログイン後の保護者専用お知らせ管理�
   end
 
 
-  context "保護者専用お知らせ削除テスト" do
+  describe "保護者専用お知らせ削除テスト" do
     before do
       information_for_guardian = create(:information_for_guardian, title: 'test')
       visit admins_information_for_guardian_path(information_for_guardian)
       click_link '削除'
     end
-    context "保護者専用お知らせ削除の成功" do
+    describe "保護者専用お知らせ削除の成功" do
       it '正しく削除される' do
         expect(page).not_to eq have_content 'test'
       end

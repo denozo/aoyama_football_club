@@ -13,7 +13,7 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
     visit admins_graduates_path
   end
 
-  context "OB紹介管理画面のテスト"do
+  describe "OB紹介管理画面のテスト"do
     it "OB紹介管理画面に正しく遷移する" do
       expect(current_path).to eq admins_graduates_path
     end
@@ -32,7 +32,7 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
     end
   end
 
-  context "OB紹介詳細画面のテスト" do
+  describe "OB紹介詳細画面のテスト" do
     before do
       visit admins_graduate_path(graduate)
     end
@@ -49,7 +49,7 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
     end
   end
 
-  context "OB紹介新規登録画面のテスト"do
+  describe "OB紹介新規登録画面のテスト"do
     before do
       visit new_admins_graduate_path(graduate)
     end
@@ -57,7 +57,6 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
       expect(page).to have_field 'graduate[year]'
       expect(page).to have_field 'graduate[member_list]'
       expect(page).to have_field 'graduate[career_after_graduation]'
-      # expect(page).to have_field 'graduate[image_id]', with: graduate.image_id
     end
     it "入力フォームが空欄である" do
       expect(find_field('graduate[year]').text).to be_blank
@@ -69,7 +68,7 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
       expect(page).to have_button '新規登録'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "OB紹介新規登録の成功のテスト"do
+    describe "OB紹介新規登録の成功のテスト"do
       before do
         visit new_admins_graduate_path
         click_button '新規登録'
@@ -80,7 +79,7 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
     end
   end
 
-  context "OB紹介編集画面のテスト"do
+  describe "OB紹介編集画面のテスト"do
     before do
       visit edit_admins_graduate_path(graduate)
     end
@@ -88,13 +87,12 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
       expect(page).to have_field 'graduate[year]', with: graduate.year
       expect(page).to have_field 'graduate[member_list]', with: graduate.member_list
       expect(page).to have_field 'graduate[career_after_graduation]', with: graduate.career_after_graduation
-      # expect(page).to have_field 'graduate[image_id]', with: graduate.image_id
     end
     it "変更・ボタンが存在する" do
       expect(page).to have_button '変更を保存'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "OB紹介編集成功のテスト"do
+    describe "OB紹介編集成功のテスト"do
       before do
         visit edit_admins_graduate_path(graduate)
         @graduate_old_member_list = graduate.member_list
@@ -111,13 +109,13 @@ describe '[STEP2-1]管理者ログイン後のOB紹介管理テスト' do
   end
 
 
-  context "OB紹介削除テスト" do
+  describe "OB紹介削除テスト" do
     before do
       graduate = create(:graduate, member_list: 'test')
       visit admins_graduate_path(graduate)
       click_link '削除'
     end
-    context "OB紹介削除の成功" do
+    describe "OB紹介削除の成功" do
       it '正しく削除される' do
         expect(page).not_to eq have_content 'test'
       end

@@ -13,7 +13,7 @@ describe '[STEP2-1]管理者ログイン後の選手・スタッフ管理テス�
     visit admins_members_path
   end
 
-  context "選手・スタッフ管理画面のテスト"do
+  describe "選手・スタッフ管理画面のテスト"do
     it "選手・スタッフ管理画面に正しく遷移する" do
       expect(current_path).to eq admins_members_path
     end
@@ -32,7 +32,7 @@ describe '[STEP2-1]管理者ログイン後の選手・スタッフ管理テス�
     end
   end
 
-  context "選手・スタッフ詳細画面のテスト" do
+  describe "選手・スタッフ詳細画面のテスト" do
     before do
       visit admins_member_path(member)
     end
@@ -54,7 +54,7 @@ describe '[STEP2-1]管理者ログイン後の選手・スタッフ管理テス�
     end
   end
 
-  context "選手・スタッフ新規登録画面のテスト"do
+  describe "選手・スタッフ新規登録画面のテスト"do
     before do
       visit new_admins_member_path(member)
     end
@@ -69,7 +69,6 @@ describe '[STEP2-1]管理者ログイン後の選手・スタッフ管理テス�
       expect(page).to have_field 'member[original_team]'
       expect(page).to have_field 'member[hobby]'
       expect(page).to have_field 'member[goal]'
-      # expect(page).to have_field 'member[image_id]', with: member.image_id
     end
     it "入力フォームが空欄である" do
       expect(find_field('member[last_name]').text).to be_blank
@@ -89,7 +88,7 @@ describe '[STEP2-1]管理者ログイン後の選手・スタッフ管理テス�
       expect(page).to have_button '登録する'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "選手・スタッフ新規登録の成功のテスト"do
+    describe "選手・スタッフ新規登録の成功のテスト"do
       before do
         visit new_admins_member_path
         click_button '登録する'
@@ -100,7 +99,7 @@ describe '[STEP2-1]管理者ログイン後の選手・スタッフ管理テス�
     end
   end
 
-  context "選手・スタッフ編集画面のテスト"do
+  describe "選手・スタッフ編集画面のテスト"do
     before do
       visit edit_admins_member_path(member)
     end
@@ -115,13 +114,12 @@ describe '[STEP2-1]管理者ログイン後の選手・スタッフ管理テス�
       expect(page).to have_field 'member[original_team]', with: member.original_team
       expect(page).to have_field 'member[hobby]', with: member.hobby
       expect(page).to have_field 'member[goal]', with: member.goal
-      # expect(page).to have_field 'member[image_id]', with: member.image_id
     end
     it "変更・ボタンが存在する" do
       expect(page).to have_button '変更を保存'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "選手・スタッフ編集成功のテスト"do
+    describe "選手・スタッフ編集成功のテスト"do
       before do
         visit edit_admins_member_path(member)
         @member_old_last_name = member.last_name
@@ -138,13 +136,13 @@ describe '[STEP2-1]管理者ログイン後の選手・スタッフ管理テス�
   end
 
 
-  context "選手・スタッフ削除テスト" do
+  describe "選手・スタッフ削除テスト" do
     before do
       member = create(:member, last_name: 'test')
       visit admins_member_path(member)
       click_link '削除'
     end
-    context "選手・スタッフ削除の成功" do
+    describe "選手・スタッフ削除の成功" do
       it '正しく削除される' do
         expect(page).not_to eq have_content 'test'
       end

@@ -22,6 +22,10 @@
     			<td><%= @order.name %></td>
         </tr>
         <tr>
+    			<td>メールアドレス</td>
+    			<td><%= @order.email %></td>
+        </tr>
+        <tr>
     			<td>受付日</td>
     			<td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         </tr>

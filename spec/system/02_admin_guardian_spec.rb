@@ -13,7 +13,7 @@ describe '[STEP2-1]管理者ログイン後の保護者管理テスト' do
     visit admins_guardians_path
   end
 
-  context "保護者管理画面のテスト"do
+  describe "保護者管理画面のテスト"do
     it "保護者管理画面に正しく遷移する" do
       expect(current_path).to eq admins_guardians_path
     end
@@ -29,7 +29,7 @@ describe '[STEP2-1]管理者ログイン後の保護者管理テスト' do
     end
   end
 
-  context "保護者詳細画面のテスト" do
+  describe "保護者詳細画面のテスト" do
     before do
       visit admins_guardian_path(guardian)
     end
@@ -52,7 +52,7 @@ describe '[STEP2-1]管理者ログイン後の保護者管理テスト' do
     end
   end
 
-  context "保護者編集画面のテスト"do
+  describe "保護者編集画面のテスト"do
     before do
       visit edit_admins_guardian_path(guardian)
     end
@@ -72,7 +72,7 @@ describe '[STEP2-1]管理者ログイン後の保護者管理テスト' do
       expect(page).to have_button '変更を保存'
     end
     #入力後「変更を保存」をクリックすると正しく更新される
-    context "保護者編集成功のテスト"do
+    describe "保護者編集成功のテスト"do
       before do
         visit edit_admins_guardian_path(guardian)
         @guardian_old_last_name = guardian.last_name
@@ -89,13 +89,13 @@ describe '[STEP2-1]管理者ログイン後の保護者管理テスト' do
   end
 
 
-  context "保護者削除テスト" do
+  describe "保護者削除テスト" do
     before do
       guardian = create(:guardian, last_name: 'test')
       visit admins_guardian_path(guardian)
       click_link '削除'
     end
-    context "保護者削除の成功" do
+    describe "保護者削除の成功" do
       it '正しく削除される' do
         expect(page).not_to eq have_content 'test'
       end

@@ -10,7 +10,7 @@ describe '[STEP2]管理者テスト' do
       fill_in 'admin[password]', with: admin.password
       click_button 'ログイン'
     end
-    context '管理者トップ画面テスト' do
+    describe '管理者トップ画面テスト' do
       it "管理者のトップ画面に遷移する" do
         expect(current_path).to eq admins_root_path
       end
@@ -26,7 +26,7 @@ describe '[STEP2]管理者テスト' do
       end
     end
 
-    context '管理者トップ画面のリンク内容の確認' do
+    describe '管理者トップ画面のリンク内容の確認' do
       it 'カテゴリ管理画面へのリンクが存在する' do
         expect(page).to have_link 'カテゴリ管理', href: admins_categories_path
       end
