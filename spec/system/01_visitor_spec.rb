@@ -2,16 +2,14 @@ require 'rails_helper'
 
 #Visitorの動作テスト
 describe '[STEP1]Visitorのテスト' do
-  # トップ画面のテスト
-  describe 'トップ画面の確認' do
-    # TOP画面の表示
-    before do
-      visit root_path
-    end
+  describe 'サイト訪問者の画面テスト' do
 
-    context '表示内容の確認' do
-      # トップ画面のURLが正しい
-      it 'URLが正しい' do
+    # TOP画面の表示
+    describe 'トップ画面の確認' do
+      before do
+        visit root_path
+      end
+      it 'トップ画面のURLが正しい' do
         expect(current_path).to eq '/'
       end
       # ヘッダーのリンクが正しいか
@@ -88,27 +86,22 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_link guardian_link , href: new_guardian_session_path
       end
     end
-  end
-  # サッカー部について画面のテスト
-  context 'サッカー部についての画面の確認' do
-    # about画面の表示
-    before do
-      visit about_path
-    end
-    context '表示内容の確認' do
-      it 'URLが正しい' do
+
+    # サッカー部について画面のテスト
+    describe 'サッカー部についての画面の確認' do
+      before do
+        visit about_path
+      end
+      it 'サッカー部についてのURLが正しい' do
         expect(current_path).to eq about_path
       end
     end
-  end
-  # 選手・スタッフ画面のテスト
-  describe '選手・スタッフ画面の確認' do
-    let(:member) {create(:member)}
-    #選手・スタッフ画面の表示
-    before do
-      visit members_path
-    end
-    context '表示内容の確認' do
+
+    # 選手・スタッフ画面のテスト
+    describe '選手・スタッフ画面の確認' do
+      before do
+        visit members_path
+      end
       it 'URLが正しい' do
         expect(current_path).to eq members_path
       end
@@ -116,14 +109,25 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_content '選手・スタッフ一覧'
       end
     end
-  end
-  # OB紹介画面のテスト
-  context 'OB紹介画面の確認' do
-    #OB紹介画面の表示
-    before do
-      visit graduates_path
+    # 選手・スタッフ詳細画面のテスト
+    describe "スケジュール詳細画面のテスト" do
+      let!(:member) { create(:member) }
+      before do
+        visit member_path(member)
+      end
+      it "詳細画面に項目が正しく表示される" do
+        # expect(page).to have_content 'ここに記述'
+      end
+      it "戻るボタンが存在する" do
+        expect(page).to have_link '戻る'
+      end
     end
-    context '表示内容の確認' do
+
+    # OB紹介画面のテスト
+    describe 'OB紹介画面の確認' do
+      before do
+        visit graduates_path
+      end
       it 'URLが正しい' do
         expect(current_path).to eq graduates_path
       end
@@ -131,14 +135,25 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_content 'OB紹介'
       end
     end
-  end
-  # お知らせ画面のテスト
-  context 'お知らせ画面の確認' do
-    #お知らせ画面の表示
-    before do
-      visit informations_path
+    # OB紹介詳細画面のテスト
+    describe "スケジュール詳細画面のテスト" do
+      let!(:graduate) { create(:graduate) }
+      before do
+        visit graduate_path(graduate)
+      end
+      it "詳細画面に項目が正しく表示される" do
+        # expect(page).to have_content 'ここに記述'
+      end
+      it "戻るボタンが存在する" do
+        expect(page).to have_link '戻る'
+      end
     end
-    context '表示内容の確認' do
+
+    # お知らせ画面のテスト
+    describe 'お知らせ画面の確認' do
+      before do
+        visit informations_path
+      end
       it 'URLが正しい' do
         expect(current_path).to eq informations_path
       end
@@ -146,14 +161,25 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_content 'お知らせ一覧'
       end
     end
-  end
-  # スケジュール画面のテスト
-  context 'スケジュール画面の確認' do
-    #スケジュール画面の表示
-    before do
-      visit events_path
+    # お知らせ詳細画面のテスト
+    describe "スケジュール詳細画面のテスト" do
+      let!(:information) { create(:information) }
+      before do
+        visit information_path(information)
+      end
+      it "詳細画面に項目が正しく表示される" do
+        # expect(page).to have_content 'ここに記述'
+      end
+      it "戻るボタンが存在する" do
+        expect(page).to have_link '戻る'
+      end
     end
-    context '表示内容の確認' do
+
+    # スケジュール画面のテスト
+    describe 'スケジュール画面の確認' do
+      before do
+        visit events_path
+      end
       it 'URLが正しい' do
         expect(current_path).to eq events_path
       end
@@ -161,14 +187,25 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_content 'スケジュール管理'
       end
     end
-  end
-  # 試合結果画面のテスト
-  context '試合結果画面の確認' do
-    #試合結果画面の表示
-    before do
-      visit game_results_path
+    # スケジュール詳細画面のテスト
+    describe "スケジュール詳細画面のテスト" do
+      let!(:event) { create(:event) }
+      before do
+        visit event_path(event)
+      end
+      it "詳細画面に項目が正しく表示される" do
+        # expect(page).to have_content 'ここに記述'
+      end
+      it "戻るボタンが存在する" do
+        expect(page).to have_link '戻る'
+      end
     end
-    context '表示内容の確認' do
+
+    # 試合結果画面のテスト
+    describe '試合結果画面の確認' do
+      before do
+        visit game_results_path
+      end
       it 'URLが正しい' do
         expect(current_path).to eq game_results_path
       end
@@ -176,14 +213,25 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_content '試合結果'
       end
     end
-  end
-  # 応援グッズ画面のテスト
-  context '応援グッズ画面の確認' do
-    #応援グッズ画面の表示
-    before do
-      visit items_path
+    # 試合結果詳細画面のテスト
+    describe "試合結果詳細画面のテスト" do
+      let!(:game_result) { create(:game_result) }
+      before do
+        visit game_result_path(game_result)
+      end
+      it "詳細画面に項目が正しく表示される" do
+        # expect(page).to have_content 'ここに記述'
+      end
+      it "戻るボタンが存在する" do
+        expect(page).to have_link '戻る'
+      end
     end
-    context '表示内容の確認' do
+
+    # 応援グッズ画面のテスト
+    describe '応援グッズ画面の確認' do
+      before do
+        visit items_path
+      end
       it 'URLが正しい' do
         expect(current_path).to eq items_path
       end
@@ -191,14 +239,26 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_content '青山高校サッカー部応援グッズ'
       end
     end
-  end
-  # カート画面のテスト
-  context '応援グッズ画面の確認' do
-    #カート画面の表示
-    before do
-      visit cart_items_path
+    # 応援グッズ詳細画面のテスト
+    describe "応援グッズ詳細画面のテスト" do
+      let!(:item) { create(:item) }
+      before do
+        visit item_path(item)
+      end
+      it "詳細画面に項目が正しく表示される" do
+        # expect(page).to have_content 'ここに記述'
+      end
+      it "カートに入れると戻るボタンが存在する" do
+        expect(page).to have_button 'カートに入れる'
+        expect(page).to have_link '戻る'
+      end
     end
-    context '表示内容の確認' do
+
+    # カート画面のテスト
+    describe 'カート画面の確認' do
+      before do
+        visit cart_items_path
+      end
       it 'URLが正しい' do
         expect(current_path).to eq cart_items_path
       end
@@ -212,29 +272,42 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_link '注文内容入力に進む', href: new_order_path
       end
     end
-  end
-  # 保護者専用画面のテスト
-  context '保護者専用ログイン画面の確認' do
-    #保護者専用ログイン画面の表示
-    before do
-      visit new_guardian_session_path
-    end
-    context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq new_guardian_session_path
-      end
-      it 'ログイン画面が表示されている' do
-        expect(page).to have_content '保護者ログイン'
-      end
-      it 'emailフォームが表示される' do
-        expect(page).to have_field 'guardian[email]'
-      end
-      it 'passwordフォームが表示される' do
-        expect(page).to have_field 'guardian[password]'
-      end
-      it 'ログインボタンが表示される' do
-        expect(page).to have_button 'ログイン'
-      end
-    end
-  end
-end
+    
+    # # 応援グッズ詳細画面のテスト
+    # describe "スケジュール詳細画面のテスト" do
+    #   let!(:item) { create(:item) }
+    #   before do
+    #     visit item_path(item)
+    #   end
+    #   it "詳細画面に項目が正しく表示される" do
+    #     # expect(page).to have_content 'ここに記述'
+    #   end
+    #   it "戻るボタンが存在する" do
+    #     expect(page).to have_link '戻る'
+    #   end
+    # end
+
+    # 保護者専用画面のテスト
+    # describe '保護者専用ログイン画面の確認' do
+    #   before do
+    #     visit new_guardian_session_path
+    #   end
+    #   it 'URLが正しい' do
+    #     expect(current_path).to eq new_guardian_session_path
+    #   end
+    #   it 'ログイン画面が表示されている' do
+    #     expect(page).to have_content '保護者ログイン'
+    #   end
+    #   it 'emailフォームが表示される' do
+    #     expect(page).to have_field 'guardian[email]'
+    #   end
+    #   it 'passwordフォームが表示される' do
+    #     expect(page).to have_field 'guardian[password]'
+    #   end
+    #   it 'ログインボタンが表示される' do
+    #     expect(page).to have_button 'ログイン'
+    #   end
+    # end
+
+  end #＝＝＝＝
+end #＝＝＝＝
