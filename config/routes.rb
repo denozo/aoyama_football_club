@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :admins
   devise_for :guardians
-  
+
   #サイト閲覧者
   root to: 'homes#top'
   get 'about' => 'homes#about'
