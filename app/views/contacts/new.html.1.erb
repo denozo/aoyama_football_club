@@ -1,0 +1,31 @@
+<section class="container mt-5">
+  <h2 class="section-ttl row justify-content-center mb-3">お問い合わせフォーム</h2>
+   
+    <%= form_with model: @contact, local: true, url: {action: :confirm} do |f| %>
+    <!--エラーメッセージ-->
+    <%= render 'layouts/error_messages', model: f.object %>
+
+      <div class="row justify-content-center">
+        <div class="form-group col-md-6">
+        <%= f.label :name, 'お名前', class: "form-label" %>
+        <%= f.text_field :name, autofocus: true, placeholder:'田中 太郎', class: "form-control" %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="form-group col-md-6">
+          <%= f.label :email, 'メールアドレス', class: "form-label" %>
+          <%= f.text_field :email, placeholder:'name@example.com', class: "form-control" %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="form-group col-md-6">
+          <%= f.label :content, 'お問い合わせ内容', class: "form-label" %>
+          <%= f.text_area :content, placeholder:'お問い合わせ内容は10文字以上でお願いします', class: "form-control col-md-12" %>
+        </div>
+      </div>
+      <div class="row justify-content-center actions">
+        <%= f.submit '確認画面へ進む', class: "btn btn-outline-secondary" %>
+      </div>
+
+    <% end %>
+</section>

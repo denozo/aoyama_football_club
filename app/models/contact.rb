@@ -5,4 +5,13 @@ class Contact < ApplicationRecord
   validates :content, presence: true, length: { minimum: 10 }
 
   enum answer_status: { unanswered: 0, answer_complete: 1}
+  
+  validates_acceptance_of :confirming
+  after_validation :check_confirming
+
+  def check_confirming
+    errors.delete(:confirming)
+    self.confirming = errors.empty? ? '1' : ''
+  end
+  
 end
