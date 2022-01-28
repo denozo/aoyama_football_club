@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   
-  has_many :members
+  has_many :members, dependent: :destroy
   
   validates :category_name, presence: true
 
