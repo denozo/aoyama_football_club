@@ -24,7 +24,7 @@
         </tr>
         <tr>
     			<td>開始～終了</td>
-    			<td><%= @event.start_time.strftime("%Y-%m-%d %H:%M") %> + " " + <%= @event.end_time.strftime("%Y-%m-%d %H:%M") %></td>
+    			<td><%= @event.start_time.strftime("%Y-%m-%d %H:%M") + " " + @event.end_time.strftime("%Y-%m-%d %H:%M") %></td>
         </tr>
         <tr>
     			<td>内容</td>
