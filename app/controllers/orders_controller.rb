@@ -7,10 +7,10 @@ class OrdersController < ApplicationController
   def confirm
 
     @order = Order.new(order_params)
-    
+
     #バリデーションチェックでnewに遷移
     render :new if @order.invalid?
-  
+
     # カート内の値を取得
     @cart_items = current_cart.cart_items
 
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @cart_items.each do |cart_item|
       @amount_sum += cart_item.amount
     end
-    
+
     # 注文商品の小計を合計計算
     @sum = 0
     @cart_items.each do |cart_item|

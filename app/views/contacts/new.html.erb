@@ -3,8 +3,8 @@
   
    
   <%= form_with model: @contact, local: true, url: {action: :'create'}, method: :post do |f| %>
-    <!--エラーメッセージ-->
     <% if @contact.confirming.blank? %>
+    <!--エラーメッセージ-->
       <%= render 'layouts/error_messages', model: f.object %>
         <div class="row justify-content-center">
           <div class="form-group col-md-6">
