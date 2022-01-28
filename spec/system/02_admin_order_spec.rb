@@ -25,7 +25,7 @@ describe '[STEP2-1]管理者ログイン後の注文内容管理管理テスト'
       expect(page).to have_link "", href: "/admins/orders/#{order.id}"
     end
     it "クリックすると注文内容管理詳細画面に遷移する" do
-      click_link ""
+      click_link order.created_at.strftime("%Y-%m-%d %H:%M")
       expect(current_path).to eq "/admins/orders/#{order.id}"
     end
   end

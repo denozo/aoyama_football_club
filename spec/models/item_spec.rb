@@ -16,11 +16,6 @@ describe Item do
       item.valid?
       expect(item.errors[:name]).to include("は40文字以内で入力してください")
     end
-    it "imageがアップロードされないと登録できない" do
-      item = build(:item, image_id: nil)
-      item.valid?
-      expect(item).to be_invalid("画像を登録してください")
-    end
     it "introductionに入力がないと登録できない" do
       item = build(:item, introduction: nil)
       item.valid?

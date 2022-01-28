@@ -22,7 +22,7 @@ describe '[STEP2]管理者テスト' do
         expect(page).to have_content 'ログインしました。'
       end
       it "管理者MENUが表示されている" do
-        expect(page).to have_content '管理者MENU'
+        expect(page).to have_content '管理MENU'
       end
     end
 

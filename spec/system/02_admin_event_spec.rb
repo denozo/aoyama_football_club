@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
   let(:admin) { create(:admin) }
-  let!(:event) { create(:event) }
+  let!(:event) { create(:event, start_time: Time.current+2, end_time: Time.current+4) }
 
   #管理者としてスケジュール管理画面へ遷移する
   before do
@@ -58,7 +58,6 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
       expect(page).to have_field 'event[start_time]'
       expect(page).to have_field 'event[end_time]'
       expect(page).to have_field 'event[content]'
-      # expect(page).to have_field 'event[image_id]', with: event.image_id
     end
     it "入力フォームが空欄である" do
       expect(find_field('event[title]').text).to be_blank
@@ -74,7 +73,6 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
     describe "スケジュール新規登録の成功のテスト"do
       before do
         visit new_admins_event_path
-        let!(:event) { create(:event) }
         click_button '新規登録'
       end
       it 'リダイレクト先がスケジュール管理画面になっている' do
@@ -87,10 +85,11 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
     before do
       visit edit_admins_event_path(event)
     end
+
     it "編集フォームが正しく表示されている" do
       expect(page).to have_field 'event[title]', with: event.title
-      expect(page).to have_field 'event[start_time]', with: event.start_time
-      expect(page).to have_field 'event[end_time]', with: event.end_time
+      expect(page).to have_field 'event[start_time]', include(event.start_time)
+      expect(page).to have_field 'event[end_time]', include(event.end_time)
       expect(page).to have_field 'event[content]', with: event.content
     end
     it "変更を保存ボタンが存在する" do
@@ -116,13 +115,13 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
 
   describe "スケジュール削除テスト" do
     before do
-      event = create(:event, title: 'test')
+      # event = create(:event, title: 'test')
       visit admins_event_path(event)
       click_link '削除'
     end
     describe "スケジュール削除の成功" do
       it '正しく削除される' do
-        expect(page).not_to eq have_content 'test'
+        expect(page).not_to eq have_content event.title
       end
       it 'リダイレクト先がスケジュール管理画面になっている' do
         expect(current_path).to eq admins_events_path
