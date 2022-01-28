@@ -55,8 +55,7 @@
         </tr>
         <tr>
     			<td>商品お渡し</td>
-    			<td><%= @order.product_passing_i18n %></td>
-    			<td><%= @order.other %></td>
+    			<td><%= @order.product_passing_i18n + "　" + @order.other %></td>
         </tr>
         <tr>
     			<td>注文情報の更新</td>
@@ -99,7 +98,7 @@
       </tbody>
     </table>
   </div>
-  
+
   <%= link_to "戻る", admins_orders_path, class: "btn m-3" %>
 
 </section>

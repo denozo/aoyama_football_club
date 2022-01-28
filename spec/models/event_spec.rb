@@ -27,12 +27,12 @@ describe Event do
       expect(event.errors[:end_time]).to include("を入力してください")
     end
     it "start_timeが現在の日時より遅い時間を選択しないと登録できない" do
-      event = build(:event, start_time: "2022-01-20")
+      event = build(:event, start_time: Time.current-2)
       event.valid?
       expect(event.errors[:start_time]).to include("は現在の日時より遅い時間を選択してください。")
     end
     it "end_timeがstart_timeより遅い時間を選択しないと登録できない" do
-      event = build(:event, start_time: "2030-01-20", end_time: "2030-01-19)")
+      event = build(:event, end_time: Time.current-2)
       event.valid?
       expect(event.errors[:end_time]).to include("は開始日時より遅い時間を選択してください。")
     end
