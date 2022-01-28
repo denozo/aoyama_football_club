@@ -194,7 +194,10 @@ describe '[STEP1]Visitorのテスト' do
         visit event_path(event)
       end
       it "詳細画面に項目が正しく表示される" do
-        # expect(page).to have_content 'ここに記述'
+        expect(page).to have_content 'タイトル'
+        expect(page).to have_content '開始'
+        expect(page).to have_content '終了'
+        expect(page).to have_content '内容'
       end
       it "戻るボタンが存在する" do
         expect(page).to have_link '戻る'
@@ -272,20 +275,6 @@ describe '[STEP1]Visitorのテスト' do
         expect(page).to have_link '注文内容入力に進む', href: new_order_path
       end
     end
-    
-    # # 応援グッズ詳細画面のテスト
-    # describe "スケジュール詳細画面のテスト" do
-    #   let!(:item) { create(:item) }
-    #   before do
-    #     visit item_path(item)
-    #   end
-    #   it "詳細画面に項目が正しく表示される" do
-    #     # expect(page).to have_content 'ここに記述'
-    #   end
-    #   it "戻るボタンが存在する" do
-    #     expect(page).to have_link '戻る'
-    #   end
-    # end
 
-  end #＝＝＝＝
-end #＝＝＝＝
+  end
+end

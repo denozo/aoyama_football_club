@@ -22,7 +22,7 @@
         </tr>
         <tr>
     			<td>開始日時</td>
-    			<td><%= @event.start_time %></td>
+    			<td><%= @event.start_time.strftime("%Y-%m-%d %H:%M") + "　～　" + @event.end_time.strftime("%Y-%m-%d %H:%M") %></td>
         </tr>
         <tr>
     			<td>お問い合わせ内容</td>

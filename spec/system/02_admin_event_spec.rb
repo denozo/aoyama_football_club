@@ -88,8 +88,8 @@ describe '[STEP2-1]管理者ログイン後スケジュール管理テスト' do
 
     it "編集フォームが正しく表示されている" do
       expect(page).to have_field 'event[title]', with: event.title
-      expect(page).to have_field 'event[start_time]', include(event.start_time)
-      expect(page).to have_field 'event[end_time]', include(event.end_time)
+      expect(page).to have_field 'event[start_time]', with: event.start_time
+      expect(page).to have_field 'event[end_time]', with: event.end_time
       expect(page).to have_field 'event[content]', with: event.content
     end
     it "変更を保存ボタンが存在する" do
