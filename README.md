@@ -65,9 +65,11 @@
 * [ER図](https://cacoo.com/diagrams/vDkcsmaPsXuKlYK8/71BD3)
 * [フレームワーク](https://cacoo.com/diagrams/8HPRRWnhzt8uWSSV/E5544)
 
-※現在以下の停止中です。
+
 ## チャレンジ要素一覧
 * [チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1P1PDBytG8iFCAhSjdbhvhclYPnSM2XGRR9gpu_hjD-A/edit#gid=0)
+
+※現在以下のサイトは停止中です。
 * 閲覧者 http://54.65.157.109/
 * 管理者画面 http://54.65.157.109/admins/sign_in
 
