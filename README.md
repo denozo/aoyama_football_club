@@ -67,6 +67,7 @@
 
 
 ## チャレンジ要素一覧
+現在アプリケーション停止中
 * [チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1P1PDBytG8iFCAhSjdbhvhclYPnSM2XGRR9gpu_hjD-A/edit#gid=0)
 * 閲覧者 http://54.65.157.109/
 * 管理者画面 http://54.65.157.109/admins/sign_in
